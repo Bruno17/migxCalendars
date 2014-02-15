@@ -1,0 +1,5 @@
+Changelog for migxCalendars
+
+migxCalendars 1.0.0
+---------------------------------
+Initial Version
