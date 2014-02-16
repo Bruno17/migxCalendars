@@ -10,7 +10,7 @@ $xpdo_meta_map['migxCalendarEventVideos']= array (
     'video' => '',
     'title' => '',
     'description' => '',
-    'active' => 1,
+    'published' => 1,
   ),
   'fieldMeta' => 
   array (
@@ -44,7 +44,7 @@ $xpdo_meta_map['migxCalendarEventVideos']= array (
       'null' => false,
       'default' => '',
     ),
-    'active' => 
+    'published' => 
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',

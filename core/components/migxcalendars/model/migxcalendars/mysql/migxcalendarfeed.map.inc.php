@@ -13,7 +13,7 @@ $xpdo_meta_map['migxCalendarFeed']= array (
     'timermeasurement' => '',
     'lastrunon' => NULL,
     'nextrunon' => NULL,
-    'active' => 1,
+    'published' => 1,
   ),
   'fieldMeta' => 
   array (
@@ -69,7 +69,7 @@ $xpdo_meta_map['migxCalendarFeed']= array (
       'phptype' => 'datetime',
       'null' => true,
     ),
-    'active' => 
+    'published' => 
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',

@@ -34,8 +34,10 @@ $end = $modx->getOption('end',$_GET,'');
 
 $range_start = parseDateTime($start);
 $range_end = parseDateTime($end);
+$wheres = array();
 
 $wheres[] = array('startdate:<='=>$end,'enddate:>='=>$start);
+$wheres[] = array('deleted'=>0,'published'=>1);
 
 $scriptProperties['where'] = $modx->toJson($wheres);
 

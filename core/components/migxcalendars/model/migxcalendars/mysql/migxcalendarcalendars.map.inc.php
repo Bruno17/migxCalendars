@@ -8,7 +8,7 @@ $xpdo_meta_map['migxCalendarCalendars']= array (
   array (
     'name' => '',
     'webusergroup' => NULL,
-    'active' => 1,
+    'published' => 1,
   ),
   'fieldMeta' => 
   array (
@@ -26,7 +26,7 @@ $xpdo_meta_map['migxCalendarCalendars']= array (
       'precision' => '10',
       'phptype' => 'integer',
     ),
-    'active' => 
+    'published' => 
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',

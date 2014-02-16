@@ -13,7 +13,7 @@ $xpdo_meta_map['migxCalendarCategories']= array (
     'inlinecss' => '',
     'parent' => NULL,
     'disable' => 0,
-    'active' => 1,
+    'published' => 1,
     'createdon' => NULL,
     'createdby' => 0,
     'editedon' => NULL,
@@ -77,7 +77,7 @@ $xpdo_meta_map['migxCalendarCategories']= array (
       'null' => false,
       'default' => 0,
     ),
-    'active' => 
+    'published' => 
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',

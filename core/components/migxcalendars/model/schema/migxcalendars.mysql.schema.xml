@@ -34,7 +34,7 @@
 	    <field key="createdby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
 	    <field key="editedon" dbtype="datetime" phptype="datetime" null="true" />
 	    <field key="editedby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
-        <field key="active" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
 		<field key="deleted" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
 		<field key="deletedon" dbtype="datetime" phptype="datetime" null="false" />
 		<field key="deletedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />        
@@ -59,7 +59,7 @@
         <field key="filepath" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
         <field key="title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
         <field key="description" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
-        <field key="active" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
     </object>
     
     <object class="migxCalendarEventVideos" table="migxcalendars_events_videos" extends="xPDOSimpleObject">
@@ -67,7 +67,7 @@
         <field key="video" dbtype="text" phptype="string" null="false" default="" />
         <field key="title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
         <field key="description" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
-        <field key="active" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
     </object>    
 
     <object class="migxCalendarEventWUG" table="migxcalendars_wug" extends="xPDOSimpleObject">
@@ -85,7 +85,7 @@
         <field key="inlinecss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="parent" dbtype="int" precision="10" phptype="string" />
         <field key="disable" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
-        <field key="active" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
 
         <field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
         <field key="createdby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
@@ -100,7 +100,7 @@
     <object class="migxCalendarCalendars" table="migxcalendars_calendars" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
         <field key="webusergroup" dbtype="int" precision="10" phptype="integer" />
-        <field key="active" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
         
         <aggregate alias="CalendarId" class="migxCalendarEvents" local="id" foreign="calendar_id" cardinality="many" owner="local"/>
     </object>
@@ -122,7 +122,7 @@
         <field key="timermeasurement" dbtype="varchar" precision="32" phptype="string" null="false" default="" />
         <field key="lastrunon" dbtype="datetime" phptype="datetime" null="true" />
         <field key="nextrunon" dbtype="datetime" phptype="datetime" null="true" />
-        <field key="active" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
         
         <aggregate alias="eventfeed" class="migxCalendarEvents" local="id" foreign="feeds_id" cardinality="many" owner="local"/>
     </object>

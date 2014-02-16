@@ -36,7 +36,7 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'createdby' => 0,
     'editedon' => NULL,
     'editedby' => 0,
-    'active' => 0,
+    'published' => 1,
     'deleted' => 0,
     'deletedon' => NULL,
     'deletedby' => 0,
@@ -269,14 +269,14 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'null' => false,
       'default' => 0,
     ),
-    'active' => 
+    'published' => 
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',
       'attributes' => 'unsigned',
       'phptype' => 'integer',
       'null' => false,
-      'default' => 0,
+      'default' => 1,
     ),
     'deleted' => 
     array (
