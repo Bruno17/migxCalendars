@@ -382,5 +382,13 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'cardinality' => 'one',
       'owner' => 'foreign',
     ),
+    'Category' => 
+    array (
+      'class' => 'migxCalendarCategories',
+      'local' => 'categoryid',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
+    ),
   ),
 );

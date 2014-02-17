@@ -51,6 +51,88 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":""
+        },
+        {
+          "MIGX_id":4,
+          "field":"categoryid",
+          "caption":"Category",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"@EVAL return 'Select Category!==||' . $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
+          "default":""
+        }
+      ]
+    },
+    {
+      "MIGX_id":2,
+      "caption":"Wiederholungen",
+      "print_before_tabs":"0",
+      "fields":[
+        {
+          "MIGX_id":1,
+          "field":"repeating",
+          "caption":"Wiederholen",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"checkbox",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"Ja==1",
+          "default":"0"
+        },
+        {
+          "MIGX_id":2,
+          "field":"repeattype",
+          "caption":"Typ",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"T\u00e4glich==0||W\u00f6chentlich==1||Monatlich==2||J\u00e4hrlich==3",
+          "default":1
+        },
+        {
+          "MIGX_id":3,
+          "field":"repeatenddate",
+          "caption":"Letzer Termin",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"date",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        },
+        {
+          "MIGX_id":4,
+          "field":"children",
+          "caption":"Repeatings",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"migxdb",
+          "validation":"",
+          "configs":"migxcalendar_children",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
         }
       ]
     }
@@ -58,7 +140,23 @@
   "contextmenus":"recall_remove_delete",
   "actionbuttons":"addItem||toggletrash||emptyThrash",
   "columnbuttons":"update||duplicate",
-  "filters":"[]",
+  "filters":[
+    {
+      "MIGX_id":1,
+      "name":"category",
+      "label":"category",
+      "emptytext":"filter category",
+      "type":"combobox",
+      "getlistwhere":{
+        "categoryid":"[[+category]]"
+      },
+      "getcomboprocessor":"getcombo",
+      "combotextfield":"Category.name",
+      "comboidfield":"categoryid",
+      "comboparent":"",
+      "default":""
+    }
+  ],
   "extended":{
     "migx_add":"Add Event",
     "formcaption":"",
@@ -67,7 +165,7 @@
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
-    "extrahandlers":"",
+    "extrahandlers":"this.publishObject||this.unpublishObject",
     "packageName":"migxcalendars",
     "classname":"migxCalendarEvents",
     "task":"events",
@@ -82,7 +180,11 @@
     "join_alias":"",
     "has_jointable":"yes",
     "getlistwhere":"",
-    "joins":"",
+    "joins":[
+      {
+        "alias":"Category"
+      }
+    ],
     "cmpmaincaption":"Events Manager",
     "cmptabcaption":"Events",
     "cmptabdescription":"Manage Events",
@@ -156,12 +258,25 @@
       "selectorconfig":"",
       "renderchunktpl":"",
       "renderoptions":"[]"
+    },
+    {
+      "MIGX_id":6,
+      "header":"Aktiv",
+      "dataIndex":"published",
+      "width":10,
+      "sortable":"false",
+      "show_in_grid":1,
+      "renderer":"this.renderClickCrossTick",
+      "clickaction":"",
+      "selectorconfig":"",
+      "renderchunktpl":"",
+      "renderoptions":"[]"
     }
   ],
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-02-16 15:33:23",
+  "editedon":"2014-02-17 08:53:15",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

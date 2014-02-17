@@ -52,6 +52,7 @@
         
         <composite alias="Children" class="migxCalendarEvents" local="id" foreign="parent" cardinality="many"/>
         <aggregate alias="Parent" class="migxCalendarEvents" local="parent" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Category" class="migxCalendarCategories" local="categoryid" foreign="id" cardinality="one" owner="foreign" />
     </object>
     
     <object class="migxCalendarEventImages" table="migxcalendars_events_images" extends="xPDOSimpleObject">
@@ -80,8 +81,10 @@
     <object class="migxCalendarCategories" table="migxcalendars_categories" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="255" phptype="string" null="true" default=""/>
         <field key="isdefault" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
-        <field key="foregroundcss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
-        <field key="backgroundcss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="color" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="backgroundColor" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="borderColor" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="textColor" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="inlinecss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="parent" dbtype="int" precision="10" phptype="string" />
         <field key="disable" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />

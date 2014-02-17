@@ -13,45 +13,47 @@
 //--------------------------------------------------------------------------------------------------
 
 // Require our Event class and datetime utilities
-require $modx->getOption('core_path') . 'components/migxcalendars/model/fullcalendar/php/utils.php';
+require $modx->getOption('core_path') .
+    'components/migxcalendars/model/fullcalendar/php/utils.php';
 
 // Short-circuit if the client did not give us a date range.
 if (!isset($_GET['start']) || !isset($_GET['end'])) {
-	//die("Please provide a date range.");
+    //die("Please provide a date range.");
 }
 
 $scriptProperties['packageName'] = 'migxcalendars';
 $scriptProperties['classname'] = 'migxCalendarEvents';
 $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
-$scriptProperties['selectfields'] = 'id,title,startdate,enddate'; 
+$scriptProperties['selectfields'] = 'id,title,startdate,enddate';
+$scriptProperties['joins'] = '[{"alias":"Category"}]';
 
 // Parse the start/end parameters.
 // These are assumed to be ISO8601 strings with no time nor timezone, like "2013-12-29".
 // Since no timezone will be present, they will parsed as UTC.
 
-$start = $modx->getOption('start',$_GET,'');
-$end = $modx->getOption('end',$_GET,'');
+$start = $modx->getOption('start', $_GET, '');
+$end = $modx->getOption('end', $_GET, '');
 
 $range_start = parseDateTime($start);
 $range_end = parseDateTime($end);
 $wheres = array();
 
-$wheres[] = array('startdate:<='=>$end,'enddate:>='=>$start);
-$wheres[] = array('deleted'=>0,'published'=>1);
+$wheres[] = array('startdate:<=' => $end, 'enddate:>=' => $start);
+$wheres[] = array('deleted' => 0, 'published' => 1);
 
 $scriptProperties['where'] = $modx->toJson($wheres);
 
 // Parse the timezone parameter if it is present.
 $timezone = null;
 if (isset($_GET['timezone'])) {
-	$timezone = new DateTimeZone($_GET['timezone']);
+    $timezone = new DateTimeZone($_GET['timezone']);
 }
 
 // Read and parse our events JSON file into an array of event data arrays.
 //$json = file_get_contents(dirname(__FILE__) . '/../json/events.json');
 
 
-$modx->runSnippet('migxLoopCollection',$scriptProperties);
+$modx->runSnippet('migxLoopCollection', $scriptProperties);
 $result = $modx->getPlaceholder('migxcal_events');
 $input_arrays = json_decode($result, true);
 // Accumulate an output array of event data arrays.
@@ -60,15 +62,29 @@ foreach ($input_arrays as $array) {
 
     $array['start'] = $array['startdate'];
     $array['end'] = $array['enddate'];
+    if (!empty($array['Category_backgroundColor'])) {
+        $array['backgroundColor'] = $array['Category_backgroundColor'];
+    }
+    if (!empty($array['Category_borderColor'])) {
+        $array['borderColor'] = $array['Category_borderColor'];
 
-	// Convert the input array into a useful Event object
-	$event = new Event($array, $timezone);
+    }
+    if (!empty($array['Category_textColor'])) {
+        $array['textColor'] = $array['Category_textColor'];
+    }
 
-	// If the event is in-bounds, add it to the output
-	if ($event->isWithinDayRange($range_start, $range_end)) {
-		$output_arrays[] = $event->toArray();
-	}
-    //$output_arrays[] = $event->toArray();
+
+    // Convert the input array into a useful Event object
+    $event = new Event($array, $timezone);
+
+    // If the event is in-bounds, add it to the output
+    /*
+    if ($event->isWithinDayRange($range_start, $range_end)) {
+    $output_arrays[] = $event->toArray();
+    }
+    */
+    $output_arrays[] = $event->toArray();
+
 }
 
 // Send JSON to the client.

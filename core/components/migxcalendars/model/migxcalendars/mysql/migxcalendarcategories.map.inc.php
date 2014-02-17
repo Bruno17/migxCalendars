@@ -8,8 +8,10 @@ $xpdo_meta_map['migxCalendarCategories']= array (
   array (
     'name' => '',
     'isdefault' => 0,
-    'foregroundcss' => '',
-    'backgroundcss' => '',
+    'color' => '',
+    'backgroundColor' => '',
+    'borderColor' => '',
+    'textColor' => '',
     'inlinecss' => '',
     'parent' => NULL,
     'disable' => 0,
@@ -38,7 +40,7 @@ $xpdo_meta_map['migxCalendarCategories']= array (
       'null' => false,
       'default' => 0,
     ),
-    'foregroundcss' => 
+    'color' => 
     array (
       'dbtype' => 'varchar',
       'precision' => '255',
@@ -46,7 +48,23 @@ $xpdo_meta_map['migxCalendarCategories']= array (
       'null' => false,
       'default' => '',
     ),
-    'backgroundcss' => 
+    'backgroundColor' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'borderColor' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'textColor' => 
     array (
       'dbtype' => 'varchar',
       'precision' => '255',
