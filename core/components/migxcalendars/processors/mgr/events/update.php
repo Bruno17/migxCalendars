@@ -191,8 +191,8 @@ switch ($task) {
         if (count($validation_errors) > 0) {
             $updateerror = true;
             foreach ($validation_errors as $error) {
-                $field_caption = $modx->getOption('caption',$error,'');
-                $validation_type = $modx->getOption('validation_type',$error,'');
+                $field_caption = $modx->getOption('caption', $error, '');
+                $validation_type = $modx->getOption('validation_type', $error, '');
                 //$errormsg .=   $modx->lexicon('quip.thread_err_save');
                 $errormsg .= $field_caption . ': ' . $validation_type . '<br/>';
             }
@@ -205,6 +205,7 @@ switch ($task) {
             $postvalues['createdby'] = $modx->user->get('id');
             //handle published
             $postvalues['published'] = isset($postvalues['published']) ? $postvalues['published'] : '1';
+            $oldstart = 0;
         } else {
             $object = $modx->getObject($classname, $scriptProperties['object_id']);
             if (empty($object))
@@ -213,6 +214,7 @@ switch ($task) {
             $postvalues['editedby'] = $modx->user->get('id');
             $tempvalues['createdon'] = $object->get('createdon');
             $tempvalues['publishedon'] = $object->get('publishedon');
+            $oldstart = $object->get('startdate');
         }
 
 
@@ -257,7 +259,14 @@ switch ($task) {
         } else {
             unset($postvalues['resource_id']);
         }
-        
+
+        //handle enddate
+        $enddate = $modx->getOption('enddate', $postvalues, 0);
+        $startdate = $modx->getOption('startdate', $postvalues, 0);
+        if ($enddate <= $startdate) {
+            $postvalues['enddate'] = $startdate;
+        }
+
         $object->fromArray($postvalues);
 }
 
@@ -267,6 +276,57 @@ if ($object->save() == false) {
     $errormsg = $modx->lexicon('quip.thread_err_save');
     return;
 }
+
+//handle repeatings
+$repeating = $modx->getOption('repeating', $postvalues, 0);
+$repeatenddate = $modx->getOption('repeatenddate', $postvalues, 0);
+$repeattype = $modx->getOption('repeattype', $postvalues, 1);
+$parent = $object->get('id');
+
+if ($repeatenddate > $startdate && !empty($repeating)) {
+    $modx->removeCollection($classname,array('parent' => $parent , 'startdate:>' => $repeatenddate));
+    switch ($repeattype) {
+        case 0:
+            //daily
+            break;
+        case 1:
+            //weekly
+            $addtime = 7 * 24 * 60 * 60;
+            $eventstart = $startdate;
+            $eventend = $enddate;
+            $oldtime = strftime('%H:%M:%S', strtotime($oldstart));
+            
+            while ($eventstart <= $repeatenddate) {
+                $eventstart = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventstart) + $addtime);
+                $eventend = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventend) + $addtime);
+                $olddate = strftime('%Y-%m-%d ', strtotime($eventstart)) . $oldtime;
+                
+                if ($child = $modx->getObject($classname,array('parent'=>$parent,'startdate'=>$olddate))){
+                    //child-event exists allready, modify it
+                    
+                }else{
+                    $child = $modx->newObject($classname);
+                }
+                
+                $child->fromArray($postvalues);
+                $child->set('parent',$parent);
+                $child->set('repeating',0);
+                $child->set('startdate',$eventstart);   
+                $child->set('enddate',$eventend);
+                $child->save(); 
+            }
+            break;
+        case 2:
+            //monthly
+            break;
+        case 3:
+            //yearly
+            break;
+    }
+} else {
+    $modx->removeCollection($classname,array('parent = ' . $parent));
+}
+
 
 if ($has_jointable && !empty($joinalias)) {
 
