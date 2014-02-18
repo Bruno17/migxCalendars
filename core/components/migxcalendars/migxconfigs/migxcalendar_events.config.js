@@ -148,7 +148,7 @@
       "emptytext":"filter category",
       "type":"combobox",
       "getlistwhere":{
-        "categoryid":"[[+category]]"
+        "Category.id":"[[+category]]"
       },
       "getcomboprocessor":"getcombo",
       "combotextfield":"Category.name",
@@ -165,11 +165,11 @@
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
-    "extrahandlers":"this.publishObject||this.unpublishObject",
+    "extrahandlers":"this.handleColumnSwitch||this.publishObject||this.unpublishObject",
     "packageName":"migxcalendars",
-    "classname":"migxCalendarEvents",
+    "classname":"migxCalendarDates",
     "task":"events",
-    "getlistsort":"",
+    "getlistsort":"startdate",
     "getlistsortdir":"",
     "use_custom_prefix":"0",
     "prefix":"",
@@ -182,7 +182,13 @@
     "getlistwhere":"",
     "joins":[
       {
-        "alias":"Category"
+        "alias":"Event",
+        "selectfields":"id,title,deleted"
+      },
+      {
+        "alias":"Category",
+        "classname":"migxCalendarCategories",
+        "on":"Category.id=Event.categoryid"
       }
     ],
     "cmpmaincaption":"Events Manager",
@@ -194,6 +200,19 @@
     "submitparams":""
   },
   "columns":[
+    {
+      "MIGX_id":7,
+      "header":"Event ID",
+      "dataIndex":"Event_id",
+      "width":10,
+      "sortable":true,
+      "show_in_grid":1,
+      "renderer":"",
+      "clickaction":"",
+      "selectorconfig":"",
+      "renderchunktpl":"",
+      "renderoptions":"[]"
+    },
     {
       "MIGX_id":1,
       "header":"ID",
@@ -210,7 +229,7 @@
     {
       "MIGX_id":2,
       "header":"Titel",
-      "dataIndex":"title",
+      "dataIndex":"Event_title",
       "width":30,
       "sortable":"false",
       "show_in_grid":1,
@@ -266,17 +285,34 @@
       "width":10,
       "sortable":"false",
       "show_in_grid":1,
-      "renderer":"this.renderClickCrossTick",
+      "renderer":"this.renderSwitchStatusOptions",
       "clickaction":"",
       "selectorconfig":"",
       "renderchunktpl":"",
-      "renderoptions":"[]"
+      "renderoptions":[
+        {
+          "MIGX_id":1,
+          "name":"published",
+          "value":"0",
+          "clickaction":"switchOption",
+          "handler":"",
+          "image":"assets\/components\/migx\/style\/images\/cross.png"
+        },
+        {
+          "MIGX_id":2,
+          "name":"published",
+          "value":1,
+          "clickaction":"switchOption",
+          "handler":"",
+          "image":"assets\/components\/migx\/style\/images\/tick.png"
+        }
+      ]
     }
   ],
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-02-17 08:53:15",
+  "editedon":"2014-02-18 14:59:09",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

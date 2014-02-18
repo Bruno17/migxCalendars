@@ -39,8 +39,8 @@
 		<field key="deletedon" dbtype="datetime" phptype="datetime" null="false" />
 		<field key="deletedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />        
         
-        <field key="parent" dbtype="int" precision="10" phptype="string" />
- 
+        <field key="parent" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+         
 	    <composite alias="images" class="migxCalendarEventImages" local="id" foreign="event_id" cardinality="many"/>
         <composite alias="videos" class="migxCalendarEventVideos" local="id" foreign="event_id" cardinality="many"/>
         <aggregate alias="CalendarId" class="migxCalendarCalendars" local="calendar_id" foreign="id" cardinality="one" owner="foreign"/>
@@ -53,7 +53,19 @@
         <composite alias="Children" class="migxCalendarEvents" local="id" foreign="parent" cardinality="many"/>
         <aggregate alias="Parent" class="migxCalendarEvents" local="parent" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="Category" class="migxCalendarCategories" local="categoryid" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="Dates" class="migxCalendarDates" local="id" foreign="event_id" cardinality="many"/>
     </object>
+    
+    <object class="migxCalendarDates" table="migxcalendars_dates" extends="xPDOSimpleObject">
+        <field key="startdate" dbtype="datetime" phptype="datetime" null="true" />
+	    <field key="enddate" dbtype="datetime" phptype="datetime" null="true" />
+
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="event_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="repeating" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+
+        <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
+    </object>    
     
     <object class="migxCalendarEventImages" table="migxcalendars_events_images" extends="xPDOSimpleObject">
         <field key="event_id" dbtype="int" precision="20" phptype="integer" null="false" />
@@ -86,9 +98,10 @@
         <field key="borderColor" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="textColor" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="inlinecss" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
-        <field key="parent" dbtype="int" precision="10" phptype="string" />
+        <field key="parent" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
         <field key="disable" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
         <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <field key="ondoubleevents" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
 
         <field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
         <field key="createdby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />

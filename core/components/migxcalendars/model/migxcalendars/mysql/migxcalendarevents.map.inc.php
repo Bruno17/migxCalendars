@@ -40,7 +40,7 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'deleted' => 0,
     'deletedon' => NULL,
     'deletedby' => 0,
-    'parent' => NULL,
+    'parent' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -305,7 +305,9 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     array (
       'dbtype' => 'int',
       'precision' => '10',
-      'phptype' => 'string',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
     ),
   ),
   'composites' => 
@@ -329,6 +331,13 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'class' => 'migxCalendarEvents',
       'local' => 'id',
       'foreign' => 'parent',
+      'cardinality' => 'many',
+    ),
+    'Dates' => 
+    array (
+      'class' => 'migxCalendarDates',
+      'local' => 'id',
+      'foreign' => 'event_id',
       'cardinality' => 'many',
     ),
   ),

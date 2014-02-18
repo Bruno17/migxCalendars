@@ -66,6 +66,21 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":""
+        },
+        {
+          "MIGX_id":5,
+          "field":"ondoubleevents",
+          "caption":"[[%migxcal.on_double_events]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"[[%migxcal.save]]==||[[%migxcal.unpublish]]==unpublish||[[%migxcal.ignore]]==ignore",
+          "default":""
         }
       ]
     }
@@ -137,7 +152,7 @@
   "createdby":1,
   "createdon":"2014-02-17 08:05:54",
   "editedby":1,
-  "editedon":"2014-02-17 09:32:40",
+  "editedon":"2014-02-18 11:29:04",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

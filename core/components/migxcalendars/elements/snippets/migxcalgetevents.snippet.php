@@ -22,10 +22,10 @@ if (!isset($_GET['start']) || !isset($_GET['end'])) {
 }
 
 $scriptProperties['packageName'] = 'migxcalendars';
-$scriptProperties['classname'] = 'migxCalendarEvents';
+$scriptProperties['classname'] = 'migxCalendarDates';
 $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
-$scriptProperties['selectfields'] = 'id,title,startdate,enddate';
-$scriptProperties['joins'] = '[{"alias":"Category"}]';
+$scriptProperties['selectfields'] = 'id,startdate,enddate';
+$scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
 
 // Parse the start/end parameters.
 // These are assumed to be ISO8601 strings with no time nor timezone, like "2013-12-29".
@@ -38,8 +38,8 @@ $range_start = parseDateTime($start);
 $range_end = parseDateTime($end);
 $wheres = array();
 
-$wheres[] = array('startdate:<=' => $end, 'enddate:>=' => $start);
-$wheres[] = array('deleted' => 0, 'published' => 1);
+$wheres[] = array('migxCalendarDates.startdate:<=' => $end, 'migxCalendarDates.enddate:>=' => $start);
+$wheres[] = array('Event.deleted' => 0, 'Event.published' => 1,'migxCalendarDates.published' => 1);
 
 $scriptProperties['where'] = $modx->toJson($wheres);
 
@@ -52,7 +52,7 @@ if (isset($_GET['timezone'])) {
 // Read and parse our events JSON file into an array of event data arrays.
 //$json = file_get_contents(dirname(__FILE__) . '/../json/events.json');
 
-
+//$scriptProperties['debug'] = '1';
 $modx->runSnippet('migxLoopCollection', $scriptProperties);
 $result = $modx->getPlaceholder('migxcal_events');
 $input_arrays = json_decode($result, true);
@@ -62,6 +62,7 @@ foreach ($input_arrays as $array) {
 
     $array['start'] = $array['startdate'];
     $array['end'] = $array['enddate'];
+    $array['title'] = $array['Event_title'];
     if (!empty($array['Category_backgroundColor'])) {
         $array['backgroundColor'] = $array['Category_backgroundColor'];
     }

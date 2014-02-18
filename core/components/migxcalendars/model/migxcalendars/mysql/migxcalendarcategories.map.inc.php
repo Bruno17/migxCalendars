@@ -13,9 +13,10 @@ $xpdo_meta_map['migxCalendarCategories']= array (
     'borderColor' => '',
     'textColor' => '',
     'inlinecss' => '',
-    'parent' => NULL,
+    'parent' => 0,
     'disable' => 0,
     'published' => 1,
+    'ondoubleevents' => '',
     'createdon' => NULL,
     'createdby' => 0,
     'editedon' => NULL,
@@ -84,7 +85,9 @@ $xpdo_meta_map['migxCalendarCategories']= array (
     array (
       'dbtype' => 'int',
       'precision' => '10',
-      'phptype' => 'string',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
     ),
     'disable' => 
     array (
@@ -103,6 +106,14 @@ $xpdo_meta_map['migxCalendarCategories']= array (
       'phptype' => 'integer',
       'null' => false,
       'default' => 1,
+    ),
+    'ondoubleevents' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
     ),
     'createdon' => 
     array (
