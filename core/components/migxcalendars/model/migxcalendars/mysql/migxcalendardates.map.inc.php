@@ -10,7 +10,11 @@ $xpdo_meta_map['migxCalendarDates']= array (
     'enddate' => NULL,
     'published' => 1,
     'event_id' => 0,
+    'title' => '',
+    'description' => '',
     'repeating' => 0,
+    'type' => 'single',
+    'repeating_index' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -19,12 +23,14 @@ $xpdo_meta_map['migxCalendarDates']= array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
       'null' => true,
+      'index' => 'index',
     ),
     'enddate' => 
     array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
       'null' => true,
+      'index' => 'index',
     ),
     'published' => 
     array (
@@ -34,6 +40,7 @@ $xpdo_meta_map['migxCalendarDates']= array (
       'phptype' => 'integer',
       'null' => false,
       'default' => 1,
+      'index' => 'index',
     ),
     'event_id' => 
     array (
@@ -42,11 +49,45 @@ $xpdo_meta_map['migxCalendarDates']= array (
       'phptype' => 'integer',
       'null' => false,
       'default' => 0,
+      'index' => 'index',
+    ),
+    'title' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'description' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
     ),
     'repeating' => 
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',
+      'attributes' => 'unsigned',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
+    ),
+    'type' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '20',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => 'single',
+      'index' => 'index',
+    ),
+    'repeating_index' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
       'attributes' => 'unsigned',
       'phptype' => 'integer',
       'null' => false,

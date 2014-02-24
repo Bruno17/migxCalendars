@@ -4,7 +4,8 @@
         <field key="title" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="false" default=""/>
         <field key="content" dbtype="text" phptype="string" null="false" default=""/>
-	    <field key="categoryid" dbtype="varchar" precision="10" phptype="string" null="true" />
+	    <field key="categoryid" dbtype="varchar" precision="10" phptype="string" null="true" index="index"/>
+        <field key="categories" dbtype="text" phptype="string" null="false" default="" index="fulltext" />
 	    <field key="link" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
 	    <field key="linkrel" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
 	    <field key="linktarget" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
@@ -19,7 +20,6 @@
 	    <field key="repeaton" dbtype="varchar" precision="15" phptype="string" null="true"/>
 	    <field key="repeatfrequency" dbtype="int" precision="2" phptype="int" null="true"/>
 	    <field key="repeatenddate" dbtype="datetime" phptype="datetime" null="true" />
-        <field key="repeatdates" dbtype="text" phptype="string" null="true" />
 	
         <field key="source" dbtype="varchar" precision="32" phptype="string" null="false" default="local" />
         <field key="feeds_id" dbtype="int" precision="20" phptype="integer" null="true" default="" />
@@ -57,12 +57,15 @@
     </object>
     
     <object class="migxCalendarDates" table="migxcalendars_dates" extends="xPDOSimpleObject">
-        <field key="startdate" dbtype="datetime" phptype="datetime" null="true" />
-	    <field key="enddate" dbtype="datetime" phptype="datetime" null="true" />
-
-        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
-        <field key="event_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="startdate" dbtype="datetime" phptype="datetime" null="true" index="index" />
+	    <field key="enddate" dbtype="datetime" phptype="datetime" null="true" index="index" />
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" index="index"/>
+        <field key="event_id" dbtype="int" precision="10" phptype="integer" null="false" default="0" index="index"/>
+        <field key="title" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="description" dbtype="text" phptype="string" null="false" default=""/>        
         <field key="repeating" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="type" dbtype="varchar" precision="20" phptype="string" null="false" default="single" index="index"/>
+        <field key="repeating_index" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
 
         <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
     </object>    
@@ -102,6 +105,8 @@
         <field key="disable" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
         <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
         <field key="ondoubleevents" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="ondates_in_assigned_cats" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        
 
         <field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
         <field key="createdby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />

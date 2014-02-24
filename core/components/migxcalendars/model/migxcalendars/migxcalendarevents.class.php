@@ -21,6 +21,15 @@ class migxCalendarEvents extends xPDOSimpleObject
             }
             $this->set('enddate', $enddate);
         }
+        
+        //handle allday
+        $this->handleAllday();
+        
+        //handle categories - add double-pipes at front and end for better filtering
+        $categories = $this->get('categories');
+        if (!empty($categories)){
+            $this->set('categories','||' . trim($categories , '|') . '||');
+        }
 
         $result = parent::save($cacheFlag);
 
@@ -46,15 +55,23 @@ class migxCalendarEvents extends xPDOSimpleObject
                     $addtime = 7 * 24 * 60 * 60;
                     $eventstart = $startdate;
                     $eventend = $enddate;
+                    $event_wd = strftime('%w',strtotime($startdate));
+                    $old_wd = strftime('%w',strtotime($oldstart));
+                    if ($event_ws != $old_wd){
+                        //moved to other day, we remove all repeatings completly
+                        $this->xpdo->removeCollection($classname, array('event_id' => $parent,'type' => 'repeating','repeating_index:>' => 0));
+                    }
                     $oldtime = strftime('%H:%M:%S', strtotime($oldstart));
                     $olddate = strftime('%Y-%m-%d ', strtotime($eventstart)) . $oldtime;
-                    $repeated = 0;
+                    $repeating_index = 0;
+                    $type = 'repeating';
                     while ($eventstart <= $repeatenddate) {
-                        $this->createDate($classname,$eventstart, $eventend, $olddate, $repeated, $repeating);
+                        $this->createDate($classname,$eventstart, $eventend, $type, $olddate, $repeating_index);
                         $eventstart = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventstart) + $addtime);
                         $eventend = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventend) + $addtime);
                         $olddate = strftime('%Y-%m-%d ', strtotime($eventstart)) . $oldtime;
                         $repeated = 1;
+                        $repeating_index ++;
                     }
                     break;
                 case 2:
@@ -66,7 +83,7 @@ class migxCalendarEvents extends xPDOSimpleObject
             }
         } else {
             //no repeating, remove all repeatings
-            $this->xpdo->removeCollection($classname, array('event_id' => $parent,'repeating' => '1'));
+            $this->xpdo->removeCollection($classname, array('event_id' => $parent,'type' => 'repeating','repeating_index:>' => 0));
             //create or modify single date
             $this->createDate($classname,$startdate, $enddate);
         }
@@ -75,14 +92,14 @@ class migxCalendarEvents extends xPDOSimpleObject
 
     }
 
-    public function createDate($classname, $eventstart, $eventend, $olddate = '', $repeating=0, $repeating=0 )
+    public function createDate($classname, $eventstart, $eventend, $type='single', $olddate = '', $repeating_index = 0)
     {
         $parent = $this->get('id');
         
-        if (!empty($repeating)){
+        if (!empty($repeating_index)){
             $child = $this->xpdo->getObject($classname, array('event_id' => $parent, 'startdate' => $olddate));
         }else{
-            $child = $this->xpdo->getObject($classname, array('event_id' => $parent, 'repeating' => '0'));    
+            $child = $this->xpdo->getObject($classname, array('event_id' => $parent, 'repeating_index' => '0'));    
         }
         
         if ($child) {
@@ -96,11 +113,27 @@ class migxCalendarEvents extends xPDOSimpleObject
         if ($child) {
             //$child->fromArray($values);
             $child->set('event_id', $parent);
+            $child->set('type', $type);
             $child->set('startdate', $eventstart);
             $child->set('enddate', $eventend);
-            $child->set('repeating', $repeating);
+            $child->set('repeating_index', $repeating_index);
             $child->save();
         }
     }
+    
+    public function handleAllday()
+    {
+        
+        $allday = $this->get('allday');
+        
+        
+        if (!empty($allday)) {
+            $startdate = strftime('%Y-%m-%d ', strtotime($this->get('startdate')));
+            $this->set('startdate',$startdate . '00:00:00');
+            $enddate = strftime('%Y-%m-%d ', strtotime($this->get('enddate')));
+            $this->set('enddate',$enddate . '23:59:59');            
+        }
+
+    }    
 
 }

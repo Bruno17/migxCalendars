@@ -17,6 +17,7 @@ $xpdo_meta_map['migxCalendarCategories']= array (
     'disable' => 0,
     'published' => 1,
     'ondoubleevents' => '',
+    'ondates_in_assigned_cats' => '',
     'createdon' => NULL,
     'createdby' => 0,
     'editedon' => NULL,
@@ -108,6 +109,14 @@ $xpdo_meta_map['migxCalendarCategories']= array (
       'default' => 1,
     ),
     'ondoubleevents' => 
+    array (
+      'dbtype' => 'varchar',
+      'precision' => '255',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'ondates_in_assigned_cats' => 
     array (
       'dbtype' => 'varchar',
       'precision' => '255',

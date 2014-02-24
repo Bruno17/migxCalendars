@@ -10,6 +10,7 @@
 <script src='assets/components/migxcalendars/js/lib/jquery.min.js'></script>
 <script src='assets/components/migxcalendars/js/lib/jquery-ui.custom.min.js'></script>
 <script src='assets/components/migxcalendars/js/fullcalendar/fullcalendar.min.js'></script>
+<script src='assets/components/migxcalendars/js/fullcalendar/lang/de.js'></script>
 <script>
 
 	$(document).ready(function() {
@@ -20,8 +21,9 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			defaultDate: '2014-01-12',
-			editable: true,
+			//defaultDate: '2014-01-12',
+			lang: 'de',
+                        editable: false,
 			events: {
 				url: '[[~175]]',
 				error: function() {
@@ -74,7 +76,7 @@
 <body>
 
 	<div id='script-warning'>
-		<code>php/get-events.php</code> must be running.
+		your ajax-resource seems not to work.
 	</div>
 
 	<div id='loading'>loading...</div>

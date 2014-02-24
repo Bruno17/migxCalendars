@@ -12,3 +12,11 @@ $_lang['migxcal.save'] = 'Allow';
 $_lang['migxcal.to_thrash'] = 'To Thrash';
 $_lang['migxcal.unpublish'] = 'Unpublish';
 $_lang['migxcal.ignore'] = 'Ignore';
+$_lang['migxcal.assigned_categories'] = 'Assigned Categories';
+$_lang['migxcal.category'] = 'Category';
+$_lang['migxcal.allday'] = 'All Day';
+$_lang['migxcal.unpublish_dates'] = 'Unpublish Dates';
+$_lang['migxcal.ondates_in_assigned_cats'] = 'On Dates in assigned Categories';
+
+
+

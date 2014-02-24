@@ -25,7 +25,7 @@
         {
           "MIGX_id":2,
           "field":"startdate",
-          "caption":"Start",
+          "caption":"Start (erster Termin)",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -40,7 +40,7 @@
         {
           "MIGX_id":3,
           "field":"enddate",
-          "caption":"Ende",
+          "caption":"Ende (erster Termin)",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -50,6 +50,21 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
+          "default":""
+        },
+        {
+          "MIGX_id":6,
+          "field":"allday",
+          "caption":"[[%migxcal.allday]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"checkbox",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"yes==1",
           "default":""
         },
         {
@@ -65,6 +80,21 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"@EVAL return 'Select Category!==||' . $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
+          "default":""
+        },
+        {
+          "MIGX_id":5,
+          "field":"categories",
+          "caption":"[[%migxcal.assigned_categories]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox-multiple",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"@EVAL return $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
           "default":""
         }
       ]
@@ -128,7 +158,29 @@
           "inputTV":"",
           "inputTVtype":"migxdb",
           "validation":"",
-          "configs":"migxcalendar_children",
+          "configs":"migxcalendar_repeatings",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        }
+      ]
+    },
+    {
+      "MIGX_id":3,
+      "caption":"Einzeltermine",
+      "print_before_tabs":"0",
+      "fields":[
+        {
+          "MIGX_id":1,
+          "field":"singleevents",
+          "caption":"Einzeltermine",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"migxdb",
+          "validation":"",
+          "configs":"migxcalendar_singledates",
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
@@ -153,6 +205,35 @@
       "getcomboprocessor":"getcombo",
       "combotextfield":"Category.name",
       "comboidfield":"categoryid",
+      "comboparent":"",
+      "default":""
+    },
+    {
+      "MIGX_id":2,
+      "name":"search",
+      "label":"search",
+      "emptytext":"migx.search",
+      "type":"textbox",
+      "getlistwhere":{
+        "Event.id":"[[+search]]",
+        "OR:Event.title:LIKE":"%[[+search]]%"
+      },
+      "getcomboprocessor":"",
+      "combotextfield":"",
+      "comboidfield":"",
+      "comboparent":"",
+      "default":""
+    },
+    {
+      "MIGX_id":3,
+      "name":"date",
+      "label":"date",
+      "emptytext":"",
+      "type":"date",
+      "getlistwhere":"[[preparedatewhere? &name=`date`]]",
+      "getcomboprocessor":"",
+      "combotextfield":"",
+      "comboidfield":"",
       "comboparent":"",
       "default":""
     }
@@ -312,7 +393,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-02-18 14:59:09",
+  "editedon":"2014-02-24 10:50:12",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

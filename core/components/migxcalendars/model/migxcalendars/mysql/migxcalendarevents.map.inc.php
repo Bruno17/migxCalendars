@@ -10,6 +10,7 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'description' => '',
     'content' => '',
     'categoryid' => NULL,
+    'categories' => '',
     'link' => '',
     'linkrel' => '',
     'linktarget' => '',
@@ -24,7 +25,6 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'repeaton' => NULL,
     'repeatfrequency' => NULL,
     'repeatenddate' => NULL,
-    'repeatdates' => NULL,
     'source' => 'local',
     'feeds_id' => 0,
     'feeds_uid' => '',
@@ -72,6 +72,15 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'precision' => '10',
       'phptype' => 'string',
       'null' => true,
+      'index' => 'index',
+    ),
+    'categories' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+      'index' => 'fulltext',
     ),
     'link' => 
     array (
@@ -176,12 +185,6 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
-      'null' => true,
-    ),
-    'repeatdates' => 
-    array (
-      'dbtype' => 'text',
-      'phptype' => 'string',
       'null' => true,
     ),
     'source' => 

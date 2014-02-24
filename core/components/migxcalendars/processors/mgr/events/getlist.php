@@ -106,7 +106,6 @@ if (isset($config['gridfilters']) && count($config['gridfilters']) > 0) {
                 $chunk->setContent($filter['getlistwhere']);
                 $fwhere = $chunk->process($scriptProperties);
                 $fwhere = strpos($fwhere, '{') === 0 ? $modx->fromJson($fwhere) : $fwhere;
-
                 $c->where($fwhere);
             }
         }
