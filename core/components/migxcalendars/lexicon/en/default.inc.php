@@ -17,6 +17,10 @@ $_lang['migxcal.category'] = 'Category';
 $_lang['migxcal.allday'] = 'All Day';
 $_lang['migxcal.unpublish_dates'] = 'Unpublish Dates';
 $_lang['migxcal.ondates_in_assigned_cats'] = 'On Dates in assigned Categories';
+$_lang['migxcal.yes'] = 'Yes';
+$_lang['migxcal.no'] = 'No';
+$_lang['migxcal.inherited'] = 'Inherited';
+
 
 
 

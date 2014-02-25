@@ -15,6 +15,7 @@ $xpdo_meta_map['migxCalendarDates']= array (
     'repeating' => 0,
     'type' => 'single',
     'repeating_index' => 0,
+    'allday' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -88,6 +89,15 @@ $xpdo_meta_map['migxCalendarDates']= array (
     array (
       'dbtype' => 'int',
       'precision' => '10',
+      'attributes' => 'unsigned',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
+    ),
+    'allday' => 
+    array (
+      'dbtype' => 'tinyint',
+      'precision' => '1',
       'attributes' => 'unsigned',
       'phptype' => 'integer',
       'null' => false,

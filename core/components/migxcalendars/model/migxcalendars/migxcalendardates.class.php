@@ -110,11 +110,14 @@ class migxCalendarDates extends xPDOSimpleObject
 
     public function handleAllday()
     {
-        if ($this->event) {
+        
+        $allday = $this->get('allday');
+        
+        if (empty($allday) && $this->event) {
             $allday = $this->event->get('allday');
         }
 
-        if (!empty($allday)) {
+        if ($allday == 1) {
             $startdate = strftime('%Y-%m-%d ', strtotime($this->get('startdate')));
             $this->set('startdate', $startdate . '00:00:00');
             $enddate = strftime('%Y-%m-%d ', strtotime($this->get('enddate')));

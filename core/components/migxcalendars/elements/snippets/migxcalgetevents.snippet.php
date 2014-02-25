@@ -24,7 +24,7 @@ if (!isset($_GET['start']) || !isset($_GET['end'])) {
 $scriptProperties['packageName'] = 'migxcalendars';
 $scriptProperties['classname'] = 'migxCalendarDates';
 $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
-$scriptProperties['selectfields'] = 'id,startdate,enddate,title';
+$scriptProperties['selectfields'] = 'id,startdate,enddate,title,allday';
 $scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
 
 // Parse the start/end parameters.
@@ -62,7 +62,14 @@ foreach ($input_arrays as $array) {
 
     $array['start'] = $array['startdate'];
     $array['end'] = $array['enddate'];
-    $array['allDay'] = $array['Event_allday'];
+    
+    if (isset($array['Event_allday']) && empty($array['allday'])){
+        //inherit
+        $array['allDay'] = $array['Event_allday'];
+    }else{
+        $array['allDay'] = $array['allday'] == 1 ? $array['allday'] : 0;
+    }
+    
     $array['title'] = !empty($array['title']) ? $array['title'] : $array['Event_title'];
     if (!empty($array['Category_backgroundColor'])) {
         $array['backgroundColor'] = $array['Category_backgroundColor'];
