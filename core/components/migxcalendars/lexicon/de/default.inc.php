@@ -8,7 +8,7 @@
 
 $_lang['migxcal.movetothrash_ifexits'] = 'Termine in Papierkorb verschieben, falls belegt in dieser Kategorie';
 $_lang['migxcal.on_double_events'] = 'Bei Terminüberschneidungen in dieser Kategorie';
-$_lang['migxcal.save'] = 'Veröffentlichen erlauben';
+$_lang['migxcal.publish'] = 'Veröffentlichen';
 $_lang['migxcal.to_thrash'] = 'In den Papierkorb';
 $_lang['migxcal.unpublish'] = 'Verbergen';
 $_lang['migxcal.ignore'] = 'Nicht erstellen';

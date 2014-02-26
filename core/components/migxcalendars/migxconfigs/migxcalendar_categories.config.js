@@ -79,7 +79,7 @@
           "configs":"",
           "sourceFrom":"config",
           "sources":"[]",
-          "inputOptionValues":"[[%migxcal.save]]==||[[%migxcal.unpublish]]==unpublish||[[%migxcal.ignore]]==ignore",
+          "inputOptionValues":"[[%migxcal.publish]]==||[[%migxcal.unpublish]]==unpublish||[[%migxcal.ignore]]==ignore",
           "default":""
         },
         {
@@ -94,7 +94,7 @@
           "configs":"",
           "sourceFrom":"config",
           "sources":"[]",
-          "inputOptionValues":"[[%migxcal.save]]==||[[%migxcal.unpublish_dates]]==unpublishdates||[[%migxcal.unpublish]]==unpublish||[[%migxcal.ignore]]==ignore",
+          "inputOptionValues":"[[%migxcal.publish]]==||[[%migxcal.unpublish_dates]]==unpublishdates||[[%migxcal.unpublish]]==unpublish||[[%migxcal.ignore]]==ignore",
           "default":""
         }
       ]
@@ -167,7 +167,7 @@
   "createdby":1,
   "createdon":"2014-02-17 08:05:54",
   "editedby":1,
-  "editedon":"2014-02-26 07:13:22",
+  "editedon":"2014-02-26 07:23:07",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

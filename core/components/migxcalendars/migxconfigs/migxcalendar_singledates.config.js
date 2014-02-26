@@ -70,9 +70,9 @@
       ]
     }
   ],
-  "contextmenus":"update||remove",
+  "contextmenus":"remove",
   "actionbuttons":"addItem",
-  "columnbuttons":"",
+  "columnbuttons":"update",
   "filters":"[]",
   "extended":{
     "migx_add":"Add Date",
@@ -123,6 +123,19 @@
       "renderoptions":"[]"
     },
     {
+      "MIGX_id":7,
+      "header":"[[%migxcal.title]]",
+      "dataIndex":"title",
+      "width":30,
+      "sortable":"false",
+      "show_in_grid":1,
+      "renderer":"this.renderRowActions",
+      "clickaction":"",
+      "selectorconfig":"",
+      "renderchunktpl":"",
+      "renderoptions":"[]"
+    },
+    {
       "MIGX_id":3,
       "header":"Start",
       "dataIndex":"startdate",
@@ -165,7 +178,7 @@
   "createdby":1,
   "createdon":"2014-02-24 08:24:31",
   "editedby":1,
-  "editedon":"2014-02-26 07:05:41",
+  "editedon":"2014-02-26 15:03:09",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

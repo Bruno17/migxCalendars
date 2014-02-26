@@ -96,6 +96,21 @@
           "sources":"[]",
           "inputOptionValues":"@EVAL return $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
           "default":""
+        },
+        {
+          "MIGX_id":7,
+          "field":"object_id",
+          "caption":"",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"hidden",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
         }
       ]
     },
@@ -191,7 +206,7 @@
   ],
   "contextmenus":"recall_remove_delete",
   "actionbuttons":"addItem||toggletrash||emptyThrash",
-  "columnbuttons":"update||duplicate",
+  "columnbuttons":"updateevent",
   "filters":[
     {
       "MIGX_id":1,
@@ -246,7 +261,7 @@
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
-    "extrahandlers":"this.handleColumnSwitch||this.publishObject||this.unpublishObject",
+    "extrahandlers":"this.handleColumnSwitch||this.publishObject||this.unpublishObject||this.handleEventColumnSwitch",
     "packageName":"migxcalendars",
     "classname":"migxCalendarDates",
     "task":"events",
@@ -264,7 +279,8 @@
     "joins":[
       {
         "alias":"Event",
-        "selectfields":"id,title,deleted"
+        "selectfields":"id,title,deleted,published",
+        "type":"right"
       },
       {
         "alias":"Category",
@@ -360,6 +376,36 @@
       "renderoptions":"[]"
     },
     {
+      "MIGX_id":8,
+      "header":"Event aktiv",
+      "dataIndex":"Event_published",
+      "width":10,
+      "sortable":"false",
+      "show_in_grid":1,
+      "renderer":"this.renderSwitchStatusOptions",
+      "clickaction":"",
+      "selectorconfig":"",
+      "renderchunktpl":"",
+      "renderoptions":[
+        {
+          "MIGX_id":1,
+          "name":"published",
+          "value":"0",
+          "clickaction":"switchOption",
+          "handler":"this.handleEventColumnSwitch",
+          "image":"assets\/components\/migx\/style\/images\/cross.png"
+        },
+        {
+          "MIGX_id":2,
+          "name":"published",
+          "value":1,
+          "clickaction":"switchOption",
+          "handler":"this.handleEventColumnSwitch",
+          "image":"assets\/components\/migx\/style\/images\/tick.png"
+        }
+      ]
+    },
+    {
       "MIGX_id":6,
       "header":"Aktiv",
       "dataIndex":"published",
@@ -393,7 +439,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-02-26 06:48:15",
+  "editedon":"2014-02-26 14:36:08",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

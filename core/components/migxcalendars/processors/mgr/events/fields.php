@@ -17,11 +17,23 @@ if (is_dir($modelpath)) {
 }
 
 //get Event-id of Date
-$classname = $config['classname'];
+//$classname = $config['classname'];
+/*
 if (isset($scriptProperties['object_id']) && is_numeric($scriptProperties['object_id']) && $object = $modx->getObject($classname, $scriptProperties['object_id'])) {
-    $scriptProperties['object_id'] = $object->get('event_id');
-    //set object_id for fields
-    $_REQUEST['object_id'] = $scriptProperties['object_id'];
+$scriptProperties['object_id'] = $object->get('event_id');
+//set object_id for fields
+$_REQUEST['object_id'] = $scriptProperties['object_id'];
+}
+*/
+
+if (isset($scriptProperties['tempParams'])) {
+    $extraParams = $modx->fromJson($scriptProperties['tempParams']);
+    if (isset($extraParams['event_id'])) {
+        $scriptProperties['object_id'] = $extraParams['event_id'];
+        //set object_id for fields
+        $_REQUEST['object_id'] = $scriptProperties['object_id'];
+    }
+
 }
 
 $classname = 'migxCalendarEvents';

@@ -87,7 +87,7 @@ class migxCalendarEvents extends xPDOSimpleObject
             //create or modify single date
             $this->createDate($classname,$startdate, $enddate);
         }
-
+        
         return $result;
 
     }
