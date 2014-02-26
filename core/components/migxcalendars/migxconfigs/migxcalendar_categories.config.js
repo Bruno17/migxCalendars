@@ -4,13 +4,13 @@
   "formtabs":[
     {
       "MIGX_id":1,
-      "caption":"Category",
+      "caption":"[[%migxcal.category]]",
       "print_before_tabs":"0",
       "fields":[
         {
           "MIGX_id":1,
           "field":"name",
-          "caption":"Name",
+          "caption":"[[%migxcal.categoryname]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -25,7 +25,7 @@
         {
           "MIGX_id":2,
           "field":"backgroundColor",
-          "caption":"Background Color",
+          "caption":"[[%migxcal.background_color]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -40,7 +40,7 @@
         {
           "MIGX_id":3,
           "field":"borderColor",
-          "caption":"Border Color",
+          "caption":"[[%migxcal.border_color]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -55,7 +55,7 @@
         {
           "MIGX_id":4,
           "field":"textColor",
-          "caption":"Text Color",
+          "caption":"[[%migxcal.text_color]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -167,7 +167,7 @@
   "createdby":1,
   "createdon":"2014-02-17 08:05:54",
   "editedby":1,
-  "editedon":"2014-02-24 13:35:15",
+  "editedon":"2014-02-26 07:13:22",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

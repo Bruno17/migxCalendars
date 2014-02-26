@@ -4,13 +4,13 @@
   "formtabs":[
     {
       "MIGX_id":1,
-      "caption":"Event",
+      "caption":"[[%migxcal.event]]",
       "print_before_tabs":"0",
       "fields":[
         {
           "MIGX_id":1,
           "field":"title",
-          "caption":"Titel",
+          "caption":"[[%migxcal.title]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -25,7 +25,7 @@
         {
           "MIGX_id":2,
           "field":"startdate",
-          "caption":"Start",
+          "caption":"[[%migxcal.start]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -40,7 +40,7 @@
         {
           "MIGX_id":3,
           "field":"enddate",
-          "caption":"Ende",
+          "caption":"[[%migxcal.end]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -50,6 +50,21 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
+          "default":""
+        },
+        {
+          "MIGX_id":4,
+          "field":"allday",
+          "caption":"[[%migxcal.allday]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox",
+          "validation":"",
+          "configs":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"[[%migxcal.inherited]]==0||[[%migxcal.yes]]==1||[[%migxcal.no]]==2",
           "default":""
         }
       ]
@@ -150,7 +165,7 @@
   "createdby":1,
   "createdon":"2014-02-24 08:24:31",
   "editedby":1,
-  "editedon":"2014-02-24 13:11:55",
+  "editedon":"2014-02-26 07:05:41",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

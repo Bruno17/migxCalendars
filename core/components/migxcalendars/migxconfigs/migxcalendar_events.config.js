@@ -4,13 +4,13 @@
   "formtabs":[
     {
       "MIGX_id":1,
-      "caption":"Event",
+      "caption":"[[%migxcal.event]]",
       "print_before_tabs":"0",
       "fields":[
         {
           "MIGX_id":1,
           "field":"title",
-          "caption":"Titel",
+          "caption":"[[%migxcal.title]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -25,7 +25,7 @@
         {
           "MIGX_id":2,
           "field":"startdate",
-          "caption":"Start (erster Termin)",
+          "caption":"[[%migxcal.start_firstdate]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -40,7 +40,7 @@
         {
           "MIGX_id":3,
           "field":"enddate",
-          "caption":"Ende (erster Termin)",
+          "caption":"[[%migxcal.end_firstdate]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -64,13 +64,13 @@
           "configs":"",
           "sourceFrom":"config",
           "sources":"[]",
-          "inputOptionValues":"yes==1",
+          "inputOptionValues":"[[%migxcal.yes]]==1",
           "default":""
         },
         {
           "MIGX_id":4,
           "field":"categoryid",
-          "caption":"Category",
+          "caption":"[[%migxcal.category]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -101,13 +101,13 @@
     },
     {
       "MIGX_id":2,
-      "caption":"Wiederholungen",
+      "caption":"[[%migxcal.repeatings]]",
       "print_before_tabs":"0",
       "fields":[
         {
           "MIGX_id":1,
           "field":"repeating",
-          "caption":"Wiederholen",
+          "caption":"[[%migxcal.repeat_weekly]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -116,17 +116,17 @@
           "configs":"",
           "sourceFrom":"config",
           "sources":"[]",
-          "inputOptionValues":"Ja==1",
+          "inputOptionValues":"[[%migxcal.yes]]==1",
           "default":"0"
         },
         {
           "MIGX_id":2,
           "field":"repeattype",
-          "caption":"Typ",
+          "caption":"",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
-          "inputTVtype":"listbox",
+          "inputTVtype":"hidden",
           "validation":"",
           "configs":"",
           "sourceFrom":"config",
@@ -137,7 +137,7 @@
         {
           "MIGX_id":3,
           "field":"repeatenddate",
-          "caption":"Letzer Termin",
+          "caption":"[[%migxcal.lastdate]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -152,7 +152,7 @@
         {
           "MIGX_id":4,
           "field":"children",
-          "caption":"Repeatings",
+          "caption":"[[%migxcal.repeatings]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -168,13 +168,13 @@
     },
     {
       "MIGX_id":3,
-      "caption":"Einzeltermine",
+      "caption":"[[%migxcal.singledates]]",
       "print_before_tabs":"0",
       "fields":[
         {
           "MIGX_id":1,
           "field":"singleevents",
-          "caption":"Einzeltermine",
+          "caption":"[[%migxcal.singledates]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -393,7 +393,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-02-24 10:50:12",
+  "editedon":"2014-02-26 06:48:15",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

@@ -20,6 +20,20 @@ $_lang['migxcal.ondates_in_assigned_cats'] = 'On Dates in assigned Categories';
 $_lang['migxcal.yes'] = 'Yes';
 $_lang['migxcal.no'] = 'No';
 $_lang['migxcal.inherited'] = 'Inherited';
+$_lang['migxcal.repeat_weekly'] = 'Repeat Weekly';
+$_lang['migxcal.lastdate'] = 'Last Date';
+$_lang['migxcal.repeatings'] = 'Repeatings';
+$_lang['migxcal.event'] = 'Event';
+$_lang['migxcal.title'] = 'Title';
+$_lang['migxcal.start'] = 'Start';
+$_lang['migxcal.end'] = 'End';
+$_lang['migxcal.start_firstdate'] = 'Start (first date)';
+$_lang['migxcal.end_firstdate'] = 'End (first date)';
+$_lang['migxcal.singledates'] = 'Single Dates';
+$_lang['migxcal.categoryname'] = 'Name';
+$_lang['migxcal.background_color'] = 'Background Color';
+$_lang['migxcal.border_color'] = 'Border Color';
+$_lang['migxcal.text_color'] = 'Text Color';
 
 
 
