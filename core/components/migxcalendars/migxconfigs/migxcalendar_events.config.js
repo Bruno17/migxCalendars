@@ -254,7 +254,7 @@
     }
   ],
   "extended":{
-    "migx_add":"Add Event",
+    "migx_add":"[[%migxcal.add_event]]",
     "formcaption":"",
     "update_win_title":"",
     "win_id":"migxcalendar_events",
@@ -288,9 +288,9 @@
         "on":"Category.id=Event.categoryid"
       }
     ],
-    "cmpmaincaption":"Events Manager",
-    "cmptabcaption":"Events",
-    "cmptabdescription":"Manage Events",
+    "cmpmaincaption":"[[%migxcal.events_cmp_main_caption]]",
+    "cmptabcaption":"[[%migxcal.events]]",
+    "cmptabdescription":"[[%migxcal.events_cmp_desc]]",
     "cmptabcontroller":"",
     "winbuttons":"",
     "onsubmitsuccess":"",
@@ -299,7 +299,7 @@
   "columns":[
     {
       "MIGX_id":7,
-      "header":"Event ID",
+      "header":"[[%migxcal.event]] ID",
       "dataIndex":"Event_id",
       "width":10,
       "sortable":true,
@@ -325,7 +325,7 @@
     },
     {
       "MIGX_id":2,
-      "header":"Titel",
+      "header":"[[%migxcal.title]]",
       "dataIndex":"Event_title",
       "width":30,
       "sortable":"false",
@@ -338,7 +338,7 @@
     },
     {
       "MIGX_id":3,
-      "header":"Start",
+      "header":"[[%migxcal.start]]",
       "dataIndex":"startdate",
       "width":20,
       "sortable":true,
@@ -351,7 +351,7 @@
     },
     {
       "MIGX_id":5,
-      "header":"Ende",
+      "header":"[[%migxcal.end]]",
       "dataIndex":"enddate",
       "width":20,
       "sortable":true,
@@ -377,7 +377,7 @@
     },
     {
       "MIGX_id":8,
-      "header":"Event aktiv",
+      "header":"[[%migxcal.event_active]]",
       "dataIndex":"Event_published",
       "width":10,
       "sortable":"false",
@@ -407,7 +407,7 @@
     },
     {
       "MIGX_id":6,
-      "header":"Aktiv",
+      "header":"[[%migxcal.active]]",
       "dataIndex":"published",
       "width":10,
       "sortable":"false",
@@ -439,7 +439,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-02-26 14:36:08",
+  "editedon":"2014-02-27 07:20:04",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

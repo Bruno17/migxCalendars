@@ -137,7 +137,7 @@
     },
     {
       "MIGX_id":3,
-      "header":"Start",
+      "header":"[[%migxcal.start]]",
       "dataIndex":"startdate",
       "width":20,
       "sortable":true,
@@ -150,7 +150,7 @@
     },
     {
       "MIGX_id":5,
-      "header":"Ende",
+      "header":"[[%migxcal.end]]",
       "dataIndex":"enddate",
       "width":20,
       "sortable":true,
@@ -163,7 +163,7 @@
     },
     {
       "MIGX_id":6,
-      "header":"Aktiv",
+      "header":"[[%migxcal.active]]",
       "dataIndex":"published",
       "width":10,
       "sortable":"false",
@@ -178,7 +178,7 @@
   "createdby":1,
   "createdon":"2014-02-24 08:24:31",
   "editedby":1,
-  "editedon":"2014-02-26 15:03:09",
+  "editedon":"2014-02-27 07:26:41",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

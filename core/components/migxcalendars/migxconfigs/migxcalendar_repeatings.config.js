@@ -1,133 +1,13 @@
 {
   "id":159,
   "name":"migxcalendar_repeatings",
-  "formtabs":[
-    {
-      "MIGX_id":1,
-      "caption":"Event",
-      "print_before_tabs":"0",
-      "fields":[
-        {
-          "MIGX_id":1,
-          "field":"title",
-          "caption":"Titel",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"",
-          "validation":"",
-          "configs":"",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"",
-          "default":""
-        },
-        {
-          "MIGX_id":2,
-          "field":"startdate",
-          "caption":"Start",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"date",
-          "validation":"",
-          "configs":"",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"",
-          "default":""
-        },
-        {
-          "MIGX_id":3,
-          "field":"enddate",
-          "caption":"Ende",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"date",
-          "validation":"",
-          "configs":"",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"",
-          "default":""
-        }
-      ]
-    },
-    {
-      "MIGX_id":2,
-      "caption":"Wiederholungen",
-      "print_before_tabs":"0",
-      "fields":[
-        {
-          "MIGX_id":1,
-          "field":"repeating",
-          "caption":"Wiederholen",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"checkbox",
-          "validation":"",
-          "configs":"",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"Ja==1",
-          "default":"0"
-        },
-        {
-          "MIGX_id":2,
-          "field":"repeattype",
-          "caption":"Typ",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"listbox",
-          "validation":"",
-          "configs":"",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"T\u00e4glich==0||W\u00f6chentlich==1||Monatlich==2||J\u00e4hrlich==3",
-          "default":1
-        },
-        {
-          "MIGX_id":3,
-          "field":"repeatenddate",
-          "caption":"Letzer Termin",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"date",
-          "validation":"",
-          "configs":"",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"",
-          "default":""
-        },
-        {
-          "MIGX_id":4,
-          "field":"children",
-          "caption":"Repeatings",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"migxdb",
-          "validation":"",
-          "configs":"migxcalendar_events",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"",
-          "default":""
-        }
-      ]
-    }
-  ],
+  "formtabs":"",
   "contextmenus":"remove",
   "actionbuttons":"",
   "columnbuttons":"",
   "filters":"[]",
   "extended":{
-    "migx_add":"Add Event",
+    "migx_add":"",
     "formcaption":"",
     "update_win_title":"",
     "win_id":"migxcalendar_children",
@@ -176,7 +56,7 @@
     },
     {
       "MIGX_id":3,
-      "header":"Start",
+      "header":"[[%migxcal.start]]",
       "dataIndex":"startdate",
       "width":20,
       "sortable":true,
@@ -189,7 +69,7 @@
     },
     {
       "MIGX_id":5,
-      "header":"Ende",
+      "header":"[[%migxcal.end]]",
       "dataIndex":"enddate",
       "width":20,
       "sortable":true,
@@ -202,7 +82,7 @@
     },
     {
       "MIGX_id":6,
-      "header":"Aktiv",
+      "header":"[[%migxcal.active]]",
       "dataIndex":"published",
       "width":10,
       "sortable":"false",
@@ -217,7 +97,7 @@
   "createdby":1,
   "createdon":"2014-02-16 18:59:01",
   "editedby":1,
-  "editedon":"2014-02-24 13:11:00",
+  "editedon":"2014-02-27 07:25:56",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,
