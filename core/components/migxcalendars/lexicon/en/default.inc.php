@@ -34,6 +34,21 @@ $_lang['migxcal.categoryname'] = 'Name';
 $_lang['migxcal.background_color'] = 'Background Color';
 $_lang['migxcal.border_color'] = 'Border Color';
 $_lang['migxcal.text_color'] = 'Text Color';
+$_lang['migxcal.add_event'] = 'Add Event';
+$_lang['migxcal.events'] = 'Events';
+$_lang['migxcal.events_cmp_desc'] = 'Manage your Events here';
+$_lang['migxcal.add_category'] = 'Add Category';
+$_lang['migxcal.categories'] = 'Categories';
+$_lang['migxcal.categories_cmp_desc'] = 'Manage Categories here';
+$_lang['migxcal.events_cmp_main_caption'] = 'Events Manager';
+$_lang['migxcal.event_active'] = 'Event active';
+$_lang['migxcal.active'] = 'Active';
+
+
+
+
+
+
 
 
 
