@@ -200,6 +200,22 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":""
+        },
+        {
+          "MIGX_id":2,
+          "field":"checkavailability",
+          "caption":"[[%migxcal.singledates]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"migxdb",
+          "validation":"",
+          "configs":"migxcalendar_checkavailability",
+          "display":"none",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
         }
       ]
     }
@@ -261,6 +277,7 @@
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
+    "winbuttonslist":"cancel||done||check_availability",
     "extrahandlers":"this.handleColumnSwitch||this.publishObject||this.unpublishObject||this.handleEventColumnSwitch",
     "packageName":"migxcalendars",
     "classname":"migxCalendarDates",
@@ -439,7 +456,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-02-27 07:20:04",
+  "editedon":"2014-03-02 20:08:24",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

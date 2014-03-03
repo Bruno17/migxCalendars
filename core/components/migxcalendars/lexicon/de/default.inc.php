@@ -43,3 +43,6 @@ $_lang['migxcal.categories_cmp_desc'] = 'Hier werden die Kategorien verwaltet';
 $_lang['migxcal.events_cmp_main_caption'] = 'Veranstaltungs Manager';
 $_lang['migxcal.event_active'] = 'Veranstaltung aktiv';
 $_lang['migxcal.active'] = 'Aktiv';
+$_lang['migxcal.check_availability'] = 'Verfügbarkeit prüfen';
+$_lang['migxcal.availability'] = 'Verfügbarkeit';
+$_lang['migxcal.available'] = 'Verfügbar';

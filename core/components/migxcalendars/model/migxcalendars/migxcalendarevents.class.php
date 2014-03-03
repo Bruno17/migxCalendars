@@ -6,6 +6,8 @@ class migxCalendarEvents extends xPDOSimpleObject
     public function save($cacheFlag = null)
     {
 
+        $preventsave = $this->get('preventsave');
+        
         if ($oldobject = $this->xpdo->getObject($this->_class, $this->get('id'))) {
             $oldstart = $oldobject->get('startdate');
         }
@@ -31,7 +33,11 @@ class migxCalendarEvents extends xPDOSimpleObject
             $this->set('categories','||' . trim($categories , '|') . '||');
         }
 
-        $result = parent::save($cacheFlag);
+        if (!$preventsave){
+            $result = parent::save($cacheFlag);
+        }else{
+            $result = true;
+        }
 
         //handle repeatings
         $repeating = $this->get('repeating');
@@ -44,8 +50,10 @@ class migxCalendarEvents extends xPDOSimpleObject
 
         if ($repeatenddate > $startdate && !empty($repeating)) {
             //remove dates out of range
-            $this->xpdo->removeCollection($classname, array('event_id' => $parent, array('startdate:<' => $startdate, 'OR:startdate:>' => $repeatenddate)));
-
+            if (!$preventsave){
+                $this->xpdo->removeCollection($classname, array('event_id' => $parent, array('startdate:<' => $startdate, 'OR:startdate:>' => $repeatenddate)));
+            }
+            
             switch ($repeattype) {
                 case 0:
                     //daily
@@ -59,7 +67,9 @@ class migxCalendarEvents extends xPDOSimpleObject
                     $old_wd = strftime('%w',strtotime($oldstart));
                     if ($event_ws != $old_wd){
                         //moved to other day, we remove all repeatings completly
-                        $this->xpdo->removeCollection($classname, array('event_id' => $parent,'type' => 'repeating','repeating_index:>' => 0));
+                        if (!$preventsave){
+                            $this->xpdo->removeCollection($classname, array('event_id' => $parent,'type' => 'repeating','repeating_index:>' => 0));
+                        }
                     }
                     $oldtime = strftime('%H:%M:%S', strtotime($oldstart));
                     $olddate = strftime('%Y-%m-%d ', strtotime($eventstart)) . $oldtime;
@@ -83,7 +93,9 @@ class migxCalendarEvents extends xPDOSimpleObject
             }
         } else {
             //no repeating, remove all repeatings
-            $this->xpdo->removeCollection($classname, array('event_id' => $parent,'type' => 'repeating','repeating_index:>' => 0));
+            if (!$preventsave){
+                $this->xpdo->removeCollection($classname, array('event_id' => $parent,'type' => 'repeating','repeating_index:>' => 0));
+            }
             //create or modify single date
             $this->createDate($classname,$startdate, $enddate);
         }
@@ -95,6 +107,7 @@ class migxCalendarEvents extends xPDOSimpleObject
     public function createDate($classname, $eventstart, $eventend, $type='single', $olddate = '', $repeating_index = 0)
     {
         $parent = $this->get('id');
+        $preventsave = $this->get('preventsave');
         
         if (!empty($repeating_index)){
             $child = $this->xpdo->getObject($classname, array('event_id' => $parent, 'startdate' => $olddate));
@@ -117,8 +130,17 @@ class migxCalendarEvents extends xPDOSimpleObject
             $child->set('startdate', $eventstart);
             $child->set('enddate', $eventend);
             $child->set('repeating_index', $repeating_index);
+            $child->set('preventsave',$preventsave);
+            $child->event = &$this;
             $child->save();
         }
+        
+        $dates = $this->get('createdDates');
+        if (!is_array($dates)){
+           $dates = array();          
+        } 
+        $dates[] = $child->toArray(); 
+        $this->set('createdDates',$dates);
     }
     
     public function handleAllday()

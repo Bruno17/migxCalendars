@@ -272,13 +272,13 @@ switch ($task) {
         $object->fromArray($postvalues);
 }
 
-
 if ($object->save() == false) {
     $updateerror = true;
     $errormsg = $modx->lexicon('quip.thread_err_save');
     return;
 }
 
+$dates = $object->get('createdDates');
 
 if ($has_jointable && !empty($joinalias)) {
 

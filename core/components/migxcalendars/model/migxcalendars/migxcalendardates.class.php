@@ -12,8 +12,9 @@ class migxCalendarDates extends xPDOSimpleObject
     public function save($cacheFlag = null)
     {
 
+        $preventsave = $this->get('preventsave');
         $published = $this->get('published');
-        $this->event = $this->getOne('Event');
+        //$this->event = $this->getOne('Event');
 
         //handle enddate - enddate can't be lower than startdate
         $enddate = $this->get('enddate');
@@ -39,7 +40,13 @@ class migxCalendarDates extends xPDOSimpleObject
             }            
         }
 
-        return parent::save($cacheFlag);
+        if (!$preventsave){
+            return parent::save($cacheFlag);
+        }
+        else{
+            return true;
+        }
+        
 
     }
 
@@ -128,11 +135,14 @@ class migxCalendarDates extends xPDOSimpleObject
 
     public function activeExists($start, $end, $categoryid)
     {
-
         $joinclass = 'migxCalendarEvents';
         $jalias = 'Event';
         $c = $this->xpdo->newQuery($this->_class);
         $c->leftjoin($joinclass, $jalias);
+        if ($this->event) {
+            $eventid = $this->event->get('id');
+            $c->where(array('event_id:!='=>$eventid));
+        }        
         $c->where(array(
             'id:!=' => $this->get('id'),
             'startdate:<' => $end,
@@ -140,6 +150,7 @@ class migxCalendarDates extends xPDOSimpleObject
             'Event.deleted' => 0,
             'published' => 1,
             array('Event.categoryid' => $categoryid, 'OR:Event.categories:LIKE' => '%||' . $categoryid . '||%')));
+
 
         return $this->xpdo->getCollection($this->_class, $c);
 

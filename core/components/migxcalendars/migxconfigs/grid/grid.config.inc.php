@@ -52,3 +52,31 @@ handleEventColumnSwitch: function(n,e,col) {
     }	
 ";
 
+$winbuttons['check_availability']['text'] = "'[[%migxcal.check_availability]]'";
+$winbuttons['check_availability']['handler'] = 'this.checkAvailability';
+$winbuttons['check_availability']['scope'] = 'this';
+
+$winfunctions['this.checkAvailability'] = "
+    checkAvailability: function(btn,e) {
+        var object_id = this.baseParams.object_id;
+        if (this.fp.getForm().isValid()) {
+            var v = this.fp.getForm().getValues();
+            var fields = Ext.util.JSON.decode(v['mulititems_grid_item_fields']);
+            if (fields.length>0){
+                for (var i = 0; i < fields.length; i++) {
+                    fieldname = (fields[i].field);
+                    if (fieldname == 'checkavailability'){
+                        tvid = (fields[i].tv_id);
+                        grid = Ext.getCmp('tv' + tvid + '_items');
+                    }
+                    
+                }                         
+            }
+			var item = this.getFormValues();
+            grid.loadWin(btn,e,'a',Ext.util.JSON.encode(item));
+            return true;        
+        }            
+        return false;
+    }
+";
+

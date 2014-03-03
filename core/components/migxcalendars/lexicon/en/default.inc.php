@@ -43,6 +43,11 @@ $_lang['migxcal.categories_cmp_desc'] = 'Manage Categories here';
 $_lang['migxcal.events_cmp_main_caption'] = 'Events Manager';
 $_lang['migxcal.event_active'] = 'Event active';
 $_lang['migxcal.active'] = 'Active';
+$_lang['migxcal.check_availability'] = 'Check Availability';
+$_lang['migxcal.availability'] = 'Availability';
+$_lang['migxcal.available'] = 'Available';
+
+
 
 
 
