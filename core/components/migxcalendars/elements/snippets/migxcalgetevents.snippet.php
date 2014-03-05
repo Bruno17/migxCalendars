@@ -33,6 +33,7 @@ $scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday"
 
 $start = $modx->getOption('start', $_GET, '');
 $end = $modx->getOption('end', $_GET, '');
+$categories = $modx->getOption('categories', $_GET, '');
 
 $range_start = parseDateTime($start);
 $range_end = parseDateTime($end);
@@ -40,6 +41,18 @@ $wheres = array();
 
 $wheres[] = array('migxCalendarDates.startdate:<=' => $end, 'migxCalendarDates.enddate:>=' => $start);
 $wheres[] = array('Event.deleted' => 0, 'Event.published' => 1,'migxCalendarDates.published' => 1);
+
+if (is_array($categories)){
+    $cat_array = array();
+    foreach ($categories as $category){
+        if (!empty($category) && is_numeric($category)){
+            $cat_array[] = $category;
+        }
+    }
+    if (count($cat_array)>0){
+        $wheres[] = array('Category.id:IN'=>$cat_array);
+    }
+}
 
 $scriptProperties['where'] = $modx->toJson($wheres);
 

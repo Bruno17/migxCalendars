@@ -95,6 +95,8 @@ if ($execute) {
 $count = count($rows);
 
 $emtpytext = $config['gridfilters'][$scriptProperties['searchname']]['emptytext'];
+$emtpytext_lex = $modx->lexicon($emtpytext);
+$emtpytext = !empty($emtpytext_lex) ? $emtpytext_lex : $emtpytext;
 $emtpytext = empty($emtpytext) ? 'all' : $emtpytext;
 
 $rows = array_merge(array(array('combo_id' => 'all', 'combo_name' => $emtpytext)), $rows);
