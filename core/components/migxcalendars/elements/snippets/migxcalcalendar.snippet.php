@@ -66,5 +66,4 @@ $modx->regClientScript('assets/components/migxcalendars/js/lib/jquery.min.js');
 $modx->regClientScript('assets/components/migxcalendars/js/lib/jquery-ui.custom.min.js');
 $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/fullcalendar.min.js');
 $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/lang/de.js');
-$modx->regClientScript('');
 $modx->regClientHTMLBlock($script);

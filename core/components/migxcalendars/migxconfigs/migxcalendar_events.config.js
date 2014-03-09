@@ -225,30 +225,13 @@
   "columnbuttons":"updateevent",
   "filters":[
     {
-      "MIGX_id":1,
-      "name":"category",
-      "label":"category",
-      "emptytext":"migxcal.category_filter",
-      "type":"combobox",
-      "getlistwhere":{
-        "Category.id":"[[+category]]"
-      },
-      "getcomboprocessor":"getcombo",
-      "combotextfield":"Category.name",
-      "comboidfield":"categoryid",
-      "comboparent":"",
-      "default":""
-    },
-    {
-      "MIGX_id":4,
-      "name":"active",
-      "label":"active",
+      "MIGX_id":5,
+      "name":"resetall",
+      "label":"resetall",
       "emptytext":"",
-      "type":"combobox",
-      "getlistwhere":{
-        "published":"[[+active]]"
-      },
-      "getcomboprocessor":"getactivecombo",
+      "type":"resetall",
+      "getlistwhere":"",
+      "getcomboprocessor":"",
       "combotextfield":"",
       "comboidfield":"",
       "comboparent":"",
@@ -268,7 +251,7 @@
       "combotextfield":"",
       "comboidfield":"",
       "comboparent":"",
-      "default":""
+      "default":"_empty"
     },
     {
       "MIGX_id":3,
@@ -281,7 +264,37 @@
       "combotextfield":"",
       "comboidfield":"",
       "comboparent":"",
-      "default":""
+      "default":"all"
+    },
+    {
+      "MIGX_id":1,
+      "name":"category",
+      "label":"category",
+      "emptytext":"migxcal.category_filter",
+      "type":"combobox",
+      "getlistwhere":{
+        "Category.id":"[[+category]]"
+      },
+      "getcomboprocessor":"getcombo",
+      "combotextfield":"Category.name",
+      "comboidfield":"categoryid",
+      "comboparent":"",
+      "default":"all"
+    },
+    {
+      "MIGX_id":4,
+      "name":"active",
+      "label":"active",
+      "emptytext":"",
+      "type":"combobox",
+      "getlistwhere":{
+        "published":"[[+active]]"
+      },
+      "getcomboprocessor":"getactivecombo",
+      "combotextfield":"",
+      "comboidfield":"",
+      "comboparent":"",
+      "default":"all"
     }
   ],
   "extended":{
@@ -292,8 +305,10 @@
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
+    "actionbuttonsperrow":2,
     "winbuttonslist":"cancel||done||check_availability",
     "extrahandlers":"this.handleColumnSwitch||this.publishObject||this.unpublishObject||this.handleEventColumnSwitch",
+    "filtersperrow":3,
     "packageName":"migxcalendars",
     "classname":"migxCalendarDates",
     "task":"events",
@@ -471,7 +486,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-03-05 09:25:18",
+  "editedon":"2014-03-09 19:10:17",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,
