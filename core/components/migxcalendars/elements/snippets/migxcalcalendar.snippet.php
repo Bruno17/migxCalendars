@@ -3,6 +3,9 @@ $editable = $modx->getOption('editable',$scriptProperties,'false');
 $ajax_id = $modx->getOption('ajax_id',$scriptProperties,$modx->getOption('migxcalendar.ajax_id'));
 $ajax_url = $modx->makeUrl($ajax_id);
 
+$load_jquery = $modx->getOption('load_jquery',$scriptProperties,'1');
+$load_jqueryui = $modx->getOption('load_jqueryui',$scriptProperties,'1');
+
 $params = $_REQUEST;
 
 $categories = $modx->getOption('categories',$params,'');
@@ -11,6 +14,9 @@ $date = $modx->getOption('date',$params,'');
 if (!empty($date)){
     $defaultDate = "defaultDate : '". $date ."',";
 }
+
+$extraOptionsTpl = $modx->getOption('extraOptionsTpl',$scriptProperties,'');
+$extraOptions = !empty($extraOptionsTpl) ? ',' . $modx->getChunk($extraOptionsTpl) : '';
 
 $script = "
 <script>
@@ -39,6 +45,8 @@ $script = "
 			loading: function(bool) {
 				$('#loading').toggle(bool);
 			}
+            {$extraOptions}
+            
 		});
         $('.migxcal_category').click(function(){
             var el = $(this);
@@ -62,8 +70,12 @@ $modx->regClientCSS('assets/components/migxcalendars/js/fullcalendar/fullcalenda
 $modx->regClientCSS('assets/components/migxcalendars/css/style.css');
 $modx->regClientStartupHTMLBlock('<link type="text/css" href="assets/components/migxcalendars/js/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">');
 $modx->regClientScript('assets/components/migxcalendars/js/lib/moment.min.js');
-$modx->regClientScript('assets/components/migxcalendars/js/lib/jquery.min.js');
-$modx->regClientScript('assets/components/migxcalendars/js/lib/jquery-ui.custom.min.js');
+if (!empty($load_jquery)){
+    $modx->regClientScript('assets/components/migxcalendars/js/lib/jquery.min.js');    
+}
+if (!empty($load_jquery)){
+    $modx->regClientScript('assets/components/migxcalendars/js/lib/jquery-ui.custom.min.js');
+}
 $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/fullcalendar.min.js');
 $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/lang/de.js');
 $modx->regClientHTMLBlock($script);

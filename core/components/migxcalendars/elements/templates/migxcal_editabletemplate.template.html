@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="migxAngular" id="ng-app">
+<head>
+<meta charset='utf-8' />
+<base href="[[++site_url]]" />
+
+</head>
+<body>
+[[!Login? &tplType=`modChunk` &loginTpl=`lgnLoginSidebarChunk` &contexts=`web,mgr`]]
+<div id="migxcalCtrl"  ng-controller="migxcalCtrl" >
+[[!MIGXangular? 
+&buttons=`[
+{"text":"neue Buchung","object_id":"new","configs":"cr_bookings_rezeption","permission":"create_booking"},
+{"text":"Buchung bearbeiten","handler":"onBearbeitenClick","id":"btnupdatebooking","configs":"cr_bookings_rezeption","permission":"edit_booking_details"},
+{"text":"Buchung laden","configs":"cr_searchbooking"},
+{"text":"Fixplätze erstellen","handler":"onFixplatzerstellenClick","configs":"cr_reservation_fixplatzcreate"},
+{"text":"Listenansicht","handler":"onListenansichtClick","configs":"cr_reservation_listview"}
+
+]`
+&customhandlersX=`[[!bloXX? 
+&component=`courtreservation`
+&configs=`courtreservation,rezeption` 
+&task=`cr_customhandlers`
+&debug=`0`
+]]`
+]] 
+
+
+[[!migxcalCalendar?
+&ajax_id=`175`
+&editable=`1`
+&load_jquery=`0`
+&load_jqueryui=`0`
+&extraOptionsTpl=`migxcalEditableOptions`
+]]
+
+	<div id='script-warning'>
+		your ajax-resource seems not to work.
+	</div>
+
+	<div id='loading'>loading...</div>
+
+        <div id="migxcal_container">
+        <div id="migxcal_categories">
+        <ul>
+        [[!migxLoopCollection? 
+          &packageName=`migxcalendars` 
+          &classname=`migxCalendarCategories`
+          &tpl=`migxcal_categoryTpl`
+        ]]
+        </ul>
+        </div>
+	<div id='calendar'></div>
+        </div>
+<script type="text/javascript">
+[[!$migxcal_controller]]
+</script>
+</body>
+</html>

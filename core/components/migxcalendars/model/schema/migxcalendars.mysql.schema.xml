@@ -67,6 +67,8 @@
         <field key="type" dbtype="varchar" precision="20" phptype="string" null="false" default="single" index="index"/>
         <field key="repeating_index" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
         <field key="allday" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="repeating_origin_startdate" dbtype="datetime" phptype="datetime" null="true" index="index" />
+        <field key="repeating_moved" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
 
         <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
     </object>    

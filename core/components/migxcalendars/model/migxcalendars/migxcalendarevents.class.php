@@ -60,7 +60,7 @@ class migxCalendarEvents extends xPDOSimpleObject
                     break;
                 case 1:
                     //weekly
-                    $addtime = 7 * 24 * 60 * 60;
+                    $addtime = '+1 weeks';
                     $eventstart = $startdate;
                     $eventend = $enddate;
                     $event_wd = strftime('%w',strtotime($startdate));
@@ -77,8 +77,8 @@ class migxCalendarEvents extends xPDOSimpleObject
                     $type = 'repeating';
                     while ($eventstart <= $repeatenddate) {
                         $this->createDate($classname,$eventstart, $eventend, $type, $olddate, $repeating_index);
-                        $eventstart = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventstart) + $addtime);
-                        $eventend = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventend) + $addtime);
+                        $eventstart = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventstart . $addtime));
+                        $eventend = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventend . $addtime));
                         $olddate = strftime('%Y-%m-%d ', strtotime($eventstart)) . $oldtime;
                         $repeated = 1;
                         $repeating_index ++;
