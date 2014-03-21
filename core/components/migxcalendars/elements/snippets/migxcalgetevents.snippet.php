@@ -13,18 +13,19 @@
 //--------------------------------------------------------------------------------------------------
 
 // Require our Event class and datetime utilities
-require $modx->getOption('core_path') .
-    'components/migxcalendars/model/fullcalendar/php/utils.php';
+require $modx->getOption('core_path') . 'components/migxcalendars/model/fullcalendar/php/utils.php';
 
 // Short-circuit if the client did not give us a date range.
 if (!isset($_GET['start']) || !isset($_GET['end'])) {
     //die("Please provide a date range.");
 }
 
+$eventbuttonsTpl=$modx->getOption('eventbuttonsTpl',$scriptProperties,'migxcal_eventbuttons');
+
 $scriptProperties['packageName'] = 'migxcalendars';
 $scriptProperties['classname'] = 'migxCalendarDates';
 $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
-$scriptProperties['selectfields'] = 'id,startdate,enddate,title,allday';
+$scriptProperties['selectfields'] = 'id,startdate,enddate,title,allday,published';
 $scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
 
 // Parse the start/end parameters.
@@ -40,17 +41,30 @@ $range_end = parseDateTime($end);
 $wheres = array();
 
 $wheres[] = array('migxCalendarDates.startdate:<=' => $end, 'migxCalendarDates.enddate:>=' => $start);
-$wheres[] = array('Event.deleted' => 0, 'Event.published' => 1,'migxCalendarDates.published' => 1);
+$wheres[] = array('Event.deleted' => 0, 'Event.published' => 1);
 
-if (is_array($categories)){
+if (is_array($categories)) {
     $cat_array = array();
-    foreach ($categories as $category){
-        if (!empty($category) && is_numeric($category)){
+    foreach ($categories as $category) {
+        if (!empty($category) && is_numeric($category)) {
             $cat_array[] = $category;
         }
     }
-    if (count($cat_array)>0){
-        $wheres[] = array('Category.id:IN'=>$cat_array);
+    if (count($cat_array) > 0) {
+        $wheres[] = array('Category.id:IN' => $cat_array);
+    }
+}
+
+$hide_published = $modx->getOption('c_hide_published', $categories, 0);
+$show_unpublished = $modx->getOption('c_show_unpublished', $categories, 0);
+if (!empty($show_unpublished) && empty($hide_published)) {
+
+} else {
+    if (empty($show_unpublished)) {
+        $wheres[] = array('migxCalendarDates.published' => 1);
+    }
+    if (!empty($hide_published)) {
+        $wheres[] = array('migxCalendarDates.published:!=' => 1);
     }
 }
 
@@ -76,13 +90,13 @@ foreach ($input_arrays as $array) {
     $array['start'] = $array['startdate'];
     $array['end'] = $array['enddate'];
     
-    if (isset($array['Event_allday']) && empty($array['allday'])){
+    if (isset($array['Event_allday']) && isset($array['allday']) && $array['allday'] == '2') {
         //inherit
         $array['allDay'] = $array['Event_allday'];
-    }else{
-        $array['allDay'] = $array['allday'] == 1 ? $array['allday'] : 0;
+    } else {
+        $array['allDay'] = $array['allday'];
     }
-    
+
     $array['title'] = !empty($array['title']) ? $array['title'] : $array['Event_title'];
     if (!empty($array['Category_backgroundColor'])) {
         $array['backgroundColor'] = $array['Category_backgroundColor'];
@@ -95,6 +109,10 @@ foreach ($input_arrays as $array) {
         $array['textColor'] = $array['Category_textColor'];
     }
 
+    $array['popupmenu'] = $modx->getChunk($eventbuttonsTpl,$array);
+    $wd = date('D', strtotime($array['startdate']));
+    
+    $array['popup_placement'] = $wd == 'Sun' ? 'left' : 'right';
 
     // Convert the input array into a useful Event object
     $event = new Event($array, $timezone);

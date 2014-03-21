@@ -52,3 +52,23 @@
     .migxcal_category.selected{
         font-weight: bold;
     }
+    
+    .popover{
+        z-index: 1010 !important;
+    }
+    
+    .event-buttons{
+        width: 80px;
+    }
+    
+    .fc-agenda-days th {
+        height: 65px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    .fc-grid th {
+        height: 50px;
+        text-align: center;
+        vertical-align: middle;
+    }    

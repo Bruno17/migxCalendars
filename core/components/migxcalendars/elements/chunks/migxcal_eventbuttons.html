@@ -1,0 +1,15 @@
+    <div class="btn-group event-buttons">
+    [[+published:is=`1`:then=`
+    <button type="button" data-id="[[+id]]" data-action="unpublish" class="btn btn-default event-button">
+        <span  class="glyphicon glyphicon-remove"></span> 
+    </button> 
+    `:else=`
+    <button type="button" data-id="[[+id]]" data-action="publish" class="btn btn-default event-button">    
+        <span class="glyphicon glyphicon-ok"></span> 
+    </button>         
+    `]]
+    <button type="button" data-id="[[+id]]" data-action="edit" class="btn btn-default event-button">
+    <span class="glyphicon glyphicon-pencil"></span> 
+    </button>   
+   
+    </div>

@@ -272,6 +272,15 @@ switch ($task) {
         $object->fromArray($postvalues);
 }
 
+/*
+if ($allday == 1) {
+    $startdate = strftime('%Y-%m-%d ', strtotime($this->get('startdate')));
+    $this->set('startdate', $startdate . '00:00:00');
+    $enddate = strftime('%Y-%m-%d ', strtotime($this->get('enddate') . '+1day'));
+    $this->set('enddate', $enddate . '00:00:00');
+}
+*/
+
 if ($object->save() == false) {
     $updateerror = true;
     $errormsg = $modx->lexicon('quip.thread_err_save');

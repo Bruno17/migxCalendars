@@ -4,9 +4,25 @@
   "formtabs":[
     {
       "MIGX_id":1,
-      "caption":"Date",
+      "caption":"Dieser Termin",
       "print_before_tabs":"0",
       "fields":[
+        {
+          "MIGX_id":5,
+          "field":"Event_title",
+          "caption":"Allgemeiner Titel (Alle Termine)",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        },
         {
           "MIGX_id":1,
           "field":"startdate",
@@ -40,6 +56,38 @@
           "default":""
         },
         {
+          "MIGX_id":4,
+          "field":"title",
+          "caption":"Individueller Titel (nur dieser Termin)",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        },
+        {
+          "MIGX_id":6,
+          "field":"repeating",
+          "caption":"[[%migxcal.repeat_weekly]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        },
+        {
           "MIGX_id":3,
           "field":"allday",
           "caption":"All Day",
@@ -47,6 +95,100 @@
           "description_is_code":"0",
           "inputTV":"",
           "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        }
+      ]
+    },
+    {
+      "MIGX_id":3,
+      "caption":"Termin Container",
+      "print_before_tabs":"0",
+      "fields":[
+        {
+          "MIGX_id":1,
+          "field":"Event_allday",
+          "caption":"All Day",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        },
+        {
+          "MIGX_id":2,
+          "field":"Event_categoryid",
+          "caption":"Kategorie",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"@EVAL return 'Select Category!==||' . $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
+          "default":""
+        },
+        {
+          "MIGX_id":3,
+          "field":"Event_repeating",
+          "caption":"Wiederholungen erlauben",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        }
+      ]
+    },
+    {
+      "MIGX_id":2,
+      "caption":"Wiederholungen (w\u00f6chentlich)",
+      "print_before_tabs":"0",
+      "fields":[
+        {
+          "MIGX_id":1,
+          "field":"Event_startdate",
+          "caption":"Beginn der Wiederholungen",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"date",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
+        },
+        {
+          "MIGX_id":2,
+          "field":"Event_repeatenddate",
+          "caption":"Ende der Wiederholungen",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"date",
           "validation":"",
           "configs":"",
           "display":"",
@@ -88,12 +230,23 @@
     "join_alias":"",
     "has_jointable":"yes",
     "getlistwhere":"",
-    "joins":"",
+    "joins":[
+      {
+        "alias":"Event"
+      }
+    ],
     "cmpmaincaption":"",
     "cmptabcaption":"",
     "cmptabdescription":"",
     "cmptabcontroller":"",
-    "winbuttons":"",
+    "winbuttons":[
+      {
+        "button":"migxcalcancel"
+      },
+      {
+        "button":"migxcaldoneandclose"
+      }
+    ],
     "onsubmitsuccess":"",
     "submitparams":""
   },
@@ -101,7 +254,7 @@
   "createdby":1,
   "createdon":"2014-03-17 16:53:19",
   "editedby":1,
-  "editedon":"2014-03-18 08:00:50",
+  "editedon":"2014-03-20 09:16:44",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

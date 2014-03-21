@@ -62,9 +62,10 @@
           "inputTVtype":"listbox",
           "validation":"",
           "configs":"",
+          "display":"",
           "sourceFrom":"config",
           "sources":"[]",
-          "inputOptionValues":"[[%migxcal.inherited]]==0||[[%migxcal.yes]]==1||[[%migxcal.no]]==2",
+          "inputOptionValues":"[[%migxcal.inherited]]==2||[[%migxcal.yes]]==1||[[%migxcal.no]]==0",
           "default":""
         }
       ]
@@ -82,7 +83,10 @@
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
+    "actionbuttonsperrow":4,
+    "winbuttonslist":"",
     "extrahandlers":"this.publishObject||this.unpublishObject",
+    "filtersperrow":4,
     "packageName":"migxcalendars",
     "classname":"migxCalendarDates",
     "task":"",
@@ -178,7 +182,7 @@
   "createdby":1,
   "createdon":"2014-02-24 08:24:31",
   "editedby":1,
-  "editedon":"2014-02-27 07:26:41",
+  "editedon":"2014-03-20 06:28:33",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

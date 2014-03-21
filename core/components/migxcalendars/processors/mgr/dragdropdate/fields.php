@@ -59,16 +59,22 @@ if (empty($scriptProperties['object_id']) || $scriptProperties['object_id'] == '
 
 $_SESSION['migxWorkingObjectid'] = $object_id;
 
-//handle json fields
+
 if ($object) {
     $record = $object->toArray();
+    $event_object = $object->getOne('Event');
 } else {
     $record = array();
 }
 
 
 foreach ($record as $field => $fieldvalue) {
-    $record['old_' . $field] = $fieldvalue;
+    if (substr($field, 0, 6) == 'Event_') {
+
+    } else {
+        $record['old_' . $field] = $fieldvalue;
+    }
+
     if (!empty($fieldvalue) && is_array($fieldvalue)) {
         foreach ($fieldvalue as $key => $value) {
             $record['old_' . $field . '.' . $key] = $value;
@@ -77,11 +83,31 @@ foreach ($record as $field => $fieldvalue) {
 }
 
 if (isset($scriptProperties['data'])) {
-    $record = array_merge($record, $modx->fromJson($scriptProperties['data']));
-    
-    $record['allday'] = empty($record['allday']) ? '2' : $record['allday'];
-    $startdate = $modx->getOption('startdate',$record,'');
+    $data = $modx->fromJson($scriptProperties['data']);
+    $allday = $modx->getOption('allday',$data,'new');
+    $old_allday = $object->get('allday');
+    if ($allday != 'new') {
+        if ($event_object) {
+            if ($old_allday == '2') {
+                //allday inherited from Container
+                
+                if ($allday == $event_object->get('allday')){
+                    $data['allday'] = '2';
+                }
+            }
+        }
+    }
+    else{
+        //new
+        $data['allday'] = '2';
+        $data['Event_allday'] = '0';    
+    }
+
+    $record = array_merge($record, $data);
+    $record['repeating'] = isset($record['type']) && $record['type'] == 'repeating' ? '1' : '0';
+
+    //$record['allday'] = empty($record['allday']) ? '2' : $record['allday'];
+    $startdate = $modx->getOption('startdate', $record, '');
     $addtime = '+1hour';
     $record['enddate'] = empty($record['enddate']) ? strftime('%Y-%m-%d %H:%M:%S', strtotime($startdate . $addtime)) : $record['enddate'];
-
 }

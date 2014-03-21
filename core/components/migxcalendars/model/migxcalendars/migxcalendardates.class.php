@@ -14,7 +14,7 @@ class migxCalendarDates extends xPDOSimpleObject
 
         $preventsave = $this->get('preventsave');
         $published = $this->get('published');
-        //$this->event = $this->getOne('Event');
+        $this->event = $this->getOne('Event');
 
         //handle enddate - enddate can't be lower than startdate
         $enddate = $this->get('enddate');
@@ -59,7 +59,14 @@ class migxCalendarDates extends xPDOSimpleObject
                 if (empty($ondoubleevents)) {
                     return true;
                 }
-                if ($this->activeExists($this->get('startdate'), $this->get('enddate'), $categoryO->get('id'))) {
+                if ($dates = $this->activeExists($this->get('startdate'), $this->get('enddate'), $categoryO->get('id'))) {
+                    
+                            print_r($this->toArray());
+                    
+                            foreach ($dates as $date){
+                                print_r($date->toArray());
+                            }                    
+                    
                     switch ($ondoubleevents) {
                         case 'unpublish':
                             $this->set('published', 0);
@@ -90,6 +97,7 @@ class migxCalendarDates extends xPDOSimpleObject
                 foreach ($categories as $category) {
                     if (!empty($category)) {
                         if ($dates = $this->activeExists($this->get('startdate'), $this->get('enddate'), $category)) {
+                            
                             switch ($ondoubleevents) {
                                 case 'unpublishdates':
                                     foreach ($dates as $dateO) {
@@ -120,7 +128,8 @@ class migxCalendarDates extends xPDOSimpleObject
         
         $allday = $this->get('allday');
         
-        if (empty($allday) && $this->event) {
+        if ($allday == '2' && $this->event) {
+            //inherited from datescontainer
             $allday = $this->event->get('allday');
         }
 
@@ -128,7 +137,7 @@ class migxCalendarDates extends xPDOSimpleObject
             $startdate = strftime('%Y-%m-%d ', strtotime($this->get('startdate')));
             $this->set('startdate', $startdate . '00:00:00');
             $enddate = strftime('%Y-%m-%d ', strtotime($this->get('enddate')));
-            $this->set('enddate', $enddate . '23:59:59');
+            $this->set('enddate', $enddate . '00:00:00');
         }
 
     }
