@@ -1,10 +1,8 @@
 <?php
 
-class migxCalendarEvents extends xPDOSimpleObject
-{
+class migxCalendarEvents extends xPDOSimpleObject {
 
-    public function save($cacheFlag = null)
-    {
+    public function save($cacheFlag = null) {
 
         $preventsave = $this->get('preventsave');
 
@@ -29,6 +27,11 @@ class migxCalendarEvents extends xPDOSimpleObject
             $this->set('categories', '||' . trim($categories, '|') . '||');
         }
 
+        $this->set('editedon', strftime('%Y-%m-%d %H:%M:%S'));
+        if (is_object($this->xpdo->user)) {
+            $this->set('editedby', $this->xpdo->user->get('id'));
+        }
+
         if (!$preventsave) {
             $result = parent::save($cacheFlag);
         } else {
@@ -39,6 +42,7 @@ class migxCalendarEvents extends xPDOSimpleObject
         $repeating = $this->get('repeating');
         $repeatenddate = $this->get('repeatenddate');
         $repeattype = $this->get('repeattype');
+        $repeattype = empty($repeattype) && !empty($repeating) ? '1' : $repeattype; //set repeattye to 1 for now
         $parent = $this->get('id');
 
         $scriptProperties = $this->get('scriptProperties');
@@ -79,6 +83,10 @@ class migxCalendarEvents extends xPDOSimpleObject
         }
         if ($repeating != $old_repeating) {
             $resolve_repeatings = true;
+            //repeating has changed, we remove all other dates completly
+            if (!$preventsave) {
+                $this->xpdo->removeCollection($classname, array('event_id' => $parent, 'id:!=' => $date_id));
+            }
         }
         if ($date_startdate != $old_startdate) {
             $resolve_repeatings = true;
@@ -92,15 +100,16 @@ class migxCalendarEvents extends xPDOSimpleObject
 
         if ($resolve_repeatings && $repeatenddate > $startdate && !empty($repeating)) {
             //remove dates out of range
+            /*
             if (!$preventsave) {
                 $this->xpdo->removeCollection($classname, array(
                     'type' => 'repeating',
                     'event_id' => $parent,
                     array('startdate:<' => $startdate, 'OR:startdate:>' => $repeatenddate)));
             }
-
+            */
             switch ($repeattype) {
-                case 0:
+                case 4:
                     //daily
                     break;
                 case 2:
@@ -116,10 +125,18 @@ class migxCalendarEvents extends xPDOSimpleObject
                     $eventend_wd = date('D', strtotime($date_enddate));
                     $old_wd = date('D', strtotime($old_startdate));
                     $addtime = '+1 weeks';
-                    $eventstart = strftime('%Y-%m-%d ' . $date_starttime, strtotime($startdate . ' ' . $event_wd));
-                    $eventend = strftime('%Y-%m-%d ' . $date_endtime, strtotime($enddate . ' ' . $eventend_wd));
 
-                    if ($event_wd != $old_wd) {
+                    $current_startdate = strftime('%Y-%m-%d ' . $date_starttime, strtotime($startdate . ' ' . $event_wd));
+
+                    $diff_days = $this->dateDiffDays($date_startdate, $date_enddate);
+                    $adddays = !empty($diff_days) ? $diff_days . ' day' : '';
+                    $current_enddate = strftime('%Y-%m-%d ' . $date_endtime, strtotime($current_startdate . ' ' . $adddays));
+
+                    $diff_days_moved = $this->dateDiffDays($date_startdate, $old_startdate);
+                    $moveddays = !empty($diff_days_moved) ? $diff_days_moved . ' day' : '';
+
+                    $clean_if_otherday = false;
+                    if ($clean_if_otherday && $event_wd != $old_wd) {
                         //moved to other day, we remove all repeatings completly
                         if (!$preventsave) {
                             $this->xpdo->removeCollection($classname, array(
@@ -128,25 +145,35 @@ class migxCalendarEvents extends xPDOSimpleObject
                                 //'id:!=' => $date_id
                                 ));
                         }
+
                     }
                     $oldtime = strftime('%H:%M:%S', strtotime($old_startdate));
-                    $olddate = strftime('%Y-%m-%d ', strtotime($eventstart)) . $oldtime;
+                    $olddate = strftime('%Y-%m-%d ' . $oldtime, strtotime($current_startdate . ' ' . $moveddays));
                     $repeating_index = 0;
                     $type = 'repeating';
-                    while ($eventstart <= $repeatenddate) {
-                        if ($date_o = $this->createDate($classname, $eventstart, $eventend, $type, $olddate, $repeating_index, $date_id, $scriptProperties)){
-                            
+                    while ($current_startdate <= $repeatenddate) {
+                        if ($date_o = $this->createDate($classname, $current_startdate, $current_enddate, $type, $olddate, $repeating_index, $date_id, $scriptProperties)) {
+
                         }
-                        $eventstart = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventstart . $addtime));
-                        $eventend = strftime('%Y-%m-%d %H:%M:%S', strtotime($eventend . $addtime));
-                        $olddate = strftime('%Y-%m-%d ', strtotime($eventstart)) . $oldtime;
+                        $current_startdate = strftime('%Y-%m-%d %H:%M:%S', strtotime($current_startdate . $addtime));
+                        $current_enddate = strftime('%Y-%m-%d %H:%M:%S', strtotime($current_enddate . $addtime));
+                        $olddate = strftime('%Y-%m-%d ' . $oldtime, strtotime($current_startdate . ' ' . $moveddays));
                         $repeating_index++;
                     }
+
+                    if (!$preventsave) {
+                        //remove all remaining dates from other editings
+                        $this->xpdo->removeCollection($classname, array(
+                            'event_id' => $parent,
+                            'editedon:!=' => $this->get('editedon'),
+                            ));
+                    }
+
                     break;
             }
         } else {
             if (empty($repeating)) {
-                //no repeating, remove all repeatings
+                //no repeating, remove all repeatings, but not the current one
                 if (!$preventsave) {
                     $this->xpdo->removeCollection($classname, array(
                         'event_id' => $parent,
@@ -164,8 +191,7 @@ class migxCalendarEvents extends xPDOSimpleObject
 
     }
 
-    public function createDate($classname, $eventstart, $eventend, $type = 'single', $olddate = '', $repeating_index = 0, $date_id = 0, $values)
-    {
+    public function createDate($classname, $eventstart, $eventend, $type = 'single', $olddate = '', $repeating_index = 0, $date_id = 0, $values) {
         $parent = $this->get('id');
         $preventsave = $this->get('preventsave');
 
@@ -203,6 +229,8 @@ class migxCalendarEvents extends xPDOSimpleObject
             $child->set('repeating_index', $repeating_index);
             $child->set('preventsave', $preventsave);
             $child->event = &$this;
+            $child->set('editedon', $this->get('editedon'));
+            $child->set('editedby', $this->get('editedby'));
             $child->save();
         }
 
@@ -215,8 +243,7 @@ class migxCalendarEvents extends xPDOSimpleObject
         return $child;
     }
 
-    public function handleAllday()
-    {
+    public function handleAllday() {
 
         $allday = $this->get('allday');
 
@@ -228,6 +255,13 @@ class migxCalendarEvents extends xPDOSimpleObject
             $this->set('enddate', $enddate . '23:59:59');
         }
 
+    }
+
+    public function dateDiffDays($startdate, $enddate) {
+        $startdate = strtotime(strftime('%Y-%m-%d 00:00:00', strtotime($startdate)));
+        $enddate = strtotime(strftime('%Y-%m-%d 00:00:00', strtotime($enddate)));
+        $diff = $enddate - $startdate;
+        return $diff / (24 * 3600);
     }
 
 }

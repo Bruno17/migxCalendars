@@ -49,3 +49,10 @@ $_lang['migxcal.check_availability'] = 'Verfügbarkeit prüfen';
 $_lang['migxcal.availability'] = 'Verfügbarkeit';
 $_lang['migxcal.available'] = 'Verfügbar';
 $_lang['migxcal.category_filter'] = 'Kategorie Filter';
+$_lang['migxcal.warn_move_repeat_2other_day'] = 'Verschieben auf einen anderen Tag wird alle Wiederholungen neu erstellen!';
+$_lang['migxcal.warn_change_repeating'] = 'Wiederholen Status wurde geändert. Dies wird alle Termine dieses Containers entfernen!';
+$_lang['migxcal.warn_move_repeat_2other_week'] = 'Wiederholungen können nicht auf eine andere Woche verschoben werden!';
+
+
+
+

@@ -26,7 +26,7 @@ $scriptProperties['packageName'] = 'migxcalendars';
 $scriptProperties['classname'] = 'migxCalendarDates';
 $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
 $scriptProperties['selectfields'] = 'id,startdate,enddate,title,allday,published';
-$scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
+$scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday,repeating"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
 
 // Parse the start/end parameters.
 // These are assumed to be ISO8601 strings with no time nor timezone, like "2013-12-29".

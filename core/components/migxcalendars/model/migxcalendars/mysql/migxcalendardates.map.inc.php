@@ -16,6 +16,12 @@ $xpdo_meta_map['migxCalendarDates']= array (
     'type' => 'single',
     'repeating_index' => 0,
     'allday' => 0,
+    'repeating_origin_startdate' => NULL,
+    'repeating_moved' => 1,
+    'createdon' => NULL,
+    'createdby' => 0,
+    'editedon' => NULL,
+    'editedby' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -98,6 +104,52 @@ $xpdo_meta_map['migxCalendarDates']= array (
     array (
       'dbtype' => 'tinyint',
       'precision' => '1',
+      'attributes' => 'unsigned',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
+    ),
+    'repeating_origin_startdate' => 
+    array (
+      'dbtype' => 'datetime',
+      'phptype' => 'datetime',
+      'null' => true,
+      'index' => 'index',
+    ),
+    'repeating_moved' => 
+    array (
+      'dbtype' => 'tinyint',
+      'precision' => '1',
+      'attributes' => 'unsigned',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 1,
+    ),
+    'createdon' => 
+    array (
+      'dbtype' => 'datetime',
+      'phptype' => 'datetime',
+      'null' => true,
+    ),
+    'createdby' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'attributes' => 'unsigned',
+      'phptype' => 'integer',
+      'null' => false,
+      'default' => 0,
+    ),
+    'editedon' => 
+    array (
+      'dbtype' => 'datetime',
+      'phptype' => 'datetime',
+      'null' => true,
+    ),
+    'editedby' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
       'attributes' => 'unsigned',
       'phptype' => 'integer',
       'null' => false,

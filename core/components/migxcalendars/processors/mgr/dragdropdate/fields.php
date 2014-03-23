@@ -70,7 +70,7 @@ if ($object) {
 
 foreach ($record as $field => $fieldvalue) {
     if (substr($field, 0, 6) == 'Event_') {
-
+        $record[$field . '_old'] = $fieldvalue;
     } else {
         $record['old_' . $field] = $fieldvalue;
     }

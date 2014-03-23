@@ -5,6 +5,7 @@ $ajax_url = $modx->makeUrl($ajax_id);
 
 $load_jquery = $modx->getOption('load_jquery',$scriptProperties,'1');
 $load_jqueryui = $modx->getOption('load_jqueryui',$scriptProperties,'1');
+$packageName = $modx->getOption('packageName',$scriptProperties,'migxcalendars');
 
 $params = $_REQUEST;
 
@@ -17,6 +18,10 @@ if (!empty($date)){
 
 $extraOptionsTpl = $modx->getOption('extraOptionsTpl',$scriptProperties,'');
 $extraOptions = !empty($extraOptionsTpl) ? ',' . $modx->getChunk($extraOptionsTpl) : '';
+
+if ($modx->lexicon) {
+    $modx->lexicon->load($packageName . ':default');
+}
 
 $script = "
 <script>

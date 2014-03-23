@@ -12,6 +12,28 @@
         ajaxConfig.data = {
             data : angular.toJson($scope.data) 
         };
+        if ($scope.data.old_startdate != ''){
+            if ($scope.data.Event_repeating != $scope.data.Event_repeating_old && !confirm("[[%migxcal.warn_change_repeating]]")){
+                //UiDialog.hideModal('[[+request.modal_id]]');
+                return;    
+            }
+            if ($scope.data.Event_repeating == 1){
+                var old_startdate = moment($scope.data.old_startdate);
+                if (old_startdate){
+                    var old_startweek = old_startdate.isoWeek();
+                }
+                var startdate = moment($scope.data.startdate);
+                if (startdate){
+                    var startweek = startdate.isoWeek();
+                }            
+                if (startweek != old_startweek ){
+                    //UiDialog.hideModal('[[+request.modal_id]]');
+                    alert("[[%migxcal.warn_move_repeat_2other_week]]");
+                    return;    
+                }
+            }            
+        }
+        
         $http(ajaxConfig).success(function(response, status, header, config) {
             if (params.closeonsuccess){
                 UiDialog.hideModal('[[+request.modal_id]]');

@@ -4,6 +4,10 @@
     eventDrop: function(event, revertFunc,jsEvent, ui, view) {
         migxcalController.eventDrop(event,revertFunc,jsEvent, ui, view);
     },
+    eventDragStart: function(event, jsEvent, ui, view) {
+       migxcal_dragstart_day = event.start.dayOfYear();
+       migxcal_dragstart_week = event.start.isoWeek();
+    },    
     droppable: true,
     drop: function(moment, e ) {
         var event = {
@@ -11,6 +15,9 @@
             category_id : $(e.target).data().id
         }
         migxcalController.eventDropNew(event);   
+    },
+    eventAfterAllRender: function(view){
+        migxcalController.hidePleaseWait();    
     },
     eventRender: function(event, element) {
         
@@ -21,6 +28,7 @@
         });
         
         element.on('show.bs.popover',function(){
+            //hide all other popovers
             $('.popover').css({display:'none'}); 
             $('.fc-event').popover('hide');
         });
