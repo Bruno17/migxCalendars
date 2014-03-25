@@ -134,6 +134,22 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":""
+        },
+        {
+          "MIGX_id":9,
+          "field":"Event_id",
+          "caption":"",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"hidden",
+          "validation":"",
+          "configs":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
         }
       ]
     },
@@ -269,8 +285,8 @@
   "columns":"[]",
   "createdby":1,
   "createdon":"2014-03-17 16:53:19",
-  "editedby":8,
-  "editedon":"2014-03-23 13:19:44",
+  "editedby":1,
+  "editedon":"2014-03-23 20:23:54",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

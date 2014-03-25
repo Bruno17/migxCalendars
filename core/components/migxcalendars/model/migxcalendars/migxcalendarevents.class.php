@@ -183,7 +183,7 @@ class migxCalendarEvents extends xPDOSimpleObject {
             }
 
             //create or modify current date
-            $this->createDate($classname, $date_startdate, $date_enddate, null, null, null, $date_id, $scriptProperties);
+            $this->createDate($classname, $date_startdate, $date_enddate, 'single', '', 0, $date_id, $scriptProperties);
 
         }
 

@@ -2,22 +2,6 @@
 <label for="tv[[+tv.id]]">
 [[+tv.caption]]
 </label>
-
-<div class="livesearchitem-content active">
-<strong>{{selected[[+tv.fieldname]].id}}</strong><br />  
-{{selected[[+tv.fieldname]].title}}<br /> 
-{{selected[[+tv.fieldname]].fullname}} 
-</div>
-
-<div class="form-group">
-<label for="selectedCategory">
-Buchungstyp Filter
-</label>
-
-<select id="selectedBookingType" ng-change="changeBookingType[[+tv.fieldname]]()" class="form-control" ng-model="bookingtype[[+tv.fieldname]]" ng-options="i.alias as i.name for i in bookingtypes[[+tv.fieldname]]"></select>
-
-</div>
-
 <div class="input-group">
 <input class="form-control" 
   ng-change="onLiveSearchChange[[+tv.fieldname]]()" 
@@ -29,25 +13,39 @@ Buchungstyp Filter
 />
 <span class="input-group-addon glyphicon glyphicon-search"></span>
 </div>
+<br />
+
+<div class="form-group">
+<label for="selectedCategory">
+[[%migxcal.category_filter]]
+</label>
+<select id="selectedBookingType" ng-change="changeBookingType[[+tv.fieldname]]()" class="form-control" ng-model="bookingtype[[+tv.fieldname]]" ng-options="i.alias as i.name for i in bookingtypes[[+tv.fieldname]]"></select>
+</div>
+
+<div class="livesearchitem-content active">
+<strong>{{selected[[+tv.fieldname]].id}}</strong><br />  
+{{selected[[+tv.fieldname]].title}}<br /> 
+{{selected[[+tv.fieldname]].fullname}} 
+</div>
+
+<br />
 
 <div class="btn-group">
   <button ng-click="changePage[[+tv.fieldname]]()" ng-repeat="page in pages[[+tv.fieldname]]" class="btn {{page.btn_class}}" ng-bind-html="page.label"></button>
 </div>
 
 <div class="livesearch-items" >
-<table>
+<table class="table">
 <thead>
 <th style="width: 40px;">ID</th>
 <th>Erstellt am</th>
-<th>Label</th>
-<th>Name</th>
+<th>[[%migxcal.title]]</th>
 </thead>
 <tbody>
 <tr class="livesearchitem livesearchitem-content {{result.activeclass}}" ng-mouseover="onMouseOver[[+tv.fieldname]]()" ng-click="onClick[[+tv.fieldname]]()" ng-repeat="result in result[[+tv.fieldname]]" >
 <td><strong>{{result.id}} </strong></td>
 <td>{{result.createdon_formated}}</td>
 <td>{{result.title}}</td>
-<td>{{result.fullname}}</td>
 </tr>
 </tbody>
 </table>
@@ -131,6 +129,7 @@ Buchungstyp Filter
     $scope.select[[+tv.fieldname]] = function(item){
         $scope.selected[[+tv.fieldname]] = item;
         $scope.data.[[+tv.fieldname]] = item['id']; 
+        $scope.data.item = item;
         $scope.showitems[[+tv.fieldname]]=false;         
     }
     

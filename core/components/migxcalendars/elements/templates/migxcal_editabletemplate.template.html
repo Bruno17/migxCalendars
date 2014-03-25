@@ -6,14 +6,6 @@
 
 </head>
 <body>
-[[!Login? &tplType=`modChunk` &loginTpl=`lgnLoginSidebarChunk` &contexts=`web,mgr`]]
-<div id="migxcalCtrl"  ng-controller="migxcalCtrl" >
-[[!MIGXangular? 
-&buttons=`[
-{"text":"Termincontainer laden","configs":"migxcalendar_loadcontainer"}
-]`
-]] 
-
 
 [[!migxcalCalendar?
 &ajax_id=`175`
@@ -22,6 +14,17 @@
 &load_jqueryui=`0`
 &extraOptionsTpl=`migxcalEditableOptions`
 ]]
+
+[[!Login? &tplType=`modChunk` &loginTpl=`lgnLoginSidebarChunk` &contexts=`web,mgr`]]
+<div id="migxcalCtrl"  ng-controller="migxcalCtrl" >
+[[!MIGXangular? 
+&buttons=`[
+{"text":"[[!%migxcal.load_datecontainer]]","configs":"migxcalendar_loadcontainer"}
+]`
+]] 
+
+
+
 
 	<div id='script-warning'>
 		your ajax-resource seems not to work.
@@ -39,10 +42,19 @@
         ]]
         </ul>
         <ul>
-        <li class="migxcal_category" data-id="hide_published" >Aktive verbergen</li>
-        <li class="migxcal_category" data-id="show_unpublished" >Nicht Aktive zeigen</li>        
+        <li class="migxcal_category" data-id="hide_published" >[[!%migxcal.hide_published]]</li>
+        <li class="migxcal_category" data-id="show_unpublished" >[[!%migxcal.show_unpublished]]</li>        
         </ul>
         
+        <h4>[[!%migxcal.date_containers]]</h4>
+        <ul>
+        <li class="migxcal_category datecontainer" id="datecontainer{{date_container.id}}" data-eventid="{{date_container.id}}" data-catid="{{date_container.categoryid}}"  ng-repeat="date_container in date_containers">
+        {{date_container.title}}({{date_container.id}}) 
+        <button type="button" ng-click="closecontainer(date_container)" class="btn btn-default datecontainer-button btn-xs pull-right">    
+            <span class="glyphicon glyphicon-remove"></span> 
+        </button> 
+        </li>
+        </ul>
         </div>
 	<div id='calendar'></div>
         </div>

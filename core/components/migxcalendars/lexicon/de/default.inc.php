@@ -52,6 +52,13 @@ $_lang['migxcal.category_filter'] = 'Kategorie Filter';
 $_lang['migxcal.warn_move_repeat_2other_day'] = 'Verschieben auf einen anderen Tag wird alle Wiederholungen neu erstellen!';
 $_lang['migxcal.warn_change_repeating'] = 'Wiederholen Status wurde geändert. Dies wird alle Termine dieses Containers entfernen!';
 $_lang['migxcal.warn_move_repeat_2other_week'] = 'Wiederholungen können nicht auf eine andere Woche verschoben werden!';
+$_lang['migxcal.warn_dragnew_repeatingdate'] = 'Es können keine Termine in einen Container mit Wiederholungen gezogen werden';
+$_lang['migxcal.createon'] = 'Erstellt am';
+$_lang['migxcal.search'] = 'Suche';
+$_lang['migxcal.load_datecontainer'] = 'Termincontainer laden';
+$_lang['migxcal.hide_published'] = 'Aktive verbergen';
+$_lang['migxcal.show_unpublished'] = 'Inaktive zeigen';
+$_lang['migxcal.date_containers'] = 'Termin Container';
 
 
 

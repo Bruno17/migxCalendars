@@ -17,6 +17,10 @@ if (is_dir($modelpath)) {
 }
 $classname = $config['classname'];
 
+if (isset($scriptProperties['data'])) {
+    $scriptProperties = array_merge($scriptProperties, $modx->fromJson($scriptProperties['data']));
+}
+
 $joinalias = isset($config['join_alias']) ? $config['join_alias'] : '';
 
 $joins = isset($config['joins']) && !empty($config['joins']) ? $modx->fromJson($config['joins']) : false;
@@ -32,10 +36,11 @@ if (!empty($joinalias)) {
 if ($this->modx->lexicon) {
     $this->modx->lexicon->load($packageName . ':default');
 }
-
+$is_new = false;
 if (empty($scriptProperties['object_id']) || $scriptProperties['object_id'] == 'new') {
     if ($object = $modx->newObject($classname)) {
         $object->set('object_id', 'new');
+        $is_new = true;
     }
 
 } else {
@@ -59,14 +64,19 @@ if (empty($scriptProperties['object_id']) || $scriptProperties['object_id'] == '
 
 $_SESSION['migxWorkingObjectid'] = $object_id;
 
+if ($is_new && isset($scriptProperties['event_id']) && $event_object = $modx->getObject('migxCalendarEvents', $scriptProperties['event_id'])) {
+    $event_array = $event_object->toArray();
+    $record = $object->toArray();
+    foreach ($event_array as $field => $fieldvalue) {
+        $record['Event_' . $field] = $fieldvalue;
+    }
 
-if ($object) {
+} elseif ($object) {
     $record = $object->toArray();
     $event_object = $object->getOne('Event');
 } else {
     $record = array();
 }
-
 
 foreach ($record as $field => $fieldvalue) {
     if (substr($field, 0, 6) == 'Event_') {
@@ -84,23 +94,22 @@ foreach ($record as $field => $fieldvalue) {
 
 if (isset($scriptProperties['data'])) {
     $data = $modx->fromJson($scriptProperties['data']);
-    $allday = $modx->getOption('allday',$data,'new');
+    $allday = $modx->getOption('allday', $data, 'new');
     $old_allday = $object->get('allday');
     if ($allday != 'new') {
         if ($event_object) {
             if ($old_allday == '2') {
                 //allday inherited from Container
-                
-                if ($allday == $event_object->get('allday')){
+
+                if ($allday == $event_object->get('allday')) {
                     $data['allday'] = '2';
                 }
             }
         }
-    }
-    else{
+    } else {
         //new
         $data['allday'] = '2';
-        $data['Event_allday'] = '0';    
+        $data['Event_allday'] = '0';
     }
 
     $record = array_merge($record, $data);

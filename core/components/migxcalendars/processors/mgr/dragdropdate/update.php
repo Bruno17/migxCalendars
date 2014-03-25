@@ -65,6 +65,7 @@ if (isset($scriptProperties['object_id']) && is_numeric($scriptProperties['objec
 }
 
 if ($object) {
+
     if (isset($scriptProperties['data'])) {
         $scriptProperties = array_merge($scriptProperties, $modx->fromJson($scriptProperties['data']));
     }
@@ -72,11 +73,13 @@ if ($object) {
     //$enddate = str_replace('T', ' ', $modx->getOption('enddate', $scriptProperties, ''));
     //$allday = $modx->getOption('allday', $scriptProperties, '0');
     //$allday = !empty($allday) ? '1' : '0';
-
+    $event_id = $modx->getOption('Event_id', $scriptProperties, 0);
     $date_array = $object->toArray();
 
     //get the event-object (date-container) or create a new one
     if ($event_object = $modx->getObject($event_classname, $object->get('event_id'))) {
+        $event_object->set('event_array', $event_object->toArray());
+    } elseif (!empty($event_id) && $event_object = $modx->getObject($event_classname, $event_id)) {
         $event_object->set('event_array', $event_object->toArray());
     } else {
         $event_object = $modx->newObject($event_classname);

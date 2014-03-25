@@ -10,11 +10,12 @@
     },    
     droppable: true,
     drop: function(moment, e ) {
+        var el =  $(e.target);
         var event = {
             start : moment,
-            category_id : $(e.target).data().id
+            data : el.data()
         }
-        migxcalController.eventDropNew(event);   
+        migxcalController.eventDropNew(event,el);   
     },
     eventAfterAllRender: function(view){
         migxcalController.hidePleaseWait();    
@@ -44,7 +45,12 @@
                 } 
                 if (action == 'unpublish'){
                     migxcalController.eventPublish(data);     
-                }                                     
+                }
+                if (action == 'loadcontainer'){
+                    if (data.eventid){
+                        migxcalController.loadDatesContainer(data.eventid);     
+                    }
+                }                                                     
                 
             
             });              

@@ -52,6 +52,13 @@ $_lang['migxcal.category_filter'] = 'Category Filter';
 $_lang['migxcal.warn_move_repeat_2other_day'] = 'Moving to another day will recreate all repeating dates!';
 $_lang['migxcal.warn_change_repeating'] = 'Reapeting status was changed. This will remove all Dates from this container!';
 $_lang['migxcal.warn_move_repeat_2other_week'] = 'You can not move reapeatings to another week!';
+$_lang['migxcal.warn_dragnew_repeatingdate'] = 'You can not drag dates into containers with repeatings';
+$_lang['migxcal.createon'] = 'Created on';
+$_lang['migxcal.search'] = 'Search';
+$_lang['migxcal.load_datecontainer'] = 'Load Date Container';
+$_lang['migxcal.hide_published'] = 'Hide Published';
+$_lang['migxcal.show_unpublished'] = 'Show Unpublished';
+$_lang['migxcal.date_containers'] = 'Date Containers';
 
 
 

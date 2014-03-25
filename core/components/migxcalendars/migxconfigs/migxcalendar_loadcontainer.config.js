@@ -44,7 +44,7 @@
     "filtersperrow":4,
     "packageName":"migxcalendars",
     "classname":"migxCalendarEvents",
-    "task":"",
+    "task":"loadcontainer",
     "getlistsort":"",
     "getlistsortdir":"",
     "use_custom_prefix":"0",
@@ -56,20 +56,31 @@
     "join_alias":"",
     "has_jointable":"yes",
     "getlistwhere":"",
-    "joins":"",
+    "joins":[
+      {
+        "alias":"Category"
+      }
+    ],
     "cmpmaincaption":"",
     "cmptabcaption":"",
     "cmptabdescription":"",
     "cmptabcontroller":"",
-    "winbuttons":"",
+    "winbuttons":[
+      {
+        "button":"cancel"
+      },
+      {
+        "button":"migxcalloaddatecontainer"
+      }
+    ],
     "onsubmitsuccess":"",
     "submitparams":""
   },
   "columns":"[]",
   "createdby":8,
   "createdon":"2014-03-21 15:50:59",
-  "editedby":8,
-  "editedon":"2014-03-21 22:30:51",
+  "editedby":1,
+  "editedon":"2014-03-23 18:22:11",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,
