@@ -59,7 +59,11 @@ $_lang['migxcal.load_datecontainer'] = 'Termincontainer laden';
 $_lang['migxcal.hide_published'] = 'Aktive verbergen';
 $_lang['migxcal.show_unpublished'] = 'Inaktive zeigen';
 $_lang['migxcal.date_containers'] = 'Termin Container';
-
-
+$_lang['migxcal.date_container'] = 'Termin Container';
+$_lang['migxcal.date_removed'] = 'Termin wurde entfernt';
+$_lang['migxcal.this_date'] = 'Dieser Termin';
+$_lang['migxcal.delete_date'] = 'Termin löschen';
+$_lang['migxcal.repeatings_start'] = 'Beginn der Wiederholungen';
+$_lang['migxcal.repeatings_end'] = 'Ende der Wiederholungen';
 
 

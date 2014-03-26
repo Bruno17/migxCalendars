@@ -53,6 +53,11 @@ $is_container = $modx->getOption('is_container', $config, false);
 if (is_dir($modelpath)) {
     $modx->addPackage($packageName, $modelpath, $prefix);
 }
+
+if ($modx->lexicon) {
+    $modx->lexicon->load($packageName . ':default');
+}
+
 $classname = $config['classname'];
 $event_classname = 'migxCalendarEvents';
 
@@ -69,6 +74,16 @@ if ($object) {
     if (isset($scriptProperties['data'])) {
         $scriptProperties = array_merge($scriptProperties, $modx->fromJson($scriptProperties['data']));
     }
+    
+    $remove = $modx->getOption('delete_date', $scriptProperties, false);
+    
+    if ($remove){
+        $object->remove();
+        $message = $modx->lexicon('migxcal.date_removed');
+        return;
+        //return $modx->error->success('huhu');    
+    }
+    
     //$startdate = str_replace('T', ' ', $modx->getOption('startdate', $scriptProperties, ''));
     //$enddate = str_replace('T', ' ', $modx->getOption('enddate', $scriptProperties, ''));
     //$allday = $modx->getOption('allday', $scriptProperties, '0');

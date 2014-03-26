@@ -59,6 +59,12 @@ $_lang['migxcal.load_datecontainer'] = 'Load Date Container';
 $_lang['migxcal.hide_published'] = 'Hide Published';
 $_lang['migxcal.show_unpublished'] = 'Show Unpublished';
 $_lang['migxcal.date_containers'] = 'Date Containers';
+$_lang['migxcal.date_container'] = 'Date Container';
+$_lang['migxcal.date_removed'] = 'Date removed';
+$_lang['migxcal.this_date'] = 'This Date';
+$_lang['migxcal.delete_date'] = 'Delete Date';
+$_lang['migxcal.repeatings_start'] = 'Repeatings Start';
+$_lang['migxcal.repeatings_end'] = 'Repeatings End';
 
 
 

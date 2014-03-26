@@ -4,19 +4,20 @@
   "formtabs":[
     {
       "MIGX_id":1,
-      "caption":"Search",
+      "caption":"[[%migxcal.search]]",
       "print_before_tabs":"0",
       "fields":[
         {
           "MIGX_id":1,
           "field":"search",
-          "caption":"Search",
+          "caption":"[[%migxcal.search]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
           "inputTVtype":"migxcalendars_livesearchevent",
           "validation":"",
           "configs":"",
+          "restrictive_condition":"",
           "display":"",
           "sourceFrom":"config",
           "sources":"[]",
@@ -80,7 +81,7 @@
   "createdby":8,
   "createdon":"2014-03-21 15:50:59",
   "editedby":1,
-  "editedon":"2014-03-23 18:22:11",
+  "editedon":"2014-03-26 07:51:12",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

@@ -38,6 +38,9 @@
             if (params.closeonsuccess){
                 UiDialog.hideModal('[[+request.modal_id]]');
             }
+            if (response.message && response.message != ''){
+                alert(response.message);
+            }
             $scope.refresh();
         }).error(function(data, status, header, config) {
             UiDialog.error(data, status, header, config);
