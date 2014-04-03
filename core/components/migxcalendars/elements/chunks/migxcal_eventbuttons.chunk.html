@@ -1,0 +1,19 @@
+    <div class="btn-group event-buttons">
+    [[+published:is=`1`:then=`
+    <button type="button" data-id="[[+id]]" data-action="unpublish" class="btn btn-default event-button btn-sm">
+        <span  class="glyphicon glyphicon-ban-circle"></span> 
+    </button> 
+    `:else=`
+    <button type="button" data-id="[[+id]]" data-action="publish" class="btn btn-default event-button btn-sm">    
+        <span class="glyphicon glyphicon-ok-circle"></span> 
+    </button>         
+    `]]
+    <button type="button" data-eventid="[[+Event_id]]" data-action="loadcontainer" class="btn btn-default event-button btn-sm">
+    <span class="glyphicon glyphicon-open"></span> 
+    </button>     
+    <button type="button" data-id="[[+id]]" data-action="edit" class="btn btn-default event-button btn-sm">
+    <span class="glyphicon glyphicon-pencil"></span> 
+    </button> 
+       
+   
+    </div>

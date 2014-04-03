@@ -67,6 +67,23 @@
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.inherited]]==2||[[%migxcal.yes]]==1||[[%migxcal.no]]==0",
           "default":""
+        },
+        {
+          "MIGX_id":5,
+          "field":"Joined_id",
+          "caption":"",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "restrictive_condition":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"[]",
+          "inputOptionValues":"",
+          "default":""
         }
       ]
     }
@@ -89,7 +106,7 @@
     "filtersperrow":4,
     "packageName":"migxcalendars",
     "classname":"migxCalendarDates",
-    "task":"",
+    "task":"singledates",
     "getlistsort":"startdate",
     "getlistsortdir":"",
     "use_custom_prefix":"0",
@@ -181,8 +198,8 @@
   ],
   "createdby":1,
   "createdon":"2014-02-24 08:24:31",
-  "editedby":8,
-  "editedon":"2014-03-22 07:23:44",
+  "editedby":1,
+  "editedon":"2014-03-30 18:12:02",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

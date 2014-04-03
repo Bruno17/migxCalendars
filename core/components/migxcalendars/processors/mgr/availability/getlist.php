@@ -1,7 +1,5 @@
 <?php
 
-//if (!$modx->hasPermission('quip.thread_list')) return $modx->error->failure($modx->lexicon('access_denied'));
-
 $config = $modx->migx->customconfigs;
 
 $prefix = isset($config['prefix']) && !empty($config['prefix']) ? $config['prefix'] : null;
@@ -15,27 +13,36 @@ if (!empty($config['packageName'])) {
     foreach ($packageNames as $packageName) {
         $packagepath = $modx->getOption('core_path') . 'components/' . $packageName . '/';
         $modelpath = $packagepath . 'model/';
-        if (is_dir($modelpath)){
+        if (is_dir($modelpath)) {
             $modx->addPackage($packageName, $modelpath, $prefix);
-        } 
-        
+        }
+
     }
 }
 
-$classname = 'migxCalendarEvents';
-$object = $modx->newObject($classname);
-
-$params = $modx->fromJson($modx->getOption('reqTempParams',$scriptProperties,''));
-
-$object->fromArray($params);
-
-$object->set('preventsave',1);
-$object->set('id',$object->get('object_id'));
-
-if ($object->save() == false) {
-    $updateerror = true;
-    $errormsg = $modx->lexicon('quip.thread_err_save');
-    return;
+if ($modx->lexicon) {
+    $modx->lexicon->load($packageName . ':default');
 }
 
-$rows = $object->get('createdDates'); 
+$classname = 'migxCalendarDates';
+
+$rows = array();
+
+if (isset($scriptProperties['reqTempParams'])) {
+    $reqTempParams = $modx->fromJson($scriptProperties['reqTempParams']);
+    unset($scriptProperties['reqTempParams']);
+    $scriptProperties = array_merge($scriptProperties,$reqTempParams);
+    $scriptProperties['Event_preventsave'] = 1;
+    $scriptProperties['Event_publish_all_repeatings'] = 1;
+    $scriptProperties['Event_resolve_repeatings'] = true;
+    
+    include (dirname(dirname(__file__)) . '/events/update_events.php');
+}
+
+if (is_object($event_object)){
+    $rows = $event_object->get('createdDates');    
+}
+
+
+
+

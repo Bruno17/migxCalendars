@@ -61,10 +61,10 @@ class migxCalendarDates extends xPDOSimpleObject
                 }
                 if ($dates = $this->activeExists($this->get('startdate'), $this->get('enddate'), $categoryO->get('id'))) {
                     
-                            print_r($this->toArray());
+                            //print_r($this->toArray());
                     
                             foreach ($dates as $date){
-                                print_r($date->toArray());
+                                //print_r($date->toArray());
                             }                    
                     
                     switch ($ondoubleevents) {

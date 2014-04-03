@@ -65,5 +65,9 @@ $_lang['migxcal.this_date'] = 'Dieser Termin';
 $_lang['migxcal.delete_date'] = 'Termin löschen';
 $_lang['migxcal.repeatings_start'] = 'Beginn der Wiederholungen';
 $_lang['migxcal.repeatings_end'] = 'Ende der Wiederholungen';
+$_lang['migxcal.recall_datecontainer'] = 'Termincontainer wiederherstellen';
+$_lang['migxcal.delete_datecontainer'] = 'Termincontainer in den Papierkorb';
+$_lang['migxcal.remove_date'] = 'Termin löschen';
+$_lang['migxcal.remove_datecontainer'] = 'Termincontainer löschen';
 
 

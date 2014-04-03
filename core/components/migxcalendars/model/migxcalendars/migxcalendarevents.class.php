@@ -31,6 +31,13 @@ class migxCalendarEvents extends xPDOSimpleObject {
         if (is_object($this->xpdo->user)) {
             $this->set('editedby', $this->xpdo->user->get('id'));
         }
+        
+        if ($this->isNew()){
+            $this->set('createdon', strftime('%Y-%m-%d %H:%M:%S'));
+            if (is_object($this->xpdo->user)) {
+                $this->set('createdby', $this->xpdo->user->get('id'));
+            }                
+        }
 
         if (!$preventsave) {
             $result = parent::save($cacheFlag);
@@ -54,8 +61,8 @@ class migxCalendarEvents extends xPDOSimpleObject {
 
         //handle enddate
         if ($date_enddate <= $date_startdate) {
-            $time = strftime('%H:%M:%S', strtotime($enddate));
-            $date_enddate = strftime('%Y-%m-%d ', strtotime($startdate)) . $time;
+            $time = strftime('%H:%M:%S', strtotime($date_enddate));
+            $date_enddate = strftime('%Y-%m-%d ', strtotime($date_startdate)) . $time;
             if ($date_enddate <= $date_startdate) {
                 $date_enddate = $date_startdate;
             }
@@ -72,7 +79,8 @@ class migxCalendarEvents extends xPDOSimpleObject {
         $old_repeatend = $this->xpdo->getOption('repeatenddate', $event_array, '');
         $old_repeating = $this->xpdo->getOption('repeating', $event_array, '');
 
-        $resolve_repeatings = false;
+        $resolve_repeatings = $this->get('resolve_repeatings');
+        $resolve_repeatings =  !empty($resolve_repeatings) ? true : false ;
 
 
         if ($repeatenddate != $old_repeatend) {
@@ -94,11 +102,14 @@ class migxCalendarEvents extends xPDOSimpleObject {
         if ($date_enddate != $old_enddate) {
             $resolve_repeatings = true;
         }
+        if (!empty($repeating)){
+            $resolve_repeatings = true;
+        }
 
         $classname = 'migxCalendarDates';
         //$values = $this->toArray();
 
-        if ($resolve_repeatings && $repeatenddate > $startdate && !empty($repeating)) {
+        if ($resolve_repeatings && $repeatenddate > $startdate ) {
             //remove dates out of range
             /*
             if (!$preventsave) {
@@ -183,7 +194,10 @@ class migxCalendarEvents extends xPDOSimpleObject {
             }
 
             //create or modify current date
-            $this->createDate($classname, $date_startdate, $date_enddate, 'single', '', 0, $date_id, $scriptProperties);
+            if (!empty($date_startdate)){
+                $this->createDate($classname, $date_startdate, $date_enddate, 'single', '', 0, $date_id, $scriptProperties);
+            }
+            
 
         }
 
@@ -207,7 +221,6 @@ class migxCalendarEvents extends xPDOSimpleObject {
         if ($child) {
             //child-event exists allready, modify it
             $values['published'] = $child->get('published');
-
         } else {
             $child = $this->xpdo->newObject($classname);
         }
@@ -222,6 +235,10 @@ class migxCalendarEvents extends xPDOSimpleObject {
                     $child->fromArray($values);
                 }
             }
+            $publish_all = $this->get('publish_all_repeatings');
+            if (!empty($publish_all)){
+                $child->set('published','1');    
+            }            
             $child->set('event_id', $parent);
             $child->set('type', $type);
             $child->set('startdate', $eventstart);
