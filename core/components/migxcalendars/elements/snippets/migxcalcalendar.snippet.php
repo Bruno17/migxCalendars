@@ -1,10 +1,15 @@
 $lang = $modx->getOption('lang',$scriptProperties,$modx->getOption('cultureKey'));
 $editable = $modx->getOption('editable',$scriptProperties,'false');
+$aspectRatio = (float) $modx->getOption('aspectRatio',$scriptProperties,'0.4');
+$minTime = $modx->getOption('minTime',$scriptProperties,'6:00');
+$defaultView = $modx->getOption('defaultView',$scriptProperties,'agendaWeek');
+
 $ajax_id = $modx->getOption('ajax_id',$scriptProperties,$modx->getOption('migxcalendar.ajax_id'));
 $ajax_url = $modx->makeUrl($ajax_id);
 
 $load_jquery = $modx->getOption('load_jquery',$scriptProperties,'1');
 $load_jqueryui = $modx->getOption('load_jqueryui',$scriptProperties,'1');
+$load_bootstrap = $modx->getOption('load_bootstrap',$scriptProperties,'1');
 $packageName = $modx->getOption('packageName',$scriptProperties,'migxcalendars');
 
 $params = $_REQUEST;
@@ -17,6 +22,7 @@ if (!empty($date)){
 }
 
 $extraOptionsTpl = $modx->getOption('extraOptionsTpl',$scriptProperties,'');
+
 $extraOptions = !empty($extraOptionsTpl) ? ',' . $modx->getChunk($extraOptionsTpl) : '';
 
 if ($modx->lexicon) {
@@ -38,6 +44,9 @@ $script = "
 			{$defaultDate}
 			lang: '{$lang}',
             editable: {$editable},
+            aspectRatio: {$aspectRatio},
+            minTime: '{$minTime}',
+            defaultView:'{$defaultView}',
 			events: {
 				url: '{$ajax_url}',
                 data: function() {
@@ -81,6 +90,13 @@ if (!empty($load_jquery)){
 if (!empty($load_jquery)){
     $modx->regClientScript('assets/components/migxcalendars/js/lib/jquery-ui.custom.min.js');
 }
+
+if (!empty($load_bootstrap)){
+    $modx->regClientScript('assets/components/migxangular/bootstrap-3.0.0/js/bootstrap.min.js');
+    $modx->regClientCSS('assets/components/migxangular/bootstrap-3.0.0/css/bootstrap.custom.css');
+}
+
+
 $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/fullcalendar.min.js');
 $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/lang/de.js');
 $modx->regClientHTMLBlock($script);

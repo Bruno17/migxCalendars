@@ -69,6 +69,8 @@ $_lang['migxcal.recall_datecontainer'] = 'Recall Datecontainer';
 $_lang['migxcal.delete_datecontainer'] = 'Datecontainer to thrash';
 $_lang['migxcal.remove_date'] = 'Remove Date';
 $_lang['migxcal.remove_datecontainer'] = 'Remove Datecontainer';
+$_lang['migxcal.description'] = 'Description';
+$_lang['migxcal.content'] = 'Content';
 
 
 

@@ -1,0 +1,8 @@
+    eventRender: function(event, element) {
+        
+        element.on('click', function(){
+            $('#event-detail-title').html(event.title);
+            $('#event-detail-body').html(event.modalBody);
+            $('#event-detail').modal('show');
+        });
+    }   

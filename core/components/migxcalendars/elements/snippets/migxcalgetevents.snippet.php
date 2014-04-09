@@ -20,17 +20,22 @@ if (!isset($_GET['start']) || !isset($_GET['end'])) {
     //die("Please provide a date range.");
 }
 
-$eventbuttonsTpl=$modx->getOption('eventbuttonsTpl',$scriptProperties,'migxcal_eventbuttons');
+$eventbuttonsTpl = $modx->getOption('eventbuttonsTpl', $scriptProperties, 'migxcal_eventbuttons');
+$modalBodyTpl = $modx->getOption('modalBodyTpl', $scriptProperties, 'migxcal_modalBodyTpl');
 
 $scriptProperties['packageName'] = 'migxcalendars';
 $scriptProperties['classname'] = 'migxCalendarDates';
 $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
-$scriptProperties['selectfields'] = 'id,startdate,enddate,title,allday,published';
-$scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday,repeating"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
+$scriptProperties['selectfields'] = 'id,startdate,enddate,title,allday,published,description';
+$scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday,repeating,description"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
 
 // Parse the start/end parameters.
 // These are assumed to be ISO8601 strings with no time nor timezone, like "2013-12-29".
 // Since no timezone will be present, they will parsed as UTC.
+
+if ($modx->lexicon) {
+    $modx->lexicon->load($scriptProperties['packageName'] . ':default');
+}
 
 $start = $modx->getOption('start', $_GET, '');
 $end = $modx->getOption('end', $_GET, '');
@@ -89,7 +94,7 @@ foreach ($input_arrays as $array) {
 
     $array['start'] = $array['startdate'];
     $array['end'] = $array['enddate'];
-    
+
     if (isset($array['Event_allday']) && isset($array['allday']) && $array['allday'] == '2') {
         //inherit
         $array['allDay'] = $array['Event_allday'];
@@ -109,9 +114,13 @@ foreach ($input_arrays as $array) {
         $array['textColor'] = $array['Category_textColor'];
     }
 
-    $array['popupmenu'] = $modx->getChunk($eventbuttonsTpl,$array);
+    $array['popupmenu'] = $modx->getChunk($eventbuttonsTpl, $array);
     $wd = date('D', strtotime($array['startdate']));
     
+    if (!empty($modalBodyTpl)){
+        $array['modalBody'] = $modx->getChunk($modalBodyTpl, $array);     
+    }
+
     $array['popup_placement'] = $wd == 'Sun' ? 'left' : 'right';
 
     // Convert the input array into a useful Event object

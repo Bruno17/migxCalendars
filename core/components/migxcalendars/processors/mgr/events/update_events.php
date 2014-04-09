@@ -8,7 +8,6 @@ if (isset($scriptProperties['object_id']) && is_numeric($scriptProperties['objec
 } else {
     //otherwise create a new one
     $object = $modx->newObject($classname);
-    echo 'huhu';
 }
 
 

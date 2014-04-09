@@ -69,5 +69,7 @@ $_lang['migxcal.recall_datecontainer'] = 'Termincontainer wiederherstellen';
 $_lang['migxcal.delete_datecontainer'] = 'Termincontainer in den Papierkorb';
 $_lang['migxcal.remove_date'] = 'Termin löschen';
 $_lang['migxcal.remove_datecontainer'] = 'Termincontainer löschen';
+$_lang['migxcal.description'] = 'Beschreibung';
+$_lang['migxcal.content'] = 'Inhalt';
 
 
