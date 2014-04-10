@@ -5,4 +5,8 @@
             $('#event-detail-body').html(event.modalBody);
             $('#event-detail').modal('show');
         });
-    }   
+    },
+    viewRender: function(view, element) {
+        migxcal_history(view,element,'[[+currentUrl]]');
+    }
+       
