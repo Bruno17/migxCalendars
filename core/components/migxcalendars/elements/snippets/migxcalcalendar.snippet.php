@@ -161,7 +161,7 @@ $modx->regClientCSS('assets/components/migxcalendars/css/style.css');
 if (!empty($load_fullcalendar)) {
     $modx->regClientScript('assets/components/migxcalendars/js/lib/moment.min.js');
     $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/fullcalendar.min.js');
-    $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/lang/de.js');
+    $modx->regClientScript('assets/components/migxcalendars/js/fullcalendar/lang/' . $lang . '.js');
     $modx->regClientHTMLBlock($script);
 }
 $modx->regClientScript('assets/components/migxcalendars/js/history/history.min.js');

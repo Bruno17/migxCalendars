@@ -87,7 +87,7 @@ class migxCalendarEvents extends xPDOSimpleObject {
             $resolve_repeatings = true;
         }
         if ($startdate != $old_repeatstart) {
-            $resolve_repeatings = true;
+             $resolve_repeatings = true;
         }
         if ($repeating != $old_repeating) {
             $resolve_repeatings = true;
@@ -102,14 +102,15 @@ class migxCalendarEvents extends xPDOSimpleObject {
         if ($date_enddate != $old_enddate) {
             $resolve_repeatings = true;
         }
-        if (!empty($repeating)){
-            $resolve_repeatings = true;
+        if (empty($repeating)){
+            $resolve_repeatings = false;
         }
-
+        
         $classname = 'migxCalendarDates';
         //$values = $this->toArray();
 
         if ($resolve_repeatings && $repeatenddate > $startdate ) {
+            
             //remove dates out of range
             /*
             if (!$preventsave) {

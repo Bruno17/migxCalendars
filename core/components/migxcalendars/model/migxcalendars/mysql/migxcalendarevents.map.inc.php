@@ -14,9 +14,7 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'link' => '',
     'linkrel' => '',
     'linktarget' => '',
-    'location_name' => '',
-    'location_address' => '',
-    'map' => 0,
+    'location_id' => NULL,
     'allday' => 0,
     'startdate' => NULL,
     'enddate' => NULL,
@@ -41,6 +39,9 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'deletedon' => NULL,
     'deletedby' => 0,
     'parent' => 0,
+    'images' => '',
+    'videos' => '',
+    'extended' => '',
   ),
   'fieldMeta' => 
   array (
@@ -106,29 +107,13 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'null' => false,
       'default' => '',
     ),
-    'location_name' => 
+    'location_id' => 
     array (
-      'dbtype' => 'varchar',
-      'precision' => '255',
+      'dbtype' => 'int',
+      'precision' => '10',
       'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'location_address' => 
-    array (
-      'dbtype' => 'text',
-      'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'map' => 
-    array (
-      'dbtype' => 'tinyint',
-      'precision' => '1',
-      'attributes' => 'unsigned',
-      'phptype' => 'integer',
-      'null' => false,
-      'default' => 0,
+      'null' => true,
+      'index' => 'index',
     ),
     'allday' => 
     array (
@@ -312,6 +297,27 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'null' => false,
       'default' => 0,
     ),
+    'images' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'videos' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'extended' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
   ),
   'composites' => 
   array (
@@ -342,6 +348,30 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'local' => 'id',
       'foreign' => 'event_id',
       'cardinality' => 'many',
+    ),
+    'People' => 
+    array (
+      'class' => 'migxCalendarEventPeople',
+      'local' => 'id',
+      'foreign' => 'event_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
+    'Images' => 
+    array (
+      'class' => 'migxCalendarEventImages',
+      'local' => 'id',
+      'foreign' => 'date_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
+    'Videos' => 
+    array (
+      'class' => 'migxCalendarEventVideos',
+      'local' => 'id',
+      'foreign' => 'date_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
     ),
   ),
   'aggregates' => 

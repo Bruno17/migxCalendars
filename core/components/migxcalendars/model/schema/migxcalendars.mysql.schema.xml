@@ -9,9 +9,9 @@
 	    <field key="link" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
 	    <field key="linkrel" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
 	    <field key="linktarget" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
-	    <field key="location_name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
-        <field key="location_address" dbtype="text" phptype="string" null="false" default=""/>
-	    <field key="map" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+
+        <field key="location_id" dbtype="int" precision="10" phptype="string" null="true" index="index"/>
+
 	    <field key="allday" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
         <field key="startdate" dbtype="datetime" phptype="datetime" null="true" />
 	    <field key="enddate" dbtype="datetime" phptype="datetime" null="true" />
@@ -40,6 +40,10 @@
 		<field key="deletedby" dbtype="int" precision="10" phptype="integer" null="false" default="0" />        
         
         <field key="parent" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        
+        <field key="images" dbtype="text" phptype="string" null="false" default="" />
+        <field key="videos" dbtype="text" phptype="string" null="false" default="" />
+        <field key="extended" dbtype="text" phptype="string" null="false" default="" />
          
 	    <composite alias="images" class="migxCalendarEventImages" local="id" foreign="event_id" cardinality="many"/>
         <composite alias="videos" class="migxCalendarEventVideos" local="id" foreign="event_id" cardinality="many"/>
@@ -54,6 +58,9 @@
         <aggregate alias="Parent" class="migxCalendarEvents" local="parent" foreign="id" cardinality="one" owner="foreign" />
         <aggregate alias="Category" class="migxCalendarCategories" local="categoryid" foreign="id" cardinality="one" owner="foreign" />
         <composite alias="Dates" class="migxCalendarDates" local="id" foreign="event_id" cardinality="many"/>
+        <composite alias="People" class="migxCalendarEventPeople" local="id" foreign="event_id" cardinality="many" owner="local"/>
+        <composite alias="Images" class="migxCalendarEventImages" local="id" foreign="date_id" cardinality="many" owner="local"/>
+        <composite alias="Videos" class="migxCalendarEventVideos" local="id" foreign="date_id" cardinality="many" owner="local"/>
     </object>
     
     <object class="migxCalendarDates" table="migxcalendars_dates" extends="xPDOSimpleObject">
@@ -72,26 +79,94 @@
 	    <field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
 	    <field key="createdby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
 	    <field key="editedon" dbtype="datetime" phptype="datetime" null="true" />
-	    <field key="editedby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />        
+	    <field key="editedby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />  
+        
+        <field key="images" dbtype="text" phptype="string" null="false" default="" />
+        <field key="videos" dbtype="text" phptype="string" null="false" default="" />
+        <field key="extended" dbtype="text" phptype="string" null="false" default="" />              
 
         <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
+        <composite alias="People" class="migxCalendarEventPeople" local="id" foreign="date_id" cardinality="many" owner="local"/>
+        <composite alias="Images" class="migxCalendarEventImages" local="id" foreign="date_id" cardinality="many" owner="local"/>
+        <composite alias="Videos" class="migxCalendarEventVideos" local="id" foreign="date_id" cardinality="many" owner="local"/>
     </object>    
     
     <object class="migxCalendarEventImages" table="migxcalendars_events_images" extends="xPDOSimpleObject">
         <field key="event_id" dbtype="int" precision="20" phptype="integer" null="false" />
+        <field key="date_id" dbtype="int" precision="20" phptype="integer" null="false" />
         <field key="filepath" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
         <field key="title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
-        <field key="description" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <field key="description" dbtype="text" phptype="string" null="false" default=""/>        
         <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+        <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Date" class="migxCalendarDates" local="date_id" foreign="id" cardinality="one" owner="foreign" />
     </object>
     
     <object class="migxCalendarEventVideos" table="migxcalendars_events_videos" extends="xPDOSimpleObject">
         <field key="event_id" dbtype="int" precision="20" phptype="integer" null="false" />
+        <field key="date_id" dbtype="int" precision="20" phptype="integer" null="false" />        
         <field key="video" dbtype="text" phptype="string" null="false" default="" />
         <field key="title" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
-        <field key="description" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <field key="description" dbtype="text" phptype="string" null="false" default=""/>        
         <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
-    </object>    
+        <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Date" class="migxCalendarDates" local="date_id" foreign="id" cardinality="one" owner="foreign" />
+    </object>     
+    
+    <object class="migxCalendarEventPeople" table="migxcalendars_events_people" extends="xPDOSimpleObject">
+        <field key="event_id" dbtype="int" precision="20" phptype="integer" null="false" />
+        <field key="date_id" dbtype="int" precision="20" phptype="integer" null="false" />        
+        <field key="user_id" dbtype="int" precision="20" phptype="integer" null="false" />   
+        <field key="role_id" dbtype="int" precision="20" phptype="integer" null="false" />   
+        <field key="group_id" dbtype="int" precision="20" phptype="integer" null="false" />   
+        <field key="fullname" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="email" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="phone" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="mobilephone" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="dob" dbtype="int" precision="10" phptype="integer" null="false" default="0" />
+        <field key="gender" dbtype="int" precision="1" phptype="integer" null="false" default="0" />
+        <field key="address" dbtype="text" phptype="string" null="false" default="" />
+        <field key="country" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <field key="city" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <field key="state" dbtype="varchar" precision="25" phptype="string" null="false" default="" />
+        <field key="zip" dbtype="varchar" precision="25" phptype="string" null="false" default="" />
+        <field key="fax" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+        <field key="photo" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="User" class="modUser" local="user_id" foreign="id" cardinality="one" owner="foreign"/>
+        <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Date" class="migxCalendarDates" local="date_id" foreign="id" cardinality="one" owner="foreign" />        
+    </object> 
+    
+    <object class="migxCalendarPeopleRole" table="migxcalendars_people_roles" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" index="index" />
+        <field key="description" dbtype="mediumtext" phptype="string" />
+    </object>
+    
+    <object class="migxCalendarEventPeopleGroup" table="migxcalendars_event_peoplegroups" extends="xPDOSimpleObject">
+        <field key="event_id" dbtype="int" precision="20" phptype="integer" null="false" />
+        <field key="date_id" dbtype="int" precision="20" phptype="integer" null="false" />     
+        <field key="owner_id" dbtype="int" precision="20" phptype="integer" null="false" />
+        <field key="total_people" dbtype="int" precision="10" phptype="integer" null="false" />
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" index="index" />
+        <field key="description" dbtype="mediumtext" phptype="string" />
+        <aggregate alias="Owner" class="modUser" local="owner_id" foreign="id" cardinality="one" owner="foreign"/>
+        <composite alias="People" class="migxCalendarEventPeople" local="id" foreign="group_id" cardinality="many" owner="local"/>
+        <aggregate alias="Event" class="migxCalendarEvents" local="event_id" foreign="id" cardinality="one" owner="foreign" />
+        <aggregate alias="Date" class="migxCalendarDates" local="date_id" foreign="id" cardinality="one" owner="foreign" />        
+    </object>                
+    
+    <object class="migxCalendarLocation" table="migxcalendars_locations" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="description" dbtype="text" phptype="string" null="false" default=""/> 
+        <field key="address" dbtype="text" phptype="string" null="false" default="" />
+        <field key="country" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <field key="city" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+        <field key="state" dbtype="varchar" precision="25" phptype="string" null="false" default="" />
+        <field key="zip" dbtype="varchar" precision="25" phptype="string" null="false" default="" />
+        <field key="latitude" dbtype="varchar" precision="25" phptype="string" null="false" default="" />
+        <field key="longitude" dbtype="varchar" precision="25" phptype="string" null="false" default="" />
+    </object>       
 
     <object class="migxCalendarEventWUG" table="migxcalendars_wug" extends="xPDOSimpleObject">
         <field key="eventid" dbtype="int" precision="20" phptype="integer" null="false"/>

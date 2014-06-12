@@ -7,6 +7,7 @@ $xpdo_meta_map['migxCalendarEventImages']= array (
   'fields' => 
   array (
     'event_id' => NULL,
+    'date_id' => NULL,
     'filepath' => '',
     'title' => '',
     'description' => '',
@@ -15,6 +16,13 @@ $xpdo_meta_map['migxCalendarEventImages']= array (
   'fieldMeta' => 
   array (
     'event_id' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '20',
+      'phptype' => 'integer',
+      'null' => false,
+    ),
+    'date_id' => 
     array (
       'dbtype' => 'int',
       'precision' => '20',
@@ -39,8 +47,7 @@ $xpdo_meta_map['migxCalendarEventImages']= array (
     ),
     'description' => 
     array (
-      'dbtype' => 'varchar',
-      'precision' => '255',
+      'dbtype' => 'text',
       'phptype' => 'string',
       'null' => false,
       'default' => '',
@@ -53,6 +60,25 @@ $xpdo_meta_map['migxCalendarEventImages']= array (
       'phptype' => 'integer',
       'null' => false,
       'default' => 1,
+    ),
+  ),
+  'aggregates' => 
+  array (
+    'Event' => 
+    array (
+      'class' => 'migxCalendarEvents',
+      'local' => 'event_id',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
+    ),
+    'Date' => 
+    array (
+      'class' => 'migxCalendarDates',
+      'local' => 'date_id',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
     ),
   ),
 );

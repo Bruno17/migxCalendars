@@ -22,6 +22,9 @@ $xpdo_meta_map['migxCalendarDates']= array (
     'createdby' => 0,
     'editedon' => NULL,
     'editedby' => 0,
+    'images' => '',
+    'videos' => '',
+    'extended' => '',
   ),
   'fieldMeta' => 
   array (
@@ -154,6 +157,54 @@ $xpdo_meta_map['migxCalendarDates']= array (
       'phptype' => 'integer',
       'null' => false,
       'default' => 0,
+    ),
+    'images' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'videos' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+    'extended' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
+  ),
+  'composites' => 
+  array (
+    'People' => 
+    array (
+      'class' => 'migxCalendarEventPeople',
+      'local' => 'id',
+      'foreign' => 'date_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
+    'Images' => 
+    array (
+      'class' => 'migxCalendarEventImages',
+      'local' => 'id',
+      'foreign' => 'date_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
+    ),
+    'Videos' => 
+    array (
+      'class' => 'migxCalendarEventVideos',
+      'local' => 'id',
+      'foreign' => 'date_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
     ),
   ),
   'aggregates' => 

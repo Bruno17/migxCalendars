@@ -22,12 +22,14 @@ if (!isset($_GET['start']) || !isset($_GET['end'])) {
 
 $eventbuttonsTpl = $modx->getOption('eventbuttonsTpl', $scriptProperties, 'migxcal_eventbuttons');
 $modalBodyTpl = $modx->getOption('modalBodyTpl', $scriptProperties, 'migxcal_modalBodyTpl');
+$detail_id = $modx->getOption('detail_id', $scriptProperties, '');
 
 $scriptProperties['packageName'] = 'migxcalendars';
 $scriptProperties['classname'] = 'migxCalendarDates';
 $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
-$scriptProperties['selectfields'] = 'id,startdate,enddate,title,allday,published,description';
-$scriptProperties['joins'] = '[{"alias":"Event","selectfields":"id,title,allday,repeating,description"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
+$scriptProperties['selectfields'] = $modx->getOption('datefields', $scriptProperties, 'id,startdate,enddate,title,allday,published,description');
+$joins = '[{"alias":"Event","selectfields":"id,title,allday,repeating,description"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
+$scriptProperties['joins'] = $modx->getOption('joins',$scriptProperties,$joins);
 
 // Parse the start/end parameters.
 // These are assumed to be ISO8601 strings with no time nor timezone, like "2013-12-29".
@@ -94,6 +96,8 @@ foreach ($input_arrays as $array) {
 
     $array['start'] = $array['startdate'];
     $array['end'] = $array['enddate'];
+    
+    $array['detail_id'] = $detail_id;
 
     if (isset($array['Event_allday']) && isset($array['allday']) && $array['allday'] == '2') {
         //inherit
