@@ -1,3 +1,4 @@
+<?php
 $dateVarKey = $modx->getOption('dateVarKey', $scriptProperties, 'date_id');
 $date_id = $modx->getOption($dateVarKey, $_REQUEST, 0);
 
