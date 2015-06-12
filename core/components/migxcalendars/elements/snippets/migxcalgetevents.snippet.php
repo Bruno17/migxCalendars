@@ -1,4 +1,3 @@
-<?php
 /**
  * @author Bruno Perner
  * @copyright 2014

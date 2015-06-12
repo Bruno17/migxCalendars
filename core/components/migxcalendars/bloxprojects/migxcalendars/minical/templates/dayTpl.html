@@ -1,0 +1,19 @@
+<td>
+<div data-title="Termine am [[+tsday:date=`%d.%m.%Y`]]" [[+tsday:is=`[[+blox.config.nowtimestamp:date_mod=`tsday`]]`:then=`style="background-color:#ffe4e4"`]] [[+tsday:isnot=`dayisempty`:then=`id="day[[+tsday:date=`%d`]]"`]] class="monthday [[+innercounts.datarow:gt=`0`:then=`hasevents`]]">
+[[+tsday:isnot=`dayisempty`:then=`
+[[+innercounts.datarow:gt=`0`:then=`
+<a href="[[+link_tsday]]">[[+tsday:date=`%d`]]</a>
+`:else=`
+[[+tsday:date=`%d`]]
+`]]
+`]]
+</div>
+[[+innercounts.datarow:gt=`0`:then=`
+<div style="display:none" id="day[[+tsday:date=`%d`]]_smarthbox" class="daydatas">    
+<ul>
+[[+innerrows.datarow]]
+</ul>
+</div>
+`]]
+
+</td>

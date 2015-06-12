@@ -1,0 +1,50 @@
+[[+blox.config.custom.showMinical:isnot=`0`:then=`
+<div id="minical" >
+<div class="kalender" >
+[[+innerrows.month]]
+</div>
+</div>
+`]]
+
+[[+blox.config.custom.showQuicklinks:isnot=`0`:then=`
+
+<ul class="quicklinks">
+<li class="[[+listmode:is=`dayevents`:then=`active`]]"><a href="[[+link_today]]">Heute</a></li>
+<li class="[[+listmode:is=`weekevents`:then=`active`]]"><a href="[[+link_thisweek]]">Diese Woche</a></li>
+<li class="[[+listmode:is=`monthevents`:then=`active`]]"><a href="[[+link_thismonth]]">Diesen Monat</a></li>
+<li class="[[+listmode:is=`upcoming`:then=`active`]]"><a href="[[+link_upcoming]]">Kommende Events</a></li>
+</ul>
+`]]
+
+[[+blox.config.custom.showCategories:isnot=`0`:then=`
+<div class="categories">
+<ul>
+[[+innerrows.category]]
+</ul>
+</div>
+`]]
+
+[[+blox.config.custom.showEventlist:isnot=`0`:then=`
+<div id="eventlist" class="daydatas">
+[[+listmode:is=`upcoming`:then=`
+<h3>Kommende Termine:</h3>
+`]]
+[[+listmode:is=`weekevents`:then=`
+<h3>Diese Woche:</h3>
+`]]
+[[+listmode:is=`dayevents`:then=`
+<h3>Termine am [[+tseventlist:date_ger=`%d.%m.%Y`]]:</h3>
+`]]    
+[[+listmode:is=`monthevents`:then=`
+<h3>Termine im [[+tseventlist:date_mod=`monthname`]] [[+tseventlist:date_ger=`%Y`]]:</h3>
+`]]    
+[[+innercounts.eventlist:gt=`0`:then=`
+<ul>
+[[+innerrows.eventlist]]
+</ul>
+`:else=`<p>keine Termine in diesem Zeitraum</p>`]]
+<div class="ldb_pagination">[[+pagination]]</div>
+</div>
+`]]
+
+<div class="clear"></div>

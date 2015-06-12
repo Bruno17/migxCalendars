@@ -3,12 +3,12 @@
   "name":"migxcalendar_singledates",
   "formtabs":[
     {
-      "MIGX_id":82,
+      "MIGX_id":1,
       "caption":"[[%migxcal.event]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":372,
+          "MIGX_id":1,
           "field":"title",
           "caption":"[[%migxcal.title]]",
           "description":"",
@@ -20,11 +20,10 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":"",
-          "pos":1
+          "default":""
         },
         {
-          "MIGX_id":373,
+          "MIGX_id":2,
           "field":"startdate",
           "caption":"[[%migxcal.start]]",
           "description":"",
@@ -36,11 +35,10 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":"",
-          "pos":2
+          "default":""
         },
         {
-          "MIGX_id":374,
+          "MIGX_id":3,
           "field":"enddate",
           "caption":"[[%migxcal.end]]",
           "description":"",
@@ -52,11 +50,10 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":"",
-          "pos":3
+          "default":""
         },
         {
-          "MIGX_id":375,
+          "MIGX_id":4,
           "field":"allday",
           "caption":"[[%migxcal.allday]]",
           "description":"",
@@ -69,11 +66,10 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.inherited]]==2||[[%migxcal.yes]]==1||[[%migxcal.no]]==0",
-          "default":"",
-          "pos":4
+          "default":""
         },
         {
-          "MIGX_id":376,
+          "MIGX_id":5,
           "field":"Joined_id",
           "caption":"",
           "description":"",
@@ -87,50 +83,23 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":"",
-          "pos":5
-        },
-        {
-          "MIGX_id":377,
-          "field":"categoryid",
-          "caption":"[[%migxcal.category]]",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"listbox",
-          "validation":"",
-          "configs":"",
-          "restrictive_condition":"",
-          "display":"",
-          "sourceFrom":"config",
-          "sources":"",
-          "inputOptionValues":"@EVAL return 'Select Category!==||' . $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
-          "default":"",
-          "useDefaultIfEmpty":"0",
-          "pos":6
+          "default":""
         }
-      ],
-      "pos":1
+      ]
     }
   ],
   "contextmenus":"remove",
   "actionbuttons":"addItem",
   "columnbuttons":"update",
-  "filters":"",
+  "filters":"[]",
   "extended":{
     "migx_add":"Add Date",
-    "disable_add_item":"",
-    "add_items_directly":"",
     "formcaption":"",
     "update_win_title":"",
     "win_id":"migxcalendar_singledates",
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
-    "multiple_formtabs_label":"",
-    "multiple_formtabs_field":"",
-    "multiple_formtabs_optionstext":"",
-    "multiple_formtabs_optionsvalue":"",
     "actionbuttonsperrow":4,
     "winbuttonslist":"",
     "extrahandlers":"this.publishObject||this.unpublishObject",
@@ -140,8 +109,6 @@
     "task":"singledates",
     "getlistsort":"startdate",
     "getlistsortdir":"",
-    "sortconfig":"",
-    "gridpagesize":"",
     "use_custom_prefix":"0",
     "prefix":"",
     "grid":"",
@@ -232,7 +199,7 @@
   "createdby":1,
   "createdon":"2014-02-24 08:24:31",
   "editedby":1,
-  "editedon":"2014-11-17 16:29:45",
+  "editedon":"2014-03-30 18:12:02",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

@@ -22,7 +22,6 @@ $xpdo_meta_map['migxCalendarDates']= array (
     'createdby' => 0,
     'editedon' => NULL,
     'editedby' => 0,
-    'categoryid' => NULL,
     'images' => '',
     'videos' => '',
     'extended' => '',
@@ -159,14 +158,6 @@ $xpdo_meta_map['migxCalendarDates']= array (
       'null' => false,
       'default' => 0,
     ),
-    'categoryid' => 
-    array (
-      'dbtype' => 'varchar',
-      'precision' => '10',
-      'phptype' => 'string',
-      'null' => true,
-      'index' => 'index',
-    ),
     'images' => 
     array (
       'dbtype' => 'text',
@@ -222,14 +213,6 @@ $xpdo_meta_map['migxCalendarDates']= array (
     array (
       'class' => 'migxCalendarEvents',
       'local' => 'event_id',
-      'foreign' => 'id',
-      'cardinality' => 'one',
-      'owner' => 'foreign',
-    ),
-    'Category' => 
-    array (
-      'class' => 'migxCalendarCategories',
-      'local' => 'categoryid',
       'foreign' => 'id',
       'cardinality' => 'one',
       'owner' => 'foreign',

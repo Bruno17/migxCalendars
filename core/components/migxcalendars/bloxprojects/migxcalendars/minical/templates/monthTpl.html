@@ -1,0 +1,45 @@
+<table class="month"><tbody>
+<tr class="calnavi">
+<th>
+<a class="left" href="[[+link_prevyear]]&sync_list=1"
+title="[[+tsmonth:date_mod=`year:-1_year`]]">
+&laquo;</a> 
+</th>
+<th>
+<a class="left" href="[[+link_prevmonth]]&sync_list=1"
+title="[[+tsmonth:date_mod=`monthname:-1_month`]]
+[[+tsmonth:date_mod=`year:-1_month`]]">
+&lsaquo;</a> 
+</th>
+<th id="monthtitle" colspan="3" style="vertical-align:middle">
+[[+innercounts.monthevents:gt=`0`:then=`
+<a href="[[+link_tsmonth]]">[[+tsmonth:date_mod=`monthname`]] [[+tsmonth:date_mod=`year`]]</a>	
+`:else=`
+[[+tsmonth:date_mod=`monthname`]] [[+tsmonth:date_mod=`year`]]
+`]]
+</th>
+<th>
+<a class="right" href="[[+link_nextmonth]]&sync_list=1"
+title="[[+tsmonth:date_mod=`monthname:+1_month`]]
+[[+tsmonth:date_mod=`year:+1_month`]]">
+&rsaquo;</a> 
+</th>
+<th>
+<a class="right" href="[[+link_nextyear]]&sync_list=1"
+title="[[+tsmonth:date_mod=`year:+1_year`]]">
+&raquo;</a> 
+</th>
+</tr>
+<tr>
+[[+innerrows.weekdays]]
+</tr>
+[[+innerrows.week]]
+</tbody></table>
+[[+innercounts.monthevents:gt=`0`:then=`
+<div style="display:none" id="monthtitle_smarthbox" class="daydatas">	
+<h3>Termine im [[+tsmonth:date_mod=`monthname`]] [[+tsmonth:date_ger=`%Y`]]:</h3>
+<ul>
+[[+innerrows.monthevents]]
+</ul>
+</div>
+`]]

@@ -79,8 +79,7 @@
 	    <field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
 	    <field key="createdby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
 	    <field key="editedon" dbtype="datetime" phptype="datetime" null="true" />
-	    <field key="editedby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />
-        <field key="categoryid" dbtype="varchar" precision="10" phptype="string" null="true" index="index"/>  
+	    <field key="editedby" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" />  
         
         <field key="images" dbtype="text" phptype="string" null="false" default="" />
         <field key="videos" dbtype="text" phptype="string" null="false" default="" />
@@ -90,7 +89,6 @@
         <composite alias="People" class="migxCalendarEventPeople" local="id" foreign="date_id" cardinality="many" owner="local"/>
         <composite alias="Images" class="migxCalendarEventImages" local="id" foreign="date_id" cardinality="many" owner="local"/>
         <composite alias="Videos" class="migxCalendarEventVideos" local="id" foreign="date_id" cardinality="many" owner="local"/>
-        <aggregate alias="Category" class="migxCalendarCategories" local="categoryid" foreign="id" cardinality="one" owner="foreign" />
     </object>    
     
     <object class="migxCalendarEventImages" table="migxcalendars_events_images" extends="xPDOSimpleObject">

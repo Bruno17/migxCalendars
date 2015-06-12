@@ -1,0 +1,152 @@
+#minical{
+	/*float:left;*/
+	clear:both;
+	display:inline-block;
+	border:1px solid #CCCCCC;
+	margin-left: 125px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#eventlist{
+	float:left;
+	clear:both;
+	display:inline;
+	border:1px solid #CCCCCC;
+	margin-top:5px;
+    white-space:normal;
+    width:100%;	
+}
+#eventlist.daydatas{
+    background:none;
+	
+}
+#eventlist h3{
+	margin-left:5px;
+}
+
+.hasevents{
+	background-color:white;
+}
+
+.daydatas{
+    background-color:white;
+	border:2px solid #888888 ;
+	text-align:left;
+	/*font-size:9px;*/
+	color:black;
+	white-space:nowrap;	
+}
+#minical .daydatas ul,#eventlist ul{
+    margin:5px;
+	list-style:none;
+	padding:0;
+}
+#minical a,#minical a:link,#eventlist a,#eventlist a:link{
+    /*color:blue;*/
+	border:none;
+}
+.monthday{
+	line-height:normal;
+	padding:2px;
+}
+.calnavi th{
+	/*font-size:9px;*/
+	
+}
+.calnavi a{
+	text-decoration:none;
+	
+}
+table.month {
+text-align:center;
+width:300px;
+color:black;
+}
+div.kalender td {
+background-color:#ebebeb;
+/*font-size:9px;*/
+padding:0px;
+vertical-align:top;
+}
+
+#eventlist li {
+	margin-left: 0 !important;
+	margin-bottom:10px;
+	/*border-bottom: #0063b7 1px solid;*/
+	padding: 5px;
+	overflow: hidden;
+}
+
+
+#eventlist .date {
+	width:5.3em;
+	/*height:26px;*/
+	text-align:center;
+	color:#045985;
+	padding:0 8px 10px 0;
+	float:left;
+}
+#eventlist .date p {
+	-moz-border-radius-bottomleft:3px;
+	-moz-border-radius-bottomright:3px;
+	border:1px solid #4d4d4d;
+	padding:0;
+	margin:0;
+	font-size: 1.1em;
+}
+#eventlist .date .month p span {
+	/*font-size:70%;*/
+	display:block;
+	font-size: 0.5em;
+	line-height: 1.2em;
+}
+#eventlist .date .month p {
+	-moz-border-radius-bottomleft:0px;
+	-moz-border-radius-bottomright:0px;
+	-moz-border-radius-topleft:3px;
+	-moz-border-radius-topright:3px;
+	background-color:#0063b7;
+	color:#FFFFFF;
+	font-size:2em;
+	line-height:1em;
+	text-transform:uppercase;
+}
+
+
+/*------------------------ Kategorien -----------------------------*/
+
+.categories li, .quicklinks li {
+	border: 1px solid #0063B7;
+    float: left;
+    height: 25px;
+    list-style: none outside none;
+    margin-left: 0 !important;
+    margin-right: 5px;
+   /* padding: 5px;*/
+    text-align: center;
+    width: 129px;
+	border-radius: 3px;
+}
+
+.categories li a, .quicklinks li a {
+	display:block;
+	line-height: 25px;
+	text-decoration: none;
+}
+
+.categories li a:hover, .quicklinks li a:hover {
+	background-color: #ebebeb;
+}
+
+
+.weekdays td {
+	width: 14%
+}
+	
+#minical .left, #minical .right {
+	font-size: 1.5em;
+}
+
+.quicklinks .active, .categories .active {
+	font-weight: bold;
+}
