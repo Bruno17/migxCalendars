@@ -1,0 +1,10 @@
+<td>
+<div class="minical-date">
+[[+innercounts.datarow:gt=`0`:then=`
+[[+innerrows.datarow]]
+`:else=`
+[[+tsday:isnot=`dayisempty`:then=`[[+tsday:date=`%d`]]`:else=``]]
+`]]
+
+</div>
+</td>

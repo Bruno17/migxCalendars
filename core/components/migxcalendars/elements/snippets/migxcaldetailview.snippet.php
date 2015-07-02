@@ -1,5 +1,6 @@
+<?php
 $dateVarKey = $modx->getOption('dateVarKey', $scriptProperties, 'date_id');
-$date_id = $modx->getOption($dateVarKey, $_REQUEST, 0);
+$date_id = (int) $modx->getOption($dateVarKey, $_REQUEST, 0);
 
 $output = '';
 if (!empty($date_id)) {

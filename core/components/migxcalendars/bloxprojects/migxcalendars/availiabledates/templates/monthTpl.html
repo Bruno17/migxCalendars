@@ -1,0 +1,26 @@
+[[+_first:is=`1`:then=`
+<div class="bignav left">
+<a class="left" href="[[~[[*id]]? &month=`[[+tsmonth:date_mod=`month:-3_month`]]` &year=`[[+tsmonth:date_mod=`year:-3_month`]]`]]"
+title="[[+tsmonth:date_mod=`month:-3_month`]] [[+tsmonth:date_mod=`year:-3_month`]]">
+&lsaquo;</a> 
+</div>
+`]]
+<table class="month">
+<tbody>
+<tr class="calnavi">
+<th id="monthtitle" colspan="7" style="vertical-align:middle">
+[[+tsmonth:date_mod=`monthname`]] [[+tsmonth:date_mod=`year`]] 
+</th>
+</tr>
+<tr>
+[[+innerrows.weekdays]]
+</tr>
+[[+innerrows.week]]
+</tbody></table>
+[[+_last:is=`1`:then=`
+<div class="bignav right">
+<a class="right" href="[[+link_nextmonth]]"
+title="[[+tsmonth:date_mod=`monthname:+1_month`]] [[+tsmonth:date_mod=`year:+1_month`]]">
+&rsaquo;</a> 
+</div>
+`]]

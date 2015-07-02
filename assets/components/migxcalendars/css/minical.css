@@ -45,6 +45,23 @@
     /*color:blue;*/
 	border:none;
 }
+
+.minical-date .booked{
+    background-color: #ff0000;    
+}
+
+.minical-date .booked-start-end{
+    background-color: #ff0000;    
+}
+
+.minical-date .booked-start{
+    background-image: url("img/bg_days.png");
+}
+.minical-date .booked-end{
+    background-image: url("img/bg_days.png");
+    background-position: -24px center;    
+}
+
 .monthday{
 	line-height:normal;
 	padding:2px;
@@ -62,11 +79,28 @@ text-align:center;
 width:300px;
 color:black;
 }
+
 div.kalender td {
 background-color:#ebebeb;
 /*font-size:9px;*/
 padding:0px;
 vertical-align:top;
+}
+
+.calenders-row table.month{
+    float: left;
+}
+
+.bignav {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.bignav a{
+    font-size: 5em !important;
+    text-decoration: none;    
 }
 
 #eventlist li {

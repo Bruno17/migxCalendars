@@ -1,3 +1,4 @@
+<?php
 $lang = $modx->getOption('lang', $scriptProperties, $modx->getOption('cultureKey'));
 $editable = $modx->getOption('editable', $scriptProperties, 'false');
 $aspectRatio = (float)$modx->getOption('aspectRatio', $scriptProperties, '0.4');
