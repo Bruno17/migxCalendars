@@ -46,6 +46,10 @@
 	border:none;
 }
 
+.minical-date {
+    position: relative;
+}
+
 .minical-date .booked{
     background-color: #ff0000;    
 }
@@ -56,10 +60,19 @@
 
 .minical-date .booked-start{
     background-image: url("img/bg_days.png");
+    background-position: 6px center;    
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;  
 }
 .minical-date .booked-end{
     background-image: url("img/bg_days.png");
-    background-position: -24px center;    
+    background-position: -28px center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;    
 }
 
 .monthday{
