@@ -1,12 +1,14 @@
 <?php
-$lang = $modx->getOption('lang', $scriptProperties, $modx->getOption('cultureKey'));
-$editable = $modx->getOption('editable', $scriptProperties, 'false');
-$aspectRatio = (float)$modx->getOption('aspectRatio', $scriptProperties, '0.4');
-$minTime = $modx->getOption('minTime', $scriptProperties, '6:00');
-$defaultView = $modx->getOption('defaultView', $scriptProperties, 'agendaWeek');
+$scriptTpl = $modx->getOption('scriptTpl', $scriptProperties, 'migxcal_script_fullcalendar');
+$scriptProperties['lang'] = $lang = $modx->getOption('lang', $scriptProperties, $modx->getOption('cultureKey'));
+$scriptProperties['editable'] = $modx->getOption('editable', $scriptProperties, 'false');
+$scriptProperties['aspectRatio'] = (float)$modx->getOption('aspectRatio', $scriptProperties, '0.4');
+$scriptProperties['minTime'] = $modx->getOption('minTime', $scriptProperties, '6:00');
+$scriptProperties['defaultView'] = $modx->getOption('defaultView', $scriptProperties, 'agendaWeek');
+$scriptProperties['defaultDate'] = $modx->getOption('defaultDate', $scriptProperties, '');
 
-$ajax_id = $modx->getOption('ajax_id', $scriptProperties, $modx->getOption('migxcalendar.ajax_id'));
-$ajax_url = $modx->makeUrl($ajax_id);
+$scriptProperties['$ajax_id'] = $modx->getOption('ajax_id', $scriptProperties, $modx->getOption('migxcalendar.ajax_id'));
+$scriptProperties['ajax_url'] = $modx->makeUrl($ajax_id);
 
 $load_jquery = $modx->getOption('load_jquery', $scriptProperties, '1');
 $load_jqueryui = $modx->getOption('load_jqueryui', $scriptProperties, '1');
@@ -29,117 +31,14 @@ if (!empty($date)) {
 
 $extraOptionsTpl = $modx->getOption('extraOptionsTpl', $scriptProperties, '');
 
-$extraOptions = !empty($extraOptionsTpl) ? ',' . $modx->getChunk($extraOptionsTpl,$scriptProperties) : '';
+$scriptProperties['extraOptions'] = !empty($extraOptionsTpl) ? ',' . $modx->getChunk($extraOptionsTpl,$scriptProperties) : '';
 
 if ($modx->lexicon) {
     $modx->lexicon->load($packageName . ':default');
 }
 
 if (!empty($load_fullcalendar)) {
-    $script = "
-<script>
-var initialLoad = true;    
-var poppingState = false;
-
-window.onpopstate = function(event){
-    if (event.state.start){
-        if ( typeof migxcalController != 'undefined' ){
-            migxcalController.config.baseParams.original_request_uri = event.state.url; 
-        }
-        poppingState = true; //don't re-push state
-        $('#calendar').fullCalendar('gotoDate', event.state.start);
-        poppingState = true; //don't re-push state
-        $('#calendar').fullCalendar('changeView', event.state.viewMode);
-
-    }
-
-}
-
-if (window.history){
-    var windowHistory = window.history;
-    // symlink to method 'history.pushState'
-    var historyPushState = windowHistory.pushState;
-    // if the browser supports HTML5-History-API
-    var isSupportHistoryAPI = !!historyPushState; 
-}
-
-var migxcal_history = function(view,element,url){
-
-    // Prevent the code from running if there is no window.history object
-    if (!window.history) return;
-    var date_param = '?date=' + view.intervalStart.format('YYYY-MM-DD');
-    var view_param = '&view=' + view.name;
-    
-    url = isSupportHistoryAPI ? url : '';
-    url = url + date_param + view_param;
-
-        
-    if (initialLoad) { //Replace the current state to set up state variables.  URL should be identical
-        history.replaceState({ viewMode:view.name, start:view.intervalStart, url:url }, 'Edit Calendar', url);
-        if ( typeof migxcalController != 'undefined' ){
-            migxcalController.config.baseParams.original_request_uri = url; 
-        }
-        initialLoad = false;
-    }else{
-        if (!poppingState) { 
-            history.pushState({ viewMode:view.name, start:view.intervalStart, url:url }, 'Edit Calendar', url); 
-            if (typeof migxcalController != 'undefined'){
-                migxcalController.config.baseParams.original_request_uri = url; 
-            }
-        }else{
-            poppingState = false;
-    }
-}
-
-};
-
-	$(document).ready(function() {
-	    var migxcal_categories = {};
-        
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			{$defaultDate}
-			lang: '{$lang}',
-            editable: {$editable},
-            aspectRatio: {$aspectRatio},
-            minTime: '{$minTime}',
-            defaultView:'{$view}',
-			events: {
-				url: '{$ajax_url}',
-                data: function() {
-                    return {categories:migxcal_categories};
-                },                
-				error: function() {
-					$('#script-warning').show();
-				}
-			},
-			loading: function(bool) {
-				$('#loading').toggle(bool);
-			}
-            {$extraOptions}
-            
-		});
-        $('.migxcal_category').click(function(){
-            var el = $(this);
-            var id = el.data().id;
-            el.toggleClass('selected');
-            if (el.hasClass('selected')){
-                migxcal_categories['c_' + id] = id; 
-            }
-            else{
-                migxcal_categories['c_' + id] = 0; 
-            }
-            $('#calendar').fullCalendar( 'refetchEvents' );
-        });
-		
-	});
-
-</script>
-";
+    $script = $modx->getChunk($scriptTpl, $scriptProperties);
 
 
     $modx->regClientCSS('assets/components/migxcalendars/js/fullcalendar/fullcalendar.css');

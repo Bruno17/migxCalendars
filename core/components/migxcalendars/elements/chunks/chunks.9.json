@@ -150,5 +150,21 @@
     "static_file":"",
     "filename":"migxcal_availiabledates.chunk.html",
     "category_name":"migxCalendars"
+  },
+  {
+    "id":15,
+    "source":0,
+    "property_preprocess":false,
+    "name":"migxcal_script_fullcalendar",
+    "description":"",
+    "editor_type":0,
+    "category":0,
+    "cache_type":0,
+    "locked":false,
+    "properties":null,
+    "static":false,
+    "static_file":"",
+    "filename":"migxcal_script_fullcalendar.chunk.html",
+    "category_name":"migxCalendars"
   }
 ]
