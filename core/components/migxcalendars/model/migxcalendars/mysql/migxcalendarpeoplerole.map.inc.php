@@ -6,23 +6,24 @@ $xpdo_meta_map['migxCalendarPeopleRole']= array (
   'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
-    'name' => NULL,
-    'description' => NULL,
+    'people_id' => NULL,
+    'role_id' => NULL,
   ),
   'fieldMeta' => 
   array (
-    'name' => 
+    'people_id' => 
     array (
-      'dbtype' => 'varchar',
-      'precision' => '255',
-      'phptype' => 'string',
+      'dbtype' => 'int',
+      'precision' => '20',
+      'phptype' => 'integer',
       'null' => false,
-      'index' => 'index',
     ),
-    'description' => 
+    'role_id' => 
     array (
-      'dbtype' => 'mediumtext',
-      'phptype' => 'string',
+      'dbtype' => 'int',
+      'precision' => '20',
+      'phptype' => 'integer',
+      'null' => false,
     ),
   ),
 );

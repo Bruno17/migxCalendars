@@ -1,14 +1,14 @@
 {
-  "id":164,
+  "id":2,
   "name":"migxcalendar_checkavailability",
   "formtabs":[
     {
-      "MIGX_id":1,
+      "MIGX_id":2,
       "caption":"[[%migxcal.event]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":1,
+          "MIGX_id":2,
           "field":"availability",
           "caption":"[[%migxcal.availability]]",
           "description":"",
@@ -21,9 +21,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         }
-      ]
+      ],
+      "pos":1
     }
   ],
   "contextmenus":"remove",

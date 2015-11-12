@@ -1,14 +1,14 @@
 {
-  "id":158,
+  "id":6,
   "name":"migxcalendar_events",
   "formtabs":[
     {
-      "MIGX_id":4,
+      "MIGX_id":5,
       "caption":"[[%migxcal.this_date]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":5,
+          "MIGX_id":9,
           "field":"Event_title",
           "caption":"[[%migxcal.title]] ([[%migxcal.date_container]])",
           "description":"",
@@ -22,10 +22,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":1,
+          "MIGX_id":10,
           "field":"startdate",
           "caption":"[[%migxcal.start]]",
           "description":"",
@@ -39,10 +40,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":2
         },
         {
-          "MIGX_id":2,
+          "MIGX_id":11,
           "field":"enddate",
           "caption":"[[%migxcal.end]]",
           "description":"",
@@ -56,10 +58,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":3
         },
         {
-          "MIGX_id":4,
+          "MIGX_id":12,
           "field":"title",
           "caption":"[[%migxcal.title]] ([[%migxcal.this_date]])",
           "description":"",
@@ -73,10 +76,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":4
         },
         {
-          "MIGX_id":8,
+          "MIGX_id":13,
           "field":"description",
           "caption":"[[%migxcal.description]] ([[%migxcal.this_date]])",
           "description":"",
@@ -90,10 +94,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":5
         },
         {
-          "MIGX_id":6,
+          "MIGX_id":14,
           "field":"Event_repeating",
           "caption":"[[%migxcal.repeat_weekly]]",
           "description":"",
@@ -106,10 +111,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"yes==1",
-          "default":""
+          "default":"",
+          "pos":6
         },
         {
-          "MIGX_id":3,
+          "MIGX_id":15,
           "field":"allday",
           "caption":"[[%migxcal.allday]]",
           "description":"",
@@ -122,10 +128,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.inherited]]==2||[[%migxcal.yes]]==1||[[%migxcal.no]]==0",
-          "default":""
+          "default":"",
+          "pos":7
         },
         {
-          "MIGX_id":7,
+          "MIGX_id":16,
           "field":"Event_id",
           "caption":"",
           "description":"",
@@ -139,17 +146,19 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":8
         }
-      ]
+      ],
+      "pos":1
     },
     {
-      "MIGX_id":1,
+      "MIGX_id":6,
       "caption":"[[%migxcal.date_container]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":9,
+          "MIGX_id":17,
           "field":"Event_description",
           "caption":"[[%migxcal.description]]",
           "description":"",
@@ -163,10 +172,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.yes]]==1",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":10,
+          "MIGX_id":18,
           "field":"Event_content",
           "caption":"[[%migxcal.content]]",
           "description":"",
@@ -180,10 +190,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.yes]]==1",
-          "default":""
+          "default":"",
+          "pos":2
         },
         {
-          "MIGX_id":6,
+          "MIGX_id":19,
           "field":"Event_allday",
           "caption":"[[%migxcal.allday]]",
           "description":"",
@@ -197,10 +208,49 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.yes]]==1",
-          "default":""
+          "default":"",
+          "pos":3
         },
         {
-          "MIGX_id":4,
+          "MIGX_id":61,
+          "field":"Event_location_id",
+          "caption":"Location",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox",
+          "validation":"",
+          "configs":"",
+          "restrictive_condition":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"",
+          "inputOptionValues":"@CHUNK migxcal_inputoptions_location",
+          "default":"",
+          "useDefaultIfEmpty":"0",
+          "pos":4
+        },
+        {
+          "MIGX_id":76,
+          "field":"Event_organizer_id",
+          "caption":"Organizer",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"listbox",
+          "validation":"",
+          "configs":"",
+          "restrictive_condition":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"",
+          "inputOptionValues":"@CHUNK migxcal_inputoptions_organizer",
+          "default":"",
+          "useDefaultIfEmpty":"0",
+          "pos":5
+        },
+        {
+          "MIGX_id":20,
           "field":"Event_categoryid",
           "caption":"[[%migxcal.category]]",
           "description":"",
@@ -214,10 +264,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"@EVAL return 'Select Category!==||' . $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
-          "default":""
+          "default":"",
+          "pos":6
         },
         {
-          "MIGX_id":5,
+          "MIGX_id":21,
           "field":"Event_categories",
           "caption":"[[%migxcal.assigned_categories]]",
           "description":"",
@@ -231,10 +282,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"@EVAL return $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
-          "default":""
+          "default":"",
+          "pos":7
         },
         {
-          "MIGX_id":7,
+          "MIGX_id":22,
           "field":"object_id",
           "caption":"",
           "description":"",
@@ -246,17 +298,19 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":8
         }
-      ]
+      ],
+      "pos":2
     },
     {
-      "MIGX_id":2,
+      "MIGX_id":7,
       "caption":"[[%migxcal.repeatings]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":2,
+          "MIGX_id":23,
           "field":"Event_startdate",
           "caption":"[[%migxcal.repeatings_start]]",
           "description":"",
@@ -268,10 +322,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":3,
+          "MIGX_id":24,
           "field":"Event_repeatenddate",
           "caption":"[[%migxcal.repeatings_end]]",
           "description":"",
@@ -283,10 +338,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":2
         },
         {
-          "MIGX_id":2,
+          "MIGX_id":25,
           "field":"repeattype",
           "caption":"",
           "description":"",
@@ -298,10 +354,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"T\u00e4glich==0||W\u00f6chentlich==1||Monatlich==2||J\u00e4hrlich==3",
-          "default":1
+          "default":1,
+          "pos":3
         },
         {
-          "MIGX_id":4,
+          "MIGX_id":26,
           "field":"children",
           "caption":"[[%migxcal.repeatings]]",
           "description":"",
@@ -313,17 +370,19 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":4
         }
-      ]
+      ],
+      "pos":3
     },
     {
-      "MIGX_id":3,
+      "MIGX_id":8,
       "caption":"[[%migxcal.singledates]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":1,
+          "MIGX_id":27,
           "field":"singleevents",
           "caption":"[[%migxcal.singledates]]",
           "description":"",
@@ -335,10 +394,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":2,
+          "MIGX_id":28,
           "field":"checkavailability",
           "caption":"[[%migxcal.singledates]]",
           "description":"",
@@ -351,9 +411,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":2
         }
-      ]
+      ],
+      "pos":4
     }
   ],
   "contextmenus":"migxcal_deleteactions",
@@ -435,12 +497,18 @@
   ],
   "extended":{
     "migx_add":"[[%migxcal.add_event]]",
+    "disable_add_item":"",
+    "add_items_directly":"",
     "formcaption":"",
     "update_win_title":"",
     "win_id":"migxcalendar_events",
     "maxRecords":"",
     "addNewItemAt":"bottom",
     "multiple_formtabs":"",
+    "multiple_formtabs_label":"",
+    "multiple_formtabs_field":"",
+    "multiple_formtabs_optionstext":"",
+    "multiple_formtabs_optionsvalue":"",
     "actionbuttonsperrow":2,
     "winbuttonslist":"cancel||done||check_availability",
     "extrahandlers":"this.handleColumnSwitch||this.publishObject||this.unpublishObject||this.handleEventColumnSwitch",
@@ -450,6 +518,8 @@
     "task":"events",
     "getlistsort":"startdate",
     "getlistsortdir":"",
+    "sortconfig":"",
+    "gridpagesize":"",
     "use_custom_prefix":"0",
     "prefix":"",
     "grid":"",
@@ -470,6 +540,7 @@
         "on":"Category.id=Event.categoryid"
       }
     ],
+    "hooksnippets":"",
     "cmpmaincaption":"[[%migxcal.events_cmp_main_caption]]",
     "cmptabcaption":"[[%migxcal.events]]",
     "cmptabdescription":"[[%migxcal.events_cmp_desc]]",
@@ -621,7 +692,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2014-04-08 17:25:28",
+  "editedon":"2015-11-07 22:35:31",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,

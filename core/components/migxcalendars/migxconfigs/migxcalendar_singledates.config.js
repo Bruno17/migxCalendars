@@ -1,14 +1,14 @@
 {
-  "id":161,
+  "id":4,
   "name":"migxcalendar_singledates",
   "formtabs":[
     {
-      "MIGX_id":1,
+      "MIGX_id":3,
       "caption":"[[%migxcal.event]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":1,
+          "MIGX_id":3,
           "field":"title",
           "caption":"[[%migxcal.title]]",
           "description":"",
@@ -20,10 +20,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":2,
+          "MIGX_id":4,
           "field":"startdate",
           "caption":"[[%migxcal.start]]",
           "description":"",
@@ -35,10 +36,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":2
         },
         {
-          "MIGX_id":3,
+          "MIGX_id":5,
           "field":"enddate",
           "caption":"[[%migxcal.end]]",
           "description":"",
@@ -50,10 +52,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":3
         },
         {
-          "MIGX_id":4,
+          "MIGX_id":6,
           "field":"allday",
           "caption":"[[%migxcal.allday]]",
           "description":"",
@@ -66,10 +69,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.inherited]]==2||[[%migxcal.yes]]==1||[[%migxcal.no]]==0",
-          "default":""
+          "default":"",
+          "pos":4
         },
         {
-          "MIGX_id":5,
+          "MIGX_id":7,
           "field":"Joined_id",
           "caption":"",
           "description":"",
@@ -83,9 +87,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":5
         }
-      ]
+      ],
+      "pos":1
     }
   ],
   "contextmenus":"remove",

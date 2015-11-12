@@ -1,7 +1,7 @@
 <li style="background-color:[[+cat_bg]];color:[[+cat_fg]]">
 
 <div class="date">
-            <div class="month"><p>[[+Time:date=`%d`]][[+phx:if=`[[+Time:date=`%d.%m.%Y`]]`:is=`[[+Timeend:date=`%d.%m.%Y`]]`:then=``:else=`/[[+Timeend:date=`%d`]]`]]<span>[[+Time:date=`%b`]]</span></p></div>
+            <div class="month"><p>[[+Time:date=`%d`]][[+Time:date=`%d.%m.%Y`:is=`[[+Timeend:date=`%d.%m.%Y`]]`:then=``:else=`/[[+Timeend:date=`%d`]]`]]<span>[[+Time:date=`%b`]]</span></p></div>
             <p style="[[+mxcEventListItemMultiDayStyle]]">[[+Time:date=`%Y`]]<!--<br />
             [[+Time:date_mod=`dayname:::2`]][[+phx:if=`[[+Time:date=`%d.%m.%Y`]]`:is=`[[+Timeend:date=`%d.%m.%Y`]]`:then=``:else=`/[[+Timeend:date_mod=`dayname:::2`]]`]]--></p>
             </div>
@@ -11,9 +11,9 @@
 [[+title]]</a></strong>
 </p>
 
-[[+phx:if=`[[+Time:date=`%H:%M`]]`:is=`00:00`:then=`<p>`:else=`<strong>Zeit:</strong> [[+Time:date=`%H:%M`]] Uhr<br />`]]
+[[+Time:date=`%H:%M`:is=`00:00`:then=`<p>`:else=`<strong>Zeit:</strong> [[+Time:date=`%H:%M`]] Uhr<br />`]]
 
-[[+phx:if=`[[+location]]`:is=``:then=``:else=`<strong>Ort:</strong> [[+location]]<br />`]]
-<strong>Veranstalter:</strong> [[+mxcveranstalter]]
+[[+Location_name:is=``:then=``:else=`<strong>Ort:</strong> [[+Location_name]]<br />`]]
+[[+Organizer_company:is=``:then=``:else=` <strong>Veranstalter:</strong> [[+Organizer_company]]<br />`]]
 </p>
 </li>

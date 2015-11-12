@@ -90,7 +90,7 @@ if ($object) {
                             break;
                     }
                 }
-            }            
+            }
             
             //store Event-fields
             if (substr($field, 0, 6) == 'Event_') {

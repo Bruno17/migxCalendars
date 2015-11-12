@@ -1,5 +1,5 @@
 {
-  "id":165,
+  "id":7,
   "name":"migxcalendar_availability",
   "formtabs":"[]",
   "contextmenus":"",

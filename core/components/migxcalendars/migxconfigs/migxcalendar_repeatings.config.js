@@ -1,5 +1,5 @@
 {
-  "id":159,
+  "id":3,
   "name":"migxcalendar_repeatings",
   "formtabs":"",
   "contextmenus":"remove",

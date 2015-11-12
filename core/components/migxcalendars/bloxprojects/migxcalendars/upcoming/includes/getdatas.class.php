@@ -29,7 +29,7 @@ class Custom_migxcalendars_upcoming
 
         $month = abs($this->bloxconfig['month']);
         $year = $this->bloxconfig['year'];
-        $monthcount = 3;
+        $monthcount = $modx->getOption('monthcount',$this->bloxconfig,3);
         
         $monthnames = explode(',',$this->bloxconfig['monthnames']);
 
@@ -120,7 +120,11 @@ class Custom_migxcalendars_upcoming
         $scriptProperties['classname'] = 'migxCalendarDates';
         $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
         $scriptProperties['selectfields'] = $modx->getOption('datefields', $scriptProperties, 'id,startdate,enddate,title,allday,published,description');
-        $joins = '[{"alias":"Event","selectfields":"id,title,allday,repeating,description"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
+        $joins = '[
+        {"alias":"Event","selectfields":"id,title,allday,repeating,description,content"},
+        {"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"},
+        {"alias":"Location","classname":"migxCalendarLocation","on":"Location.id=Event.location_id"}
+        ]';
         $scriptProperties['joins'] = $modx->getOption('joins', $scriptProperties, $joins);
         if (!empty($limit)) {
             $scriptProperties['limit'] = $modx->getOption('limit', $limit, 0);

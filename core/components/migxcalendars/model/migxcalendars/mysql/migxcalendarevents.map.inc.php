@@ -15,6 +15,7 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'linkrel' => '',
     'linktarget' => '',
     'location_id' => NULL,
+    'organizer_id' => NULL,
     'allday' => 0,
     'startdate' => NULL,
     'enddate' => NULL,
@@ -108,6 +109,14 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'default' => '',
     ),
     'location_id' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '10',
+      'phptype' => 'string',
+      'null' => true,
+      'index' => 'index',
+    ),
+    'organizer_id' => 
     array (
       'dbtype' => 'int',
       'precision' => '10',
@@ -412,6 +421,22 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     array (
       'class' => 'modUser',
       'local' => 'editedby',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
+    ),
+    'Location' => 
+    array (
+      'class' => 'migxCalendarLocations',
+      'local' => 'location_id',
+      'foreign' => 'id',
+      'cardinality' => 'one',
+      'owner' => 'foreign',
+    ),
+    'Organizer' => 
+    array (
+      'class' => 'migxCalendarPeople',
+      'local' => 'organizer_id',
       'foreign' => 'id',
       'cardinality' => 'one',
       'owner' => 'foreign',

@@ -1,14 +1,14 @@
 {
-  "id":167,
+  "id":5,
   "name":"migxcalendar_loadcontainer",
   "formtabs":[
     {
-      "MIGX_id":1,
+      "MIGX_id":4,
       "caption":"[[%migxcal.search]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":1,
+          "MIGX_id":8,
           "field":"search",
           "caption":"[[%migxcal.search]]",
           "description":"",
@@ -22,9 +22,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         }
-      ]
+      ],
+      "pos":1
     }
   ],
   "contextmenus":"",

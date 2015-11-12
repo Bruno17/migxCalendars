@@ -1,14 +1,14 @@
 {
-  "id":166,
+  "id":8,
   "name":"migxcalendar_dragdropdate",
   "formtabs":[
     {
-      "MIGX_id":1,
+      "MIGX_id":9,
       "caption":"[[%migxcal.this_date]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":5,
+          "MIGX_id":29,
           "field":"Event_title",
           "caption":"[[%migxcal.title]] ([[%migxcal.date_container]])",
           "description":"",
@@ -22,10 +22,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":1,
+          "MIGX_id":30,
           "field":"startdate",
           "caption":"[[%migxcal.start]]",
           "description":"",
@@ -39,10 +40,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":2
         },
         {
-          "MIGX_id":2,
+          "MIGX_id":31,
           "field":"enddate",
           "caption":"[[%migxcal.end]]",
           "description":"",
@@ -56,10 +58,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":3
         },
         {
-          "MIGX_id":4,
+          "MIGX_id":32,
           "field":"title",
           "caption":"[[%migxcal.title]] ([[%migxcal.this_date]])",
           "description":"",
@@ -73,10 +76,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":4
         },
         {
-          "MIGX_id":6,
+          "MIGX_id":33,
           "field":"Event_repeating",
           "caption":"[[%migxcal.repeat_weekly]]",
           "description":"",
@@ -89,10 +93,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"yes==1",
-          "default":""
+          "default":"",
+          "pos":5
         },
         {
-          "MIGX_id":3,
+          "MIGX_id":34,
           "field":"allday",
           "caption":"[[%migxcal.allday]]",
           "description":"",
@@ -105,10 +110,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.inherited]]==2||[[%migxcal.yes]]==1||[[%migxcal.no]]==0",
-          "default":""
+          "default":"",
+          "pos":6
         },
         {
-          "MIGX_id":10,
+          "MIGX_id":35,
           "field":"delete_date",
           "caption":"[[%migxcal.delete_date]]",
           "description":"This will remove this date completely",
@@ -122,10 +128,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"yes==1",
-          "default":""
+          "default":"",
+          "pos":7
         },
         {
-          "MIGX_id":7,
+          "MIGX_id":36,
           "field":"Event_repeating_old",
           "caption":"",
           "description":"",
@@ -138,10 +145,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":8
         },
         {
-          "MIGX_id":8,
+          "MIGX_id":37,
           "field":"old_startdate",
           "caption":"",
           "description":"",
@@ -154,10 +162,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":9
         },
         {
-          "MIGX_id":9,
+          "MIGX_id":38,
           "field":"Event_id",
           "caption":"",
           "description":"",
@@ -170,17 +179,19 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":10
         }
-      ]
+      ],
+      "pos":1
     },
     {
-      "MIGX_id":3,
+      "MIGX_id":10,
       "caption":"[[%migxcal.date_container]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":1,
+          "MIGX_id":39,
           "field":"Event_allday",
           "caption":"[[%migxcal.allday]]",
           "description":"",
@@ -193,10 +204,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.yes]]==1",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":2,
+          "MIGX_id":40,
           "field":"Event_categoryid",
           "caption":"[[%migxcal.category]]",
           "description":"",
@@ -210,17 +222,19 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"@EVAL return 'Select Category!==||' . $modx->runSnippet('migxLoopCollection',array('packageName'=>'migxcalendars','classname'=>'migxCalendarCategories','sortConfig'=>'[{\"sortby\":\"name\"}]','tpl'=>'@CODE:[[+name]]==[[+id]]','outputSeparator'=>'||'));",
-          "default":""
+          "default":"",
+          "pos":2
         }
-      ]
+      ],
+      "pos":2
     },
     {
-      "MIGX_id":2,
+      "MIGX_id":11,
       "caption":"[[%migxcal.repeatings]]",
       "print_before_tabs":"0",
       "fields":[
         {
-          "MIGX_id":1,
+          "MIGX_id":41,
           "field":"Event_startdate",
           "caption":"[[%migxcal.repeatings_start]]",
           "description":"",
@@ -234,10 +248,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":1
         },
         {
-          "MIGX_id":2,
+          "MIGX_id":42,
           "field":"Event_repeatenddate",
           "caption":"[[%migxcal.repeatings_end]]",
           "description":"",
@@ -251,9 +266,11 @@
           "sourceFrom":"config",
           "sources":"[]",
           "inputOptionValues":"",
-          "default":""
+          "default":"",
+          "pos":2
         }
-      ]
+      ],
+      "pos":3
     }
   ],
   "contextmenus":"",

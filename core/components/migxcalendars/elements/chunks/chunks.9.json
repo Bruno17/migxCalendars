@@ -166,5 +166,53 @@
     "static_file":"",
     "filename":"migxcal_script_fullcalendar.chunk.html",
     "category_name":"migxCalendars"
+  },
+  {
+    "id":16,
+    "source":0,
+    "property_preprocess":false,
+    "name":"migxcal_inputoptions_location",
+    "description":"",
+    "editor_type":0,
+    "category":0,
+    "cache_type":0,
+    "locked":false,
+    "properties":null,
+    "static":false,
+    "static_file":"",
+    "filename":"migxcal_inputoptions_location.chunk.html",
+    "category_name":"migxCalendars"
+  },
+  {
+    "id":17,
+    "source":0,
+    "property_preprocess":false,
+    "name":"migxcal_inputoptions_roles",
+    "description":"",
+    "editor_type":0,
+    "category":0,
+    "cache_type":0,
+    "locked":false,
+    "properties":null,
+    "static":false,
+    "static_file":"",
+    "filename":"migxcal_inputoptions_roles.chunk.html",
+    "category_name":"migxCalendars"
+  },
+  {
+    "id":18,
+    "source":0,
+    "property_preprocess":false,
+    "name":"migxcal_inputoptions_organizer",
+    "description":"",
+    "editor_type":0,
+    "category":0,
+    "cache_type":0,
+    "locked":false,
+    "properties":null,
+    "static":false,
+    "static_file":"",
+    "filename":"migxcal_inputoptions_organizer.chunk.html",
+    "category_name":"migxCalendars"
   }
 ]

@@ -1,17 +1,12 @@
 <?php
-$xpdo_meta_map['migxCalendarEventPeople']= array (
+$xpdo_meta_map['migxCalendarPeople']= array (
   'package' => 'migxcalendars',
   'version' => NULL,
-  'table' => 'migxcalendars_events_people',
+  'table' => 'migxcalendars_people',
   'extends' => 'xPDOSimpleObject',
   'fields' => 
   array (
-    'event_id' => NULL,
-    'date_id' => NULL,
-    'user_id' => NULL,
-    'role_id' => NULL,
-    'group_id' => NULL,
-    'people_id' => NULL,
+    'company' => '',
     'fullname' => '',
     'email' => '',
     'phone' => '',
@@ -25,50 +20,17 @@ $xpdo_meta_map['migxCalendarEventPeople']= array (
     'zip' => '',
     'fax' => '',
     'photo' => '',
+    'description' => '',
   ),
   'fieldMeta' => 
   array (
-    'event_id' => 
+    'company' => 
     array (
-      'dbtype' => 'int',
-      'precision' => '20',
-      'phptype' => 'integer',
+      'dbtype' => 'varchar',
+      'precision' => '100',
+      'phptype' => 'string',
       'null' => false,
-    ),
-    'date_id' => 
-    array (
-      'dbtype' => 'int',
-      'precision' => '20',
-      'phptype' => 'integer',
-      'null' => false,
-    ),
-    'user_id' => 
-    array (
-      'dbtype' => 'int',
-      'precision' => '20',
-      'phptype' => 'integer',
-      'null' => false,
-    ),
-    'role_id' => 
-    array (
-      'dbtype' => 'int',
-      'precision' => '20',
-      'phptype' => 'integer',
-      'null' => false,
-    ),
-    'group_id' => 
-    array (
-      'dbtype' => 'int',
-      'precision' => '20',
-      'phptype' => 'integer',
-      'null' => false,
-    ),
-    'people_id' => 
-    array (
-      'dbtype' => 'int',
-      'precision' => '20',
-      'phptype' => 'integer',
-      'null' => false,
+      'default' => '',
     ),
     'fullname' => 
     array (
@@ -171,40 +133,31 @@ $xpdo_meta_map['migxCalendarEventPeople']= array (
       'null' => false,
       'default' => '',
     ),
+    'description' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
+    ),
   ),
-  'aggregates' => 
+  'composites' => 
   array (
-    'Event' => 
+    'Events' => 
     array (
-      'class' => 'migxCalendarEvents',
-      'local' => 'event_id',
-      'foreign' => 'id',
-      'cardinality' => 'one',
-      'owner' => 'foreign',
+      'class' => 'migxCalendarEventPeople',
+      'local' => 'id',
+      'foreign' => 'people_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
     ),
-    'User' => 
+    'Roles' => 
     array (
-      'class' => 'modUser',
-      'local' => 'user_id',
-      'foreign' => 'id',
-      'cardinality' => 'one',
-      'owner' => 'foreign',
-    ),
-    'People' => 
-    array (
-      'class' => 'migxCalendarPeople',
-      'local' => 'people_id',
-      'foreign' => 'id',
-      'cardinality' => 'one',
-      'owner' => 'foreign',
-    ),
-    'Date' => 
-    array (
-      'class' => 'migxCalendarDates',
-      'local' => 'date_id',
-      'foreign' => 'id',
-      'cardinality' => 'one',
-      'owner' => 'foreign',
+      'class' => 'migxCalendarPeopleRole',
+      'local' => 'id',
+      'foreign' => 'people_id',
+      'cardinality' => 'many',
+      'owner' => 'local',
     ),
   ),
 );

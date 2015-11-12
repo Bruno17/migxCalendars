@@ -203,7 +203,12 @@ class Custom_migxcalendars_minical
         $scriptProperties['classname'] = 'migxCalendarDates';
         $scriptProperties['toJsonPlaceholder'] = 'migxcal_events';
         $scriptProperties['selectfields'] = $modx->getOption('datefields', $scriptProperties, 'id,startdate,enddate,title,allday,published,description');
-        $joins = '[{"alias":"Event","selectfields":"id,title,allday,repeating,description"},{"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"}]';
+        $joins = '[
+        {"alias":"Event","selectfields":"id,title,allday,repeating,description"},
+        {"alias":"Category","classname":"migxCalendarCategories","on":"Category.id=Event.categoryid"},
+        {"alias":"Location","classname":"migxCalendarLocation","on":"Location.id=Event.location_id"},
+        {"alias":"Organizer","classname":"migxCalendarPeople","on":"Organizer.id=Event.organizer_id"}
+        ]';
         $scriptProperties['joins'] = $modx->getOption('joins', $scriptProperties, $joins);
         if (!empty($limit)) {
             $scriptProperties['limit'] = $modx->getOption('limit', $limit, 0);
@@ -269,7 +274,7 @@ class Custom_migxcalendars_minical
 
         //$scriptProperties['debug'] = '1';
         $sn = $modx->runSnippet('migxLoopCollection', $scriptProperties);
-        //echo $sn;
+        echo $sn;
         $result = $modx->getPlaceholder('migxcal_events');
         $input_arrays = json_decode($result, true);
         // Accumulate an output array of event data arrays.

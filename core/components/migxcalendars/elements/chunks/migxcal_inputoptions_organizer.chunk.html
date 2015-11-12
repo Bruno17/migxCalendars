@@ -1,0 +1,9 @@
+---Select one---||[[migxLoopCollection?
+&packageName=`migxcalendars`
+&classname=`migxCalendarPeople`
+&joins=`[{"alias":"Roles"}]`
+&where=`{"Roles.role_id":"[[++migxcal.organizer_role_id]]"}`
+&sortConfig=`[{"sortby":"company"}]`
+&tpl=`@CODE:[[+company]]([[+fullname]])==[[+id]]`
+&outputSeparator=`||`
+]]
