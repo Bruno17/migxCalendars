@@ -71,7 +71,24 @@ $_lang['migxcal.remove_date'] = 'Remove Date';
 $_lang['migxcal.remove_datecontainer'] = 'Remove Datecontainer';
 $_lang['migxcal.description'] = 'Description';
 $_lang['migxcal.content'] = 'Content';
-
+$_lang['migxcal.location'] = 'Location';
+$_lang['migxcal.organizer'] = 'Organizer';
+$_lang['migxcal.repeattype'] = 'Repeattype';
+$_lang['migxcal.weekly'] = 'Weekly';
+$_lang['migxcal.monthly'] = 'Monthly';
+$_lang['migxcal.yearly'] = 'Yearly';
+$_lang['migxcal.dow1'] = 'Monday';
+$_lang['migxcal.dow2'] = 'Tuesday';
+$_lang['migxcal.dow3'] = 'Wednesday';
+$_lang['migxcal.dow4'] = 'Thursday';
+$_lang['migxcal.dow5'] = 'Freyday';
+$_lang['migxcal.dow6'] = 'Saturday';
+$_lang['migxcal.dow7'] = 'Sunday';
+$_lang['migxcal.repeaton'] = 'Days of Week';
+$_lang['migxcal.repeatfrequency'] = 'Repeat Frequency';
+$_lang['migxcal.repeatoccurences_inmonth'] = 'Which weeks of month';
+$_lang['migxcal.create_repeatings'] = 'Create repeatings';
+$_lang['migxcal.create_repeatings_desc'] = 'If no weedays specified, the weekdays of this date are used. Also the times of this date are used and the difference between start and end.';
 
 
 

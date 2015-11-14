@@ -100,8 +100,6 @@ if ($object) {
     $record = array();
 }
 
-print_r($record);
-
 
 foreach ($record as $field => $fieldvalue) {
     if (!empty($fieldvalue) && is_array($fieldvalue)) {

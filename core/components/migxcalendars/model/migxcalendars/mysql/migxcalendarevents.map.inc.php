@@ -24,6 +24,7 @@ $xpdo_meta_map['migxCalendarEvents']= array (
     'repeaton' => NULL,
     'repeatfrequency' => NULL,
     'repeatenddate' => NULL,
+    'repeatoccurences_inmonth' => '',
     'source' => 'local',
     'feeds_id' => 0,
     'feeds_uid' => '',
@@ -180,6 +181,13 @@ $xpdo_meta_map['migxCalendarEvents']= array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
       'null' => true,
+    ),
+    'repeatoccurences_inmonth' => 
+    array (
+      'dbtype' => 'text',
+      'phptype' => 'string',
+      'null' => false,
+      'default' => '',
     ),
     'source' => 
     array (

@@ -71,5 +71,26 @@ $_lang['migxcal.remove_date'] = 'Termin löschen';
 $_lang['migxcal.remove_datecontainer'] = 'Termincontainer löschen';
 $_lang['migxcal.description'] = 'Beschreibung';
 $_lang['migxcal.content'] = 'Inhalt';
+$_lang['migxcal.location'] = 'Veranstaltungsort';
+$_lang['migxcal.organizer'] = 'Veranstalter';
+$_lang['migxcal.repeattype'] = 'Wiederholungsart';
+$_lang['migxcal.weekly'] = 'Wöchentlich';
+$_lang['migxcal.monthly'] = 'Monatlich';
+$_lang['migxcal.yearly'] = 'Jährlich';
+$_lang['migxcal.dow1'] = 'Montag';
+$_lang['migxcal.dow2'] = 'Dienstag';
+$_lang['migxcal.dow3'] = 'Mittwoch';
+$_lang['migxcal.dow4'] = 'Donnerstag';
+$_lang['migxcal.dow5'] = 'Freitag';
+$_lang['migxcal.dow6'] = 'Samstag';
+$_lang['migxcal.dow7'] = 'Sonntag';
+$_lang['migxcal.repeaton'] = 'Wochentage';
+$_lang['migxcal.repeatfrequency'] = 'Wiederholungs Frequenz';
+$_lang['migxcal.repeatoccurences_inmonth'] = 'Welche Wochen im Monat';
+$_lang['migxcal.create_repeatings'] = 'Wiederholungen erstellen';
+$_lang['migxcal.create_repeatings_desc'] = 'Soweit keine Wochentage angegeben, werden die Wochentage dieses Termins für die Wiederholungen verwendet. Die Uhrzeiten werden ebenfalls aus den Uhrzeiten dieses Termins geholt, sowie die Zeitdifferenz zwischen Start und Ende.';
+
+
+
 
 

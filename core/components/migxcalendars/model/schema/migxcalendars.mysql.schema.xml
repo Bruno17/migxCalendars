@@ -21,7 +21,7 @@
 	    <field key="repeaton" dbtype="varchar" precision="15" phptype="string" null="true"/>
 	    <field key="repeatfrequency" dbtype="int" precision="2" phptype="int" null="true"/>
 	    <field key="repeatenddate" dbtype="datetime" phptype="datetime" null="true" />
-        <field key="repeatconfig" dbtype="text" phptype="string" null="false" default="" />
+        <field key="repeatoccurences_inmonth" dbtype="text" phptype="string" null="false" default="" />
 	
         <field key="source" dbtype="varchar" precision="32" phptype="string" null="false" default="local" />
         <field key="feeds_id" dbtype="int" precision="20" phptype="integer" null="true" default="" />

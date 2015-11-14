@@ -98,23 +98,6 @@
           "pos":5
         },
         {
-          "MIGX_id":14,
-          "field":"Event_repeating",
-          "caption":"[[%migxcal.repeat_weekly]]",
-          "description":"",
-          "description_is_code":"0",
-          "inputTV":"",
-          "inputTVtype":"checkbox",
-          "validation":"",
-          "configs":"",
-          "display":"",
-          "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"yes==1",
-          "default":"",
-          "pos":6
-        },
-        {
           "MIGX_id":15,
           "field":"allday",
           "caption":"[[%migxcal.allday]]",
@@ -129,7 +112,7 @@
           "sources":"[]",
           "inputOptionValues":"[[%migxcal.inherited]]==2||[[%migxcal.yes]]==1||[[%migxcal.no]]==0",
           "default":"",
-          "pos":7
+          "pos":6
         },
         {
           "MIGX_id":16,
@@ -147,7 +130,7 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":"",
-          "pos":8
+          "pos":7
         }
       ],
       "pos":1
@@ -214,7 +197,7 @@
         {
           "MIGX_id":61,
           "field":"Event_location_id",
-          "caption":"Location",
+          "caption":"[[%migxcal.location]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -233,7 +216,7 @@
         {
           "MIGX_id":76,
           "field":"Event_organizer_id",
-          "caption":"Organizer",
+          "caption":"[[%migxcal.organizer]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
@@ -310,6 +293,25 @@
       "print_before_tabs":"0",
       "fields":[
         {
+          "MIGX_id":80,
+          "field":"Event_repeating",
+          "caption":"[[%migxcal.create_repeatings]]",
+          "description":"[[%migxcal.create_repeatings_desc]]",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"checkbox",
+          "validation":"",
+          "configs":"",
+          "restrictive_condition":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"",
+          "inputOptionValues":"[[%migxcal.create_repeatings]]==1",
+          "default":"",
+          "useDefaultIfEmpty":"0",
+          "pos":1
+        },
+        {
           "MIGX_id":23,
           "field":"Event_startdate",
           "caption":"[[%migxcal.repeatings_start]]",
@@ -323,7 +325,7 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":"",
-          "pos":1
+          "pos":2
         },
         {
           "MIGX_id":24,
@@ -339,23 +341,83 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":"",
-          "pos":2
+          "pos":3
         },
         {
           "MIGX_id":25,
-          "field":"repeattype",
-          "caption":"",
+          "field":"Event_repeattype",
+          "caption":"[[%migxcal.repeattype]]",
           "description":"",
           "description_is_code":"0",
           "inputTV":"",
-          "inputTVtype":"hidden",
+          "inputTVtype":"listbox",
           "validation":"",
           "configs":"",
+          "restrictive_condition":"",
+          "display":"",
           "sourceFrom":"config",
-          "sources":"[]",
-          "inputOptionValues":"T\u00e4glich==0||W\u00f6chentlich==1||Monatlich==2||J\u00e4hrlich==3",
+          "sources":"",
+          "inputOptionValues":"[[%migxcal.weekly]]==1||[[%migxcal.monthly]]==2",
           "default":1,
-          "pos":3
+          "useDefaultIfEmpty":"0",
+          "pos":4
+        },
+        {
+          "MIGX_id":77,
+          "field":"Event_repeaton",
+          "caption":"[[%migxcal.repeaton]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"checkbox",
+          "validation":"",
+          "configs":"",
+          "restrictive_condition":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"",
+          "inputOptionValues":"[[%migxcal.dow1]]==mon||[[%migxcal.dow2]]==tue||[[%migxcal.dow3]]==wed||[[%migxcal.dow4]]==thu||[[%migxcal.dow5]]==fri||[[%migxcal.dow6]]==sat||[[%migxcal.dow7]]==sun",
+          "default":"",
+          "useDefaultIfEmpty":"0",
+          "pos":5
+        },
+        {
+          "MIGX_id":78,
+          "field":"Event_repeatfrequency",
+          "caption":"[[%migxcal.repeatfrequency]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"",
+          "validation":"",
+          "configs":"",
+          "restrictive_condition":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"",
+          "inputOptionValues":"",
+          "default":1,
+          "useDefaultIfEmpty":"0",
+          "pos":6
+        },
+        {
+          "MIGX_id":79,
+          "field":"Event_repeatoccurences_inmonth",
+          "caption":"[[%migxcal.repeatoccurences_inmonth]]",
+          "description":"",
+          "description_is_code":"0",
+          "inputTV":"",
+          "inputTVtype":"checkbox",
+          "validation":"",
+          "configs":"",
+          "restrictive_condition":"",
+          "display":"",
+          "sourceFrom":"config",
+          "sources":"",
+          "inputOptionValues":"1.==1||2.==2||3.==3||4.==4||5.==5",
+          "default":"",
+          "useDefaultIfEmpty":"0",
+          "pos":7
         },
         {
           "MIGX_id":26,
@@ -371,7 +433,7 @@
           "sources":"[]",
           "inputOptionValues":"",
           "default":"",
-          "pos":4
+          "pos":8
         }
       ],
       "pos":3
@@ -692,7 +754,7 @@
   "createdby":1,
   "createdon":"2014-02-15 21:18:42",
   "editedby":1,
-  "editedon":"2015-11-07 22:35:31",
+  "editedon":"2015-11-14 14:55:38",
   "deleted":0,
   "deletedon":"-1-11-30 00:00:00",
   "deletedby":0,
