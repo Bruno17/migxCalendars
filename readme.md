@@ -7,6 +7,7 @@ A MIGXdb-based Calendar-Extra.
 
 #### Requirements
 MIGX – min-version: 2.6.8 pl 
+
 MIGXangular – min-version: 1.0.0 beta3
 
 #### Installation & Setup
