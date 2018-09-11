@@ -1,13 +1,15 @@
 migxCalendars Extra for MODx Revolution
 =======================================
 
-## Documentation
+A MIGXdb-based Calendar-Extra.
 
-### Requirements
-MIGX – min-version: 2.6.8 pl
+### Documentation
+
+#### Requirements
+MIGX – min-version: 2.6.8 pl 
 MIGXangular – min-version: 1.0.0 beta3
 
-### Installation & Setup
+#### Installation & Setup
 Install the package by MODX package-management
 
 Duplicate both Templates under the category migxCalendars
@@ -46,13 +48,13 @@ Now we should be ready to add some categories.
 Go to the Main-menue ‘migxCalendars’
 Add some Categories.
 
-### Show as list
+#### Show as list
 If you'd like to show the calender as a list, you'd best look into [migxLoopCollection](https://github.com/Bruno17/MIGX/wiki/migxLoopCollection)
 ```
 [[migxLoopCollection]]
 ```
 
-### Creating Dates
+#### Creating Dates
 Visit the Calendar-Frontend-Editing-Page while you are logged into the manager.
 
 To Create new Date-Containers, drag a Category from the left-side into the calendar-view.
@@ -70,9 +72,7 @@ Repeating Dates are created by clicking the ‘repeating’ – checkbox and sel
 
 It is possible to publish/unpublish repeating-dates individually.
 
-more about all features will follow.
-
-Have fun with playing around.
+Have fun playing around.
 
 
 ---
